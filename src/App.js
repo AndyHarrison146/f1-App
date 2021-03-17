@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import background from './img/backgroundImg.jpg';
+import Header from './components/Header.js';
+import { ThemeProvider } from '@material-ui/core';
+import theme from './theme';
+import Year from './components/Year';
+import SearchBar from "./components/SearchBar"
+import {Button} from '@material-ui/core'
+
 
 function App() {
+  const [showTable, setShowTable] = useState(false);  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App" style={{backgroundImage: `url(${background})`}}>
+        <Header />
+        <SearchBar />
+        <div />
+        <Button variant="contained" color="primary" style={{ marginTop: "1%"}} onClick={() => setShowTable(!showTable)}>
+          {showTable? "hideTable" : "showTable"}
+        </Button>
+        {showTable && <Year style={{ alignItems: "center"}} /> }
+      </div>
+    </ThemeProvider>
   );
 }
 
