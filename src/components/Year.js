@@ -9,7 +9,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import query from './SearchBar';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -53,10 +53,11 @@ function Year() {
   const classes = useStyles();
   const [data, setData] = useState();
   const year = 2009;
-  console.log(typeof query.value)
+  
+ 
   
   useEffect(() => {
-    const f1Url = `http://ergast.com/api/f1/${query.value}/results.json?limit=1000`;
+    const f1Url = `http://ergast.com/api/f1/${query}/results.json?limit=1000`;
     axios.get(f1Url)
     .then(res => {
       const races = res.data.MRData.RaceTable.Races;
@@ -64,7 +65,7 @@ function Year() {
     })
   }, [year])
 
-  console.log(data)
+  console.log(query)
 
   return (
     <TableContainer className={classes.paper} component={Paper} >
