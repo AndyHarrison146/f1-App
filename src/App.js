@@ -9,8 +9,9 @@ import SearchBar from "./components/SearchBar"
 import {Button} from '@material-ui/core'
 
 
-function App() {
-  const [showTable, setShowTable] = useState(false);  
+function App(props) {
+  const [showTable, setShowTable] = useState(false); 
+
   return (
     <ThemeProvider theme={theme}>
       <div className="App" style={{backgroundImage: `url(${background})`}}>
