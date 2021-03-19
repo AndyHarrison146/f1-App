@@ -49,7 +49,7 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-function Year() {
+function Year({query}) {
   const classes = useStyles();
   const [data, setData] = useState();
   const year = 2019;
@@ -57,11 +57,12 @@ function Year() {
  
   
   useEffect(() => {
-    const f1Url = `http://ergast.com/api/f1/${year}/results.json?limit=1000`;
+    const f1Url = `http://ergast.com/api/f1/${query}/results.json?limit=1000`;
     axios.get(f1Url)
     .then(res => {
       const races = res.data.MRData.RaceTable.Races;
       setData(races)
+  
     })
     
 
