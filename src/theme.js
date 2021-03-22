@@ -1,4 +1,5 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+// import { createMuiTheme } from '@material-ui/core/styles';
+import { unstable_createMuiStrictModeTheme as createMuiTheme } from '@material-ui/core';
 import green from '@material-ui/core/colors/green';
 
 const theme = createMuiTheme({
@@ -12,6 +13,9 @@ const theme = createMuiTheme({
     pale: {
      main: '#FCF4D9',
      contrastText: '#383838',
+    },
+    background: {
+      paper: '#c62828'
     }
   },
 });
