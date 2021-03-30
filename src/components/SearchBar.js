@@ -4,9 +4,6 @@ import React from 'react'
 
 const SearchBar = ({query, changeQuery}) => {
 
-
-
-
   const handleSubmit = (event) => { 
       event.preventDefault();
       console.log(query)
@@ -20,7 +17,7 @@ const SearchBar = ({query, changeQuery}) => {
         Year:
         <input style={BarStyling} type="text" placeholder={"search"} value={query} onChange={e => changeQuery(e.target.value)}/>
       </label>
-      <input type="submit" value={"submit"} />
+      {/* <input type="submit" value={"submit"} /> */}
     </form>
   );
 }

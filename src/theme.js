@@ -1,6 +1,7 @@
 // import { createMuiTheme } from '@material-ui/core/styles';
 import { unstable_createMuiStrictModeTheme as createMuiTheme } from '@material-ui/core';
 import green from '@material-ui/core/colors/green';
+import { SportsRugbySharp } from '@material-ui/icons';
 
 const theme = createMuiTheme({
   palette: {
@@ -15,9 +16,15 @@ const theme = createMuiTheme({
      contrastText: '#383838',
     },
     background: {
-      paper: '#c62828'
-    }
+      paper: '#b71c1c'
+    },
   },
+  zIndex: {
+    appBar: 1400,
+    drawer: 1100,
+  },
+ 
+
 });
 
 export default theme;
