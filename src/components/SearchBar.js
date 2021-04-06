@@ -1,37 +1,25 @@
 
-import React, { useState }from 'react'
+import React from 'react'
 
 
-const SearchBar = () => {
- const [query, setQuery] = useState();
-
-  // const handleSubmit = (e) => {
-  //   setQuery(e.target.value)
-  //   console.log(query)
-    
-    
-  // }
+const SearchBar = ({query, changeQuery}) => {
+  let search;
   
-  // const handleInputChange = (e) => {
-  //   e.preventDefault();
-  //   console.log(e.target.value)
-    
-
-  // }
-
-  const handleSubmit = (event) => {
-    if(event.key === 'Enter') {
+  const handleSubmit = (event) => { 
       event.preventDefault();
-      setQuery(event.target.value)
+      changeQuery(search)
+      console.log(search);
     }
-    console.log(query)
-  }
 
-  const BarStyling = {width:"10rem",background:"#F2F1F9", border:"none", padding:"0.5rem", marginTop: "5%"};
+ const BarStyling = { width: "10rem", background: "#F2F1F9", border: "none", padding: "0.5rem", marginTop: "5%" };
+
   return (
-    <form >
-      <input style={BarStyling} type="text" placeholder={"search"} onKeyDown={handleSubmit}
-     />
+    <form onSubmit={handleSubmit}> 
+      <label>
+        Year:
+        <input style={BarStyling} type="text" placeholder={"search"} value={search} onChange={e => search = e.target.value}/>
+      </label>
+      {/* <input type="submit" value={"submit"} /> */}
     </form>
   );
 }
