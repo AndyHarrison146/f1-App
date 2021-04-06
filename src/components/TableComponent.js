@@ -81,7 +81,7 @@ const TableComponent = ({data}) => {
         })}
         </TableBody>
       </Table>
-    </TableContainer>
+      </TableContainer>
     </div>
   )
 }

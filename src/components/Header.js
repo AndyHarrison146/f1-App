@@ -7,7 +7,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Drawer as MUIDrawer, ListItem, ListItemText, List } from '@material-ui/core'
 import { useHistory } from 'react-router-dom';
-import {Button} from '@material-ui/core'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
+    fontSize: '2em',
     textAlign: "center",
     flexGrow: 0.93,
     display: 'none',
@@ -35,34 +35,20 @@ const useStyles = makeStyles((theme) => ({
    
     // color: theme.palette.primary.main
   },
-  listItem: {
-    borderRadius: '1em'
-  },
   listItemText: {
-    fontSize: '2em',
+    fontSize: '1.6em',
     color: '#ffffff',
     padding: theme.spacing(1),
   },
-  overrides: {
-    // Name of the component
-    MuiListItem: {
-      // Name of the rule
-      root: {
-        // Some CSS
-        borderBottom: "3px solid rgb(0, 0, 0)"
-      },
-    },
-  },
-
-  
 }));
 
 
 const Header = () => {  
   const classes = useStyles();
-  const navList = [ 'Race', 'Year', 'Driver', 'Team']
+  const navList = [ 'Race', 'Year', 'Driver', 'Team', 'Home']
   const history = useHistory();
   const [navState, setNavState] = useState(false);
+  
   const toggleDrawer = (open) => {
     return function(event) {
       return setNavState(open)
