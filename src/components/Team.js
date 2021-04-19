@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SearchBar from './SearchBar'
 
 const Team = () => {
+const [team, setTeam] = useState();
+
   return (
     <div>
-      <SearchBar />
+      <SearchBar team={team} changeTeam={setTeam}/>
     </div>
   )
 }

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { Box, CircularProgress, Typography } from '@material-ui/core';

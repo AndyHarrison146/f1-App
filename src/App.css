@@ -5,9 +5,17 @@
   background-position: center;
   width: 100vw;
   height: 120vh;
+  font-size: 20px
   
 }
 
+option {
+  font-weight:bold;
+  font-size: 20px;
+  width: fit-content;
+  align-self: center; 
+  margin-left: 10%;
+}
 
 .App-logo {
   height: 40vmin;
