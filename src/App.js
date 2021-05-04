@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Route, Switch, useHistory } from "react-router-dom" 
+import { Route, Switch} from "react-router-dom" 
 import background from './img/backgroundImg.jpg';
 import Header from './components/Header.js';
 import { makeStyles, ThemeProvider } from '@material-ui/core';
@@ -27,8 +27,6 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const classes = useStyles();
-  const history = useHistory();
-
 
   return (
     <ThemeProvider theme={theme}>

@@ -1,28 +1,34 @@
-import React from 'react';
-import { makeStyles, useState } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
+import React, { Fragment } from 'react';
+import { makeStyles} from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Paper from '@material-ui/core/Paper';
 import { years } from '../assets/Years';
 
+
+
 const useStyles = makeStyles((theme) => ({
+  
   formControl: {
-    minWidth: 350,
-    maxWidth: 600,
-    minHeight: 200,
+    width: '250px',
+    height: '250px'
   },
   paper: {
   overflowX: "auto",
-  margin: "auto",
+  marginTop: '10%',
+  // margin: "auto",
   background: '#ffffff',
-},
+  },
+  select: {
+    width: '250px', 
+  }
+
+
 
 }));
 
-const Selector = ({year, changeYear, driverArr, changeName}) => {
+const Selector = ({changeYear, driverArr, changeDriverId, teamArr, changeTeam}) => {
   const classes = useStyles();
-
 
   const handleChange = (event) => {
     const { options } = event.target;
@@ -39,23 +45,26 @@ const Selector = ({year, changeYear, driverArr, changeName}) => {
       // changeRace(search)
     }
     if (window.location.pathname === '/Driver') {
-      changeName(value)
+      changeDriverId(value)
     }
     if (window.location.pathname === '/Team') {
-      // changeTeam(search)
+      changeTeam(value)
     }
   };
 
   return (
+    <Fragment>
     <div>
-      <FormControl className={classes.formControl}>
-        <Paper className={classes.paper}>
+      <FormControl className={classes.formControl} >
+        <Paper className={classes.paper} >
           <Select
+          className={classes.select}
           type="select-multiple"
           multiple
           native
           value={[]}
           onChange={handleChange}
+          style={{}}
           inputProps={{
             id: "select-multiple-native",
             
@@ -71,17 +80,15 @@ const Selector = ({year, changeYear, driverArr, changeName}) => {
               {season}
               </option>
             ))}
+            {window.location.pathname === '/Team' && teamArr.map((team) => (
+              <option key={team.constructorId} value={team.constructorId}>{team.name}</option>
+            ))}
           </Select>
         </Paper>
       </FormControl>
     </div>
+    </Fragment>
   )
 }
 
 export default Selector
-
-{/* {years.map((season) => (
-  <option key={season} value={season}>
-  {season}
-  </option>
-))} */}

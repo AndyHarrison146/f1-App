@@ -68,16 +68,12 @@ function Year() {
       setYearData(races)
       console.log(yearData)
     })
-  }, [year])
-
-  useEffect(() => {
     const championshipURL = `http://ergast.com/api/f1/${year}/driverStandings.json?limit=1000`;
     axios.get(championshipURL)
     .then(res => {
       const winner = res.data.MRData.StandingsTable.StandingsLists[0].DriverStandings[0];
       setChampionshipWinner(winner)
     })
-    //console.log(championshipWinner)
   }, [year])
 
 

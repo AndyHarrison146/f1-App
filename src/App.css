@@ -12,9 +12,13 @@
 option {
   font-weight:bold;
   font-size: 20px;
-  width: fit-content;
   align-self: center; 
   margin-left: 10%;
+  text-align: center;
+}
+
+select#select-multiple-native {
+  height: 200px;
 }
 
 .App-logo {
