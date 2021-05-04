@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import SearchBar from'./SearchBar';
 
 const Race = () => {
+  const [race, setRace] = useState();
+
   return (
     <div>
-      <SearchBar />
+      <SearchBar race={race} changeRace={setRace} />
     </div>
   )
 }

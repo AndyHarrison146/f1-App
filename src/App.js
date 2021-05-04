@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Route, Switch, useHistory } from "react-router-dom" 
+import { Route, Switch} from "react-router-dom" 
 import background from './img/backgroundImg.jpg';
 import Header from './components/Header.js';
 import { makeStyles, ThemeProvider } from '@material-ui/core';
@@ -27,8 +27,6 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const classes = useStyles();
-  const history = useHistory();
-
 
   return (
     <ThemeProvider theme={theme}>
@@ -37,11 +35,11 @@ function App() {
         <div >  
           <Switch>
             <Route exact from="/" render={props => <Home {...props} className={classes.root}/>} />
-            <Route exact from="/Home" render={props => <Home {...props} className={classes.root}/>} />
-            <Route exact from="/Race" render={props => <Race {...props} className={classes.root}/>} />
-            <Route exact path="/Year" render={props => <Year {...props} className={classes.root}/>} />
-            <Route exact from="/Driver" render={props => <Driver {...props} className={classes.root} />} />
-            <Route exact from="/Team" render={props => <Team {...props} className={classes.root}/>} />
+            <Route path="/Home" render={props => <Home {...props} className={classes.root}/>} />
+            <Route path="/Race" render={props => <Race {...props} className={classes.root}/>} />
+            <Route path="/Year" render={props => <Year {...props} className={classes.root}/>} />
+            <Route path="/Driver" render={props => <Driver {...props} className={classes.root} />} />
+            <Route path="/Team" render={props => <Team {...props} className={classes.root}/>} />
           </Switch>
         </div>
         {/* <SearchBar query={query} changeQuery={setQuery} /> */}

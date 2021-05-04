@@ -1,14 +1,26 @@
+import React from 'react';
 
-import React from 'react'
 
-
-const SearchBar = ({query, changeQuery}) => {
+const SearchBar = ({changeYear, changeName, changeTeam, changeRace}) => {
   let search;
   
   const handleSubmit = (event) => { 
       event.preventDefault();
-      changeQuery(search)
-      console.log(search);
+      console.log(window.location.pathname)
+      if (window.location.pathname === '/Year') {
+        changeYear(search)
+      }
+      if (window.location.pathname === '/Race') {
+        changeRace(search)
+      }
+      if (window.location.pathname === '/Driver') {
+        changeName(search)
+      }
+      if (window.location.pathname === '/Team') {
+        changeTeam(search)
+      }
+      
+
     }
 
  const BarStyling = { width: "10rem", background: "#F2F1F9", border: "none", padding: "0.5rem", marginTop: "5%" };
@@ -19,7 +31,6 @@ const SearchBar = ({query, changeQuery}) => {
         Year:
         <input style={BarStyling} type="text" placeholder={"search"} value={search} onChange={e => search = e.target.value}/>
       </label>
-      {/* <input type="submit" value={"submit"} /> */}
     </form>
   );
 }
