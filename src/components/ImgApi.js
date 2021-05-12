@@ -15,9 +15,9 @@ const ImgApi = ({driverData, changeImgUrl}) => {
   const [title, setTitle] = useState();
   const [urlName, setUrlName] = useState(`${driverData.givenName}_${driverData.familyName}`);
 
-  let pageImgUrl = `https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&maxlag=1&prop=pageimages&list=&titles=${urlName}&piprop=thumbnail%7Cname%7Coriginal&format=json`
+  const pageImgUrl = `https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&maxlag=1&prop=pageimages&list=&titles=${urlName}&piprop=thumbnail%7Cname%7Coriginal&format=json`
 
-  let url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&prop=images&titles=${urlName}&format=json`
+  const url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&prop=images&titles=${urlName}&format=json`
 
 
   const getImg = () => {

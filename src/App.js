@@ -10,6 +10,7 @@ import Home from './components/Home';
 import Race from './components/Race';
 import Driver from './components/Driver';
 import Team from './components/Team';
+import Schedule from "./components/Schedule";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,6 +37,7 @@ function App() {
           <Switch>
             <Route exact from="/" render={props => <Home {...props} className={classes.root}/>} />
             <Route path="/Home" render={props => <Home {...props} className={classes.root}/>} />
+            <Route path="/Schedule" render={props => <Schedule {...props} className={classes.root}/>} />
             <Route path="/Race" render={props => <Race {...props} className={classes.root}/>} />
             <Route path="/Year" render={props => <Year {...props} className={classes.root}/>} />
             <Route path="/Driver" render={props => <Driver {...props} className={classes.root} />} />
