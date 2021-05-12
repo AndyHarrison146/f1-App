@@ -29,8 +29,10 @@ const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: "auto",
     maxWidth: "auto",
-
-  }
+  },
+  circle: {
+    marginTop: '5%'
+  },
 }));
 
 const StyledTableCell = withStyles((theme) => ({
@@ -115,7 +117,7 @@ function Year() {
       </Table>
       </TableContainer>
       </div>
-        : <CircularProgress />)}
+        : <CircularProgress className={classes.circle} />)}
     </div>
 
   );

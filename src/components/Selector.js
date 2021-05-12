@@ -4,30 +4,36 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Paper from '@material-ui/core/Paper';
 import { years } from '../assets/Years';
+import { CircularProgress } from '@material-ui/core';
 
 
 
 const useStyles = makeStyles((theme) => ({
-  
+
+  root: {
+    flexGrow: 1,
+    display: 'flex', 
+  },
   formControl: {
     width: '250px',
-    height: '250px'
+    height: '200px',
+    margin: '2%',
   },
   paper: {
-  overflowX: "auto",
-  marginTop: '10%',
-  // margin: "auto",
+  marginTop: '8%',
+  marginBottom: '1%',
   background: '#ffffff',
   },
   select: {
-    width: '250px', 
+    width: '250px',
+    height: '200px',
   }
 
 
 
 }));
 
-const Selector = ({changeYear, driverArr, changeDriverId, teamArr, changeTeam}) => {
+const Selector = ({changeYear, driverArr, changeDriverId, teamArr, changeTeam, season, races, changeRound, changeRaceData, changeSeason}) => {
   const classes = useStyles();
 
   const handleChange = (event) => {
@@ -42,7 +48,8 @@ const Selector = ({changeYear, driverArr, changeDriverId, teamArr, changeTeam}) 
       changeYear((parseInt(value)))
     }
     if (window.location.pathname === '/Race') {
-      // changeRace(search)
+      changeSeason(value)
+      changeRaceData('')
     }
     if (window.location.pathname === '/Driver') {
       changeDriverId(value)
@@ -52,9 +59,22 @@ const Selector = ({changeYear, driverArr, changeDriverId, teamArr, changeTeam}) 
     }
   };
 
+  const handleRaceChange = (event) => {
+    const { options } = event.target;
+    const value = [];
+    for (let i = 0, l = options.length; i < l; i += 1) {
+      if (options[i].selected) {
+        value.push(options[i].value);
+      }
+    }
+    if (window.location.pathname === '/Race' && season) {
+      changeRound(value)
+    }
+
+  }
+
   return (
-    <Fragment>
-    <div>
+    <div className={classes.selector}>
       <FormControl className={classes.formControl} >
         <Paper className={classes.paper} >
           <Select
@@ -67,7 +87,6 @@ const Selector = ({changeYear, driverArr, changeDriverId, teamArr, changeTeam}) 
           style={{}}
           inputProps={{
             id: "select-multiple-native",
-            
           }}
           >
             {window.location.pathname === '/Driver' && driverArr.map((driver) => (
@@ -83,11 +102,40 @@ const Selector = ({changeYear, driverArr, changeDriverId, teamArr, changeTeam}) 
             {window.location.pathname === '/Team' && teamArr.map((team) => (
               <option key={team.constructorId} value={team.constructorId}>{team.name}</option>
             ))}
-          </Select>
+            {window.location.pathname === '/Race' && years.map((season) => (
+              <option key={season} value={season}>
+              {season}
+              </option>
+            ))}
+          </Select> 
         </Paper>
       </FormControl>
+      {(window.location.pathname === '/Race' && season ? 
+      <FormControl className={classes.formControl} >
+        <Paper className={classes.paper} >
+          <Select
+          className={classes.select}
+          type="select-multiple"
+          multiple
+          native
+          value={[]}
+          onChange={handleRaceChange}
+          style={{}}
+          inputProps={{
+            id: "Race",
+          }}
+          >
+            {window.location.pathname === '/Race' && races && races.map((season) => (
+              <option key={season.round} value={season.round}>
+              {season.round} {season.raceName}
+              </option>
+            ))}
+          </Select> 
+         </Paper>
+      </FormControl>
+      : 
+      <div/>)}
     </div>
-    </Fragment>
   )
 }
 

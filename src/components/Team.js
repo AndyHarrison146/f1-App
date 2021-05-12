@@ -15,26 +15,34 @@ import noImage from '../img/No_Image_Available.jpg'
 
 const useStyles = makeStyles({
   root: {
-    minHeight: '50vh',
-    minWidth: '40vh',
+    minHeight: '50%',
+    minWidth: '40%',
+    marginTop: '20%',
   },
   driverImg: {
-    height: 300,
-    width: 320,
-    marginRight: '5%',
-  }
+    height: 400,
+    padding: '5%',
+  },
+  circle: {
+    marginTop: '5%'
+  },
+
 });
 
 const Team = () => {
-const classes = useStyles();
-const [team, setTeam] = useState();
-const [teamData, setTeamData] = useState();
-const [teamArr, setTeamArr] = useState([]);
-const [teamChampionships, setTeamChampionships] = useState([]);
-let championships = 0;
-
-
-useEffect(() => {
+  const classes = useStyles();
+  const [team, setTeam] = useState();
+  const [teamData, setTeamData] = useState();
+  const [teamArr, setTeamArr] = useState([]);
+  const [teamChampionships, setTeamChampionships] = useState([]);
+  const [urlName, setUrlName] = useState();
+  let championships = 0;
+  
+ 
+  
+  
+  
+  useEffect(() => {
     const allTeamsURL = `http://ergast.com/api/f1/constructors.json?limit=1000`;
     axios.get(allTeamsURL).then(res => {
       const allTeamsRes = res.data.MRData.ConstructorTable.Constructors
@@ -46,27 +54,45 @@ useEffect(() => {
 useEffect(() => {
     const teamURL = `http://ergast.com/api/f1/constructors/${team}.json?limit=1000`;
     axios.get(teamURL).then(res => {
+      console.log(teamURL)
       const teamRes = res.data.MRData.ConstructorTable.Constructors[0]
       setTeamData(teamRes)
+      console.log(teamData)
+      getUrlName();
     })
     const championshipURL = `http://ergast.com/api/f1/constructorStandings/1.json?limit=1000`;
     axios.get(championshipURL).then(res => {
       const champRes = res.data.MRData.StandingsTable.StandingsLists;
       setTeamChampionships(champRes)
-
     })
+    axios.get(`https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&maxlag=1&prop=pageimages&list=&titles=${urlName}&piprop=thumbnail%7Cname%7Coriginal&format=json`).then(res=> {
+      const imgRes = res.data.query.pages;
+      console.log(imgRes)
+    })
+
   },[team])
+
+  const getUrlName = () => {
+    if (teamData) {
+      const url = teamData.url;
+      const partUrl = 'wiki/'
+      const offName = url.slice(url.indexOf(partUrl) + partUrl.length);
+      console.log(offName)
+      setUrlName(offName)
+      console.log(urlName)
+    } else return
+  }
+
+
 
 
   return (
     <div>
       <Selector changeTeam={setTeam} teamArr={teamArr} />
       {(teamData ?
-      <Grid container spacing={0} direction="column" alignItems="center"
-      justify="center"
-      style={{ minHeight: '50vh' }}>
-        <Grid item sm={9}>
-          <Card className={classes.root}>
+      <Grid container spacing={0} direction="column" alignItems="center">
+        <Grid item sm={6}>
+          <Card className={classes.root} style={{justifyContent: "center", display: "flex" }}>
             <CardActionArea>
               <CardContent>
               {teamChampionships && teamChampionships.map((season) => {
@@ -88,7 +114,7 @@ useEffect(() => {
         </Grid>      
       </Grid>
       : 
-      <CircularProgress/>
+      <CircularProgress className={classes.circle}/>
       )}
     </div>
   )

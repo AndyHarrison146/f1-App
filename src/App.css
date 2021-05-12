@@ -1,10 +1,10 @@
 .App {
   text-align: center;
   background-repeat:no-repeat;
-  background-size:cover;
+  background-size: cover;
   background-position: center;
   width: 100vw;
-  height: 120vh;
+  height: 140vh;
   font-size: 20px
   
 }
@@ -18,7 +18,11 @@ option {
 }
 
 select#select-multiple-native {
-  height: 200px;
+  height: 180px;
+}
+
+select#Race {
+  height: 180px;
 }
 
 .App-logo {

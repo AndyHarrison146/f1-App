@@ -19,8 +19,10 @@ const useStyles = makeStyles({
   driverImg: {
     height: 400,
     padding: '5%',
-
-  }
+  },
+  circle: {
+    marginTop: '5%'
+  },
 });
 
 
@@ -100,7 +102,7 @@ const Driver = () => {
         </Grid>      
       </Grid>
       : 
-      <CircularProgress/>
+      <CircularProgress className={classes.circle}/>
       )}
     </div>
   )

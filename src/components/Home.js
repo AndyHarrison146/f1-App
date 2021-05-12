@@ -10,7 +10,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import theme from '../theme'
+import theme from '../theme';
 
 
 
@@ -18,6 +18,7 @@ import theme from '../theme'
 const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
+
   },
   paper: {
     position: 'absolute',
@@ -26,7 +27,8 @@ const useStyles = makeStyles(() => ({
     overflowX: "auto",
     marginBottom: theme.spacing(2),
     marginLeft: theme.spacing(15),
-    background: '#ffffff'
+    background: '#ffffff',
+
   },
   paper2: {
     float: 'right',
@@ -52,7 +54,6 @@ const useStyles = makeStyles(() => ({
   table: {
     minWidth: "auto",
     maxWidth: "auto",
-
   },
   arrow: {
   position: 'relative',
@@ -148,9 +149,8 @@ const Home = () => {
             <StyledTableCell align="right">{Constructor.name}</StyledTableCell>
             <StyledTableCell align="right">{Time ? Time.time : status}</StyledTableCell>
           </StyledTableRow>
-
-              ) 
-            })}
+          ) 
+          })}
           </TableBody>
         </Table>
       </TableContainer>
