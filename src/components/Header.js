@@ -7,7 +7,6 @@ import { Drawer as MUIDrawer, ListItem, ListItemText, List, CircularProgress, Gr
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import {useStyles} from '../styles';
-import logo from '../img/f1logo3.png'
 
 
 const Header = () => {  
@@ -26,13 +25,13 @@ const Header = () => {
   }
 
   const getLastRound = () => {
-    axios.get('http://ergast.com/api/f1/current/last/results.json').then(res => {
+    axios.get('https://ergast.com/api/f1/current/last/results.json').then(res => {
       setLastRound(res.data.MRData.RaceTable.round);
     })
   }
     
   const getNextRound = () => {
-    axios.get('http://ergast.com/api/f1/current.json').then(res => {
+    axios.get('https://ergast.com/api/f1/current.json').then(res => {
       setNextRound(res.data.MRData.RaceTable.Races[lastRound]);
     })
   }

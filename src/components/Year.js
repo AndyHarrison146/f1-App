@@ -36,14 +36,14 @@ function Year() {
   const [championshipWinner, setChampionshipWinner] = useState();
   
   useEffect(() => {
-    const f1Url = `http://ergast.com/api/f1/${year}/results.json?limit=1000`;
+    const f1Url = `https://ergast.com/api/f1/${year}/results.json?limit=1000`;
     axios.get(f1Url)
     .then(res => {
       const races = res.data.MRData.RaceTable;
       setYearData(races)
       console.log(yearData)
     })
-    const championshipURL = `http://ergast.com/api/f1/${year}/driverStandings.json?limit=1000`;
+    const championshipURL = `https://ergast.com/api/f1/${year}/driverStandings.json?limit=1000`;
     axios.get(championshipURL)
     .then(res => {
       const winner = res.data.MRData.StandingsTable.StandingsLists[0].DriverStandings[0];

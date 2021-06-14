@@ -41,7 +41,7 @@ const Home = () => {
 
 
   const getLastRace = () => {
-    const lastRaceURL = `http://ergast.com/api/f1/2021/results.json?limit=1000`;
+    const lastRaceURL = `https://ergast.com/api/f1/2021/results.json?limit=1000`;
     axios.get(lastRaceURL)
     .then(res => {
       const lastRace = res.data.MRData.RaceTable.Races;
@@ -50,7 +50,7 @@ const Home = () => {
   }
 
   const getChampionshipData = () => {
-    const championshipURL = `http://ergast.com/api/f1/current/driverStandings.json?limit=1000`;
+    const championshipURL = `https://ergast.com/api/f1/current/driverStandings.json?limit=1000`;
     axios.get(championshipURL)
     .then(res => {
       const standings = res.data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
@@ -60,7 +60,7 @@ const Home = () => {
   }
 
   const getConstructorTable = () => {
-    const ConstructorURL = `http://ergast.com/api/f1/current/constructorStandings.json?limit=1000`;
+    const ConstructorURL = `https://ergast.com/api/f1/current/constructorStandings.json?limit=1000`;
     axios.get(ConstructorURL)
     .then(res => {
       const standings = res.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings

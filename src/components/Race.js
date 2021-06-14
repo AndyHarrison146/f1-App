@@ -35,7 +35,7 @@ const Race = () => {
   const [races, setRaces] = useState();
 
   const getRounds = () => {
-    season && axios.get(`http://ergast.com/api/f1/${season}.json?limit=1000`).then(res => {
+    season && axios.get(`https://ergast.com/api/f1/${season}.json?limit=1000`).then(res => {
       const rounds = res.data.MRData.RaceTable.Races;
       setRaces(rounds)
       console.log(rounds)
@@ -43,7 +43,7 @@ const Race = () => {
   }
 
   const getRoundData = () => {
-    season && round && axios.get(`http://ergast.com/api/f1/${season}/${round}/results.json?limit=1000`).then(res => {
+    season && round && axios.get(`https://ergast.com/api/f1/${season}/${round}/results.json?limit=1000`).then(res => {
       const raceRes = res.data.MRData.RaceTable.Races[0];
       setRaceData(raceRes)
       console.log(raceData)

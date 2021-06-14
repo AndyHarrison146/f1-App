@@ -37,7 +37,7 @@ const Team = () => {
   let championships = 0;
 
   const getAllTeams = () => {
-    const allTeamsURL = `http://ergast.com/api/f1/constructors.json?limit=1000`;
+    const allTeamsURL = `https://ergast.com/api/f1/constructors.json?limit=1000`;
     axios.get(allTeamsURL).then(res => {
       const allTeamsRes = res.data.MRData.ConstructorTable.Constructors
       setTeamArr(allTeamsRes);
@@ -45,7 +45,7 @@ const Team = () => {
   }
 
   const getSelectedTeam = () => {
-    const teamURL = `http://ergast.com/api/f1/constructors/${team}.json?limit=1000`;
+    const teamURL = `https://ergast.com/api/f1/constructors/${team}.json?limit=1000`;
     axios.get(teamURL).then(res => {
       console.log(teamURL)
       const teamRes = res.data.MRData.ConstructorTable.Constructors[0]
@@ -54,7 +54,7 @@ const Team = () => {
   }
 
   const getChampionships = () => {
-    const championshipURL = `http://ergast.com/api/f1/constructorStandings/1.json?limit=1000`;
+    const championshipURL = `https://ergast.com/api/f1/constructorStandings/1.json?limit=1000`;
     axios.get(championshipURL).then(res => {
       const champRes = res.data.MRData.StandingsTable.StandingsLists;
       setTeamChampionships(champRes)
@@ -63,7 +63,7 @@ const Team = () => {
 
   const getCardTeam = (teamName) => {
     console.log(teamName)
-    axios.get(`http://ergast.com/api/f1/constructors/${teamName}.json?limit=1000`).then(res => {
+    axios.get(`https://ergast.com/api/f1/constructors/${teamName}.json?limit=1000`).then(res => {
       const teamRes = res.data.MRData.ConstructorTable.Constructors[0];
       console.log(teamRes)
       setCardData(teamRes)
@@ -71,7 +71,7 @@ const Team = () => {
   }
 
   const getCardWins = (teamName) => {
-    axios.get(`http://ergast.com/api/f1/constructors/${teamName}/results/1.json?limit=1000`).then(res => {
+    axios.get(`https://ergast.com/api/f1/constructors/${teamName}/results/1.json?limit=1000`).then(res => {
       const winRes = res.data.MRData.RaceTable.Races;
       console.log(winRes)
       setCardWins(winRes.length)
@@ -87,7 +87,7 @@ const Team = () => {
   }
 
   const getDriversChampionships = () => {
-    axios.get(`http://ergast.com/api/f1/driverStandings/1.json?limit=1000`).then(res => {
+    axios.get(`https://ergast.com/api/f1/driverStandings/1.json?limit=1000`).then(res => {
       const driverChampRes = res.data.MRData.StandingsTable.StandingsLists;
       setDriversChampionships(driverChampRes)
     })
@@ -151,7 +151,7 @@ useEffect(() => {
               <Card key={team.name} id={team.id} className={classes.teamCard} style={{backgroundColor: '#fafafa'}}>
                 <ButtonBase id={team.id} onClick={event => handleCardClick(event)}>
                   <CardContent>
-                    <img src={team.url} id={team.id} className={classes.teamImg}/>
+                    <img src={team.url} alt="team" id={team.id} className={classes.teamImg}/>
                     <Typography id={team.id} variant="h6" align='center'>{team.name}</Typography>
                   </CardContent>
                 </ButtonBase>
@@ -232,7 +232,7 @@ useEffect(() => {
                 <div>
                   <Typography variant="h5" align='center'>{`Championships: ${championships}`}
                   </Typography>
-                  <img src={noImage} className={classes.driverImg} align='center'/>
+                  <img src={noImage} alt="Driver" className={classes.driverImg} align='center'/>
                   <Typography variant="h6" align='center'>{`
                   Name: ${teamData.name} `} <br/> {`Constructor I.D: ${teamData.constructorId} `} <br/> {`Nationality: ${teamData.nationality} `} <br/> 
                   <a href={teamData.url}>Wikipedia Link</a>

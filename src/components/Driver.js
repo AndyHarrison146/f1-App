@@ -20,10 +20,9 @@ const Driver = () => {
   const [driverData, setDriverData] = useState();
   const [imgUrl, setImgUrl] = useState();
   const [wins, setWins] = useState();
-  let championships = 0;
 
   const getAllDrivers = () => {
-    const driverURL = `http://ergast.com/api/f1/drivers.json?limit=1000`;
+    const driverURL = `https://ergast.com/api/f1/drivers.json?limit=1000`;
     axios.get(driverURL).then(res => {
       let arr = res.data.MRData.DriverTable.Drivers;
       setDriverArr(arr)
@@ -31,7 +30,7 @@ const Driver = () => {
   }
 
   const getDriverChampionships = () => {
-    const championshipURL = `http://ergast.com/api/f1/drivers/${driverId}/driverStandings/1.json?limit=1000`;
+    const championshipURL = `https://ergast.com/api/f1/drivers/${driverId}/driverStandings/1.json?limit=1000`;
     axios.get(championshipURL)
     .then(res => {
       const championshipRes = res.data.MRData.StandingsTable.StandingsLists;
@@ -41,7 +40,7 @@ const Driver = () => {
 
   const getDriver = () => {
     setDriverData('')
-    const driverURL = `http://ergast.com/api/f1/drivers/${driverId}.json?limit=1000`;
+    const driverURL = `https://ergast.com/api/f1/drivers/${driverId}.json?limit=1000`;
     axios.get(driverURL)
     .then(res => {
       const driverRes = res.data.MRData.DriverTable.Drivers[0];
@@ -50,7 +49,7 @@ const Driver = () => {
   }
 
   const getWins = () => {
-    const winUrl = `http://ergast.com/api/f1/drivers/${driverId}/results/1.json?limit=1000`
+    const winUrl = `https://ergast.com/api/f1/drivers/${driverId}/results/1.json?limit=1000`
     axios.get(winUrl).then(res => {
       const winRes = res.data.MRData.RaceTable.Races
       setWins(winRes.length)

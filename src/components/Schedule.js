@@ -41,7 +41,7 @@ const Schedule = () => {
   const [scheduleData, setScheduleData] = useState();
 
   const getSchedule = () => {
-    axios.get(`http://ergast.com/api/f1/current.json`).then(res=> {
+    axios.get(`https://ergast.com/api/f1/current.json`).then(res=> {
       const schedule = res.data.MRData.RaceTable.Races;
       setScheduleData(schedule)
       console.log(schedule)
