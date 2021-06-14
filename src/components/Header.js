@@ -2,59 +2,22 @@ import React, {useState, useEffect} from 'react'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
-import { Drawer as MUIDrawer, ListItem, ListItemText, List, CircularProgress } from '@material-ui/core'
+import { Drawer as MUIDrawer, ListItem, ListItemText, List, CircularProgress, Grid, Typography } from '@material-ui/core'
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import {useStyles} from '../styles';
+import logo from '../img/f1logo3.png'
 
-const useStyles = makeStyles((theme) => ({
-  toolbar: theme.mixins.toolbar,
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    fontSize: '2em',
-    textAlign: "center",
-    flexGrow: 0.93,
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
-  },
-  nextRace: {
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
-  },
-  drawer: {
-    width: '160px',
-    zIndex: '1250',
-    position: 'absolute',
-    // color: theme.palette.primary.main
-  },
-  listItemText: {
-    fontSize: '1.6em',
-    color: '#ffffff',
-    padding: theme.spacing(1),
-  },
-}));
 
 const Header = () => {  
   const classes = useStyles();
-  const navList = [ 'Home','Schedule', 'Year', 'Race', 'Driver', 'Team']
+  const navList = [ 'Home','Schedule', 'Year', 'Race', 'Driver', 'Team', 'About']
   const history = useHistory();
   const [navState, setNavState] = useState(false);
   const [lastRound, setLastRound] = useState();
   const [nextRound, setNextRound] = useState('');
   const [time, setTime] = useState();
-  const [raceDate, setRaceDate] = useState();
-
-
 
   const toggleDrawer = (open) => {
     return function(event) {
@@ -72,12 +35,6 @@ const Header = () => {
     axios.get('http://ergast.com/api/f1/current.json').then(res => {
       setNextRound(res.data.MRData.RaceTable.Races[lastRound]);
     })
-  }
-
-  const countdownTimer = () => {
-    if (nextRound) {
-      
-    }
   }
     
   useEffect(() => {
@@ -110,43 +67,54 @@ const Header = () => {
     }, [nextRound])
     
     return (
-      <AppBar position="relative" color="primary" className={classes.appBar} >
-        <Toolbar>
-        <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-            onClick={navState? toggleDrawer(false) : toggleDrawer(true)} 
-            >
-            <MenuIcon />
-          </IconButton >
-          <Typography className={classes.title} variant="h6" noWrap>
-            F1 Results Tracker
-          </Typography>
-          {(nextRound ? 
-            <div>
-              <Typography className={classes.nextRace}>{`Next Race: Round ${nextRound.round} ${nextRound.raceName}`}
-              </Typography>
-              <div>{time}</div>
-            </div>
-            : 
-            <Typography>hi</Typography>)}
-        </Toolbar>
-        <MUIDrawer open={navState} onClose={toggleDrawer(false)}>
-          <div className={classes.toolbar} />
-     <List>
-       {navList.map((route) => {
-         return (
-            <ListItem divider={true} button key={`${route}`} onClick={() => history.push(`/${route}`)} styles={{ fontSize: 10}}>
-              <ListItemText classes={{primary: classes.listItemText}} primary={`${route}`} />
-            </ListItem>
-         )
-       })}
-      </List>
-   </MUIDrawer>
-      </AppBar>
-  )
+      <Grid container
+      spacing={0}
+      align="center">
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <AppBar position="relative" color="primary" className={classes.appBar}>
+            <Toolbar>
+              <Grid item xs={2} sm={4} md={4} lg={4} align='left'>
+                <IconButton
+                edge="start"
+                className={classes.menuButton}
+                color="inherit"
+                aria-label="open drawer"
+                onClick={navState? toggleDrawer(false) : toggleDrawer(true)} 
+                >
+                  <MenuIcon />
+                </IconButton >
+              </Grid>
+              <Grid item xs={4} sm={4} md={4} lg={4} align="center">
+                {/* <img src={logo} alt="" align='center' className={classes.logo}/> */}
+                <Typography variant="h4">F1 Grid Check</Typography>
+              </Grid>
+              <Grid item xs={6} sm={4} md={4} lg={4} align="right">
+                {(nextRound ? 
+                <div>
+                  <Typography variant="h6">{`Next Race: Round ${nextRound.round} ${nextRound.raceName} `}
+                  </Typography>
+                  <Typography variant="h6">{time}</Typography>
+                </div>
+                : 
+                <CircularProgress/>)}
+              </Grid>
+            </Toolbar>
+            <MUIDrawer  open={navState} onClose={toggleDrawer(false)}>
+              <div className={classes.toolbar} />
+              <List>
+              {navList.map((route) => {
+                return (
+                  <ListItem divider={true} button key={`${route}`} onClick={() => history.push(`/${route}`)} styles={{ fontSize: 10}}>
+                    <ListItemText classes={{primary: classes.listItemText}} primary={`${route}`} />
+                  </ListItem>
+                )
+              })}
+              </List>
+            </MUIDrawer>
+          </AppBar>
+        </Grid>
+      </Grid>
+    )
 }
 
 export default Header

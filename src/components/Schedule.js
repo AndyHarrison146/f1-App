@@ -1,8 +1,8 @@
 import React, {useState, useEffect}from 'react';
 import "../App.css";
 import axios from 'axios';
-import { CircularProgress, Typography } from '@material-ui/core';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { CircularProgress, Grid, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -10,37 +10,21 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Selector from './Selector';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    marginTop: theme.spacing(3),
-    width: "80%",
-    overflowX: "auto",
-    marginBottom: theme.spacing(2),
-    margin: "auto",
-    background: '#ffffff'
-  },
-  table: {
-    minWidth: "auto",
-    maxWidth: "auto",
-  },
-  circle: {
-    marginTop: '5%'
-  },
-}));
+import {useStyles} from '../styles';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.primary.main,
-    
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.grey.main,
   },
   body: {
-    fontSize: 14,
+    fontSize: 10,
+    '@media(min-width:600px)' : {
+      fontSize: 12,
+    },
+    '@media(min-width:960px)' : {
+      fontSize: 15,
+    }
   },
 }))(TableCell);
 
@@ -51,8 +35,6 @@ const StyledTableRow = withStyles((theme) => ({
     },
   },
 }))(TableRow);
-
-
 
 const Schedule = () => { 
   const classes = useStyles();
@@ -71,10 +53,15 @@ const Schedule = () => {
   }, [])
 
   return (
-    <div>
+    <Grid container
+    spacing={0}
+    direction='row'
+    align="center"
+    style={{ minHeight: '100vh', minWidth: '100vw' }}>
       {(scheduleData ? 
-      <div >
+      <Grid item xs={12} sm={12} md={12} lg={12} >
         <TableContainer className={classes.paper} component={Paper}>  
+        <Typography component={'span'} variant='h5'>2021 Calendar</Typography>
           <Table className={classes.table} aria-label="customized table">
             <TableHead>
               <TableRow>
@@ -101,9 +88,12 @@ const Schedule = () => {
         </TableBody>
       </Table>
       </TableContainer>
-      </div>
+      </Grid>
         : <CircularProgress className={classes.circle} />)}
-    </div>
+      <Grid item xs={12} sm={12} md={12} lg={12} >
+        <Typography variant='h6' align='center'>All info is sourced from https://ergast.com/mrd/.</Typography>
+      </Grid>
+    </Grid>
   )
 }
 

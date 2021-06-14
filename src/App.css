@@ -3,59 +3,108 @@
   background-repeat:no-repeat;
   background-size: cover;
   background-position: center;
-  width: 100vw;
-  height: 140vh;
   font-size: 20px
-  
 }
 
 option {
   font-weight:bold;
-  font-size: 20px;
-  align-self: center; 
+  font-size: 1.3rem;
   margin-left: 10%;
-  text-align: center;
 }
 
-select#select-multiple-native {
-  height: 180px;
-}
 
-select#Race {
-  height: 180px;
-}
+@media (max-width: 600px) {
+  .text {
+    font-size: 6px;
+  }
+  .App {
+    text-align: right;
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-size: 12px
+  }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
- 
-} 
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  option {
+    font-weight:bold;
+    font-size: 0.9rem;
+    margin-left: 5%;
+  }
+  select#select-multiple-native {
+    height: 80px;
+  }
+  select#Race {
+    height: 80px;
   }
 }
-
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (min-width: 600px) {
+  .App {
+    text-align: right;
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-size: 12px
   }
-  to {
-    transform: rotate(360deg);
+
+  option {
+    font-weight:bold;
+    font-size: 1rem;
+    margin-left: 5%;
+  }
+  select#select-multiple-native {
+    height: 90px;
+  }
+  
+  select#Race {
+    height: 90px;
+  }
+}
+@media (min-width: 960px) {
+  .App {
+    text-align: right;
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-size: 12px
+  }
+
+  teamCard {
+    background: linear-gradient(red, blue)
+    
+  }
+
+  option {
+    font-weight:bold;
+    font-size: 1.1rem;
+    margin-left: 5%;
+  }
+  select#select-multiple-native {
+    height: 110px;
+  }
+  
+  select#Race {
+    height: 110px;
+  }
+}
+@media (min-width: 1280px) {
+  .App {
+    text-align: right;
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-size: 12px
+  }
+
+  option {
+    font-weight:bold;
+    font-size: 1.1rem;
+    margin-left: 5%;
+  }
+  select#select-multiple-native {
+    height: 130px;
+  }
+  
+  select#Race {
+    height: 130px;
   }
 }
