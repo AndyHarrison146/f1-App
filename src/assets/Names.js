@@ -150,7 +150,6 @@ export const names = [
   'beverly',
   'bezaleel',
   'biddie',
-  'bill',
   'billy',
   'blanche',
   'bob',

@@ -151,7 +151,6 @@ export const shortNames = [
   'zeely',
   'biddy',
   'william',
-  'william',
   'bea',
   'rob',
   'rob',

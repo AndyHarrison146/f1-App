@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { CircularProgress, Grid, Typography } from '@material-ui/core';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -10,35 +10,12 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Selector from './Selector';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    marginTop: theme.spacing(2),
-    width: "80%",
-    overflowX: "auto",
-    marginBottom: theme.spacing(2),
-    margin: "auto",
-    background: '#ffffff'
-  },
-  table: {
-    minWidth: "auto",
-    maxWidth: "auto",
-  },
-  circle: {
-    marginTop: '5%'
-  }
-}));
+import {useStyles} from '../styles';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.primary.main,  
-  },
-  body: {
-    fontSize: 14,
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.grey.main,
   },
 }))(TableCell);
 
@@ -50,15 +27,12 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-
 const Race = () => {
   const classes = useStyles();
   const [round, setRound] = useState();
   const [season, setSeason] = useState();
   const [raceData, setRaceData] = useState();
   const [races, setRaces] = useState();
-
-
 
   const getRounds = () => {
     season && axios.get(`http://ergast.com/api/f1/${season}.json?limit=1000`).then(res => {
@@ -67,7 +41,6 @@ const Race = () => {
       console.log(rounds)
     })
   }
-
 
   const getRoundData = () => {
     season && round && axios.get(`http://ergast.com/api/f1/${season}/${round}/results.json?limit=1000`).then(res => {
@@ -86,48 +59,55 @@ const Race = () => {
   }, [round])
 
   return (
-    <div className={classes.root}>
-      <Selector season={season} changeSeason={setSeason} races={races} changeRound={setRound} changeRaceData={setRaceData}/>
-      {(raceData ? 
-      <div className={classes.root} >
-        <TableContainer className={classes.paper} component={Paper} >
-        <Typography component={'span'} style={{ fontWeight: 600 }} >{`${season} ${raceData.raceName} Results`}</Typography>
-        <Table className={classes.table} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>Pos</StyledTableCell>
-              <StyledTableCell>Grid Pos</StyledTableCell>
-              <StyledTableCell>Driver</StyledTableCell>
-              <StyledTableCell align="right">Driver No.</StyledTableCell>
-              <StyledTableCell align="right">Team</StyledTableCell>
-              <StyledTableCell align="right">Time</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-          {raceData && raceData.Results.map((driver) => {
-              const {positionText, Time, Constructor, number, Driver, grid, status} = driver;
-              return (
-              <StyledTableRow key={Driver.familyName}>
-                <StyledTableCell component="th" scope="row">
-              {positionText}
-            </StyledTableCell>
-                <StyledTableCell component="th" scope="row">
-              {grid}
-            </StyledTableCell>
-            <StyledTableCell>{Driver.givenName} {Driver.familyName}</StyledTableCell>
-            <StyledTableCell align="right">{number}</StyledTableCell>
-            <StyledTableCell align="right">{Constructor.name}</StyledTableCell>
-            <StyledTableCell align="right">{Time ? Time.time : status}</StyledTableCell>
-          </StyledTableRow>
-
-              ) 
-            })}
-        </TableBody>
-      </Table>
-      </TableContainer>
-      </div>
+    <Grid container
+    spacing={0}
+    direction='row'
+    align="center"
+    style={{ minHeight: '100vh', minWidth: '100vw' }}>
+      <Grid item xs={12} sm={12} md={12} lg={12} >
+        <Selector season={season} changeSeason={setSeason} races={races} changeRound={setRound} changeRaceData={setRaceData}/>
+        {(raceData ? 
+        <div className={classes.root} >
+          <TableContainer className={classes.paper} component={Paper} >
+            <Typography component={'span'} variant='h4'>{`${season} ${raceData.raceName} Results`}</Typography>
+            <Table className={classes.table} aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell>Pos</StyledTableCell>
+                  <StyledTableCell>Grid Pos</StyledTableCell>
+                  <StyledTableCell>Driver</StyledTableCell>
+                  <StyledTableCell align="right">Driver No.</ StyledTableCell>
+                  <StyledTableCell align="right">Team</   StyledTableCell>
+                  <StyledTableCell align="right">Time</   StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+              {raceData && raceData.Results.map((driver) => {
+                const {positionText, Time, Constructor, number, Driver, grid, status} = driver;
+                return (
+                  <StyledTableRow key={Driver.familyName}>
+                  <StyledTableCell component="th" scope="row">
+                  {positionText}
+                  </StyledTableCell>
+                  <StyledTableCell component="th" scope="row">
+                  {grid}
+                  </StyledTableCell>
+                  <StyledTableCell>{Driver.givenName} {Driver.familyName}</StyledTableCell>
+                  <StyledTableCell align="right">{number}</StyledTableCell>
+                  <StyledTableCell align="right">{Constructor.name}</StyledTableCell>
+                  <StyledTableCell align="right">{Time ? Time.time : status}</StyledTableCell>
+                  </StyledTableRow>
+                )})}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
         : <CircularProgress className={classes.circle} />)}
-    </div>
+      </Grid>
+      <Grid item xs={12} sm={12} md={12} lg={12} >
+        <Typography variant='h6' align='center'>All info is sourced from https://ergast.com/mrd/.</Typography>
+      </Grid>
+    </Grid>
   )
 }
 
