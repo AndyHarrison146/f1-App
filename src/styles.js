@@ -143,14 +143,16 @@ export const useStyles = makeStyles(() => ({
     display: 'flex',
   },
   paper: {
-    position: 'relative',
+    [theme.breakpoints.up('sm')]: {
+      position: 'relative',
       width: "65%",
       overflowX: "auto",
       margin: theme.spacing(5),
       background: '#ffffff',
-      [theme.breakpoints.down('xs')]: {
-        width: '80%',
-      },
+    },
+    [theme.breakpoints.down('xs')]: {
+      width: '80%',
+    },
   },
   card: {
     [theme.breakpoints.up('lg')]: {
