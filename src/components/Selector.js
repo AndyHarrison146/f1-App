@@ -55,6 +55,7 @@ const Selector = ({changeYear, driverArr, changeDriverId, teamArr, changeTeam, s
           type="select-multiple"
           multiple
           native
+          value={'test'}
           onChange={handleChange}
           style={{}}
           inputProps={{

@@ -30,7 +30,7 @@ const theme = createMuiTheme({
     },
     MuiTableContainer: {
       root: {
-        width: '65%'
+        width: '80%'
       }
     }
   },
