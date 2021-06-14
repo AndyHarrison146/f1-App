@@ -44,7 +44,6 @@ const Selector = ({changeYear, driverArr, changeDriverId, teamArr, changeTeam, s
     if (window.location.pathname === '/Race' && season) {
       changeRound(value)
     }
-
   }
 
   return (
@@ -56,7 +55,6 @@ const Selector = ({changeYear, driverArr, changeDriverId, teamArr, changeTeam, s
           type="select-multiple"
           multiple
           native
-          value={[]}
           onChange={handleChange}
           style={{}}
           inputProps={{
