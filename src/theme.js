@@ -27,6 +27,11 @@ const theme = createMuiTheme({
       rounded: {
         borderRadius: '20px',
       }
+    },
+    MuiTableContainer: {
+      root: {
+        width: '65%'
+      }
     }
   },
   typography: {
