@@ -35,16 +35,16 @@ export const useStyles = makeStyles(() => ({
     color: '#212121',
     padding: theme.spacing(1),
     [theme.breakpoints.up('lg')]: {
-      fontSize: '1em'
+      fontSize: '1.1em'
     },
     [theme.breakpoints.down('md')]: {
-      fontSize: '0.9em'
+      fontSize: '1.1em'
     },
     [theme.breakpoints.down('sm')]: {
-      fontSize: '0.8em'
+      fontSize: '1em'
     },
     [theme.breakpoints.down('xs')]: {
-      fontSize: '0.7em',
+      fontSize: '0.9em',
       padding: theme.spacing(1),
     }
   },
@@ -52,22 +52,22 @@ export const useStyles = makeStyles(() => ({
     marginTop: '5%'
   },
   formControl: {
-    margin: '2%',
+    marginTop: theme.spacing(3),
     [theme.breakpoints.up('lg')]: {
       width: '210px',
-      height: '145px',
+      height: '40px',
     },
     [theme.breakpoints.down('md')]: {
       width: '190px',
-      height: '130px',
+      height: '40px',
     },
     [theme.breakpoints.down('sm')]: {
       width: '170px',
-      height: '110px',
+      height: '40px',
     },
     [theme.breakpoints.down('xs')]: {
       width: '150px',
-      height: '100px',
+      height: '40px',
     },
   },
   formControlRace: {
@@ -92,7 +92,6 @@ export const useStyles = makeStyles(() => ({
     },
   },
   paperSelect: {
-  marginTop: '8%',
   marginBottom: '1%',
   background: '#ffffff',
   borderRadius: '4px',
@@ -106,19 +105,19 @@ export const useStyles = makeStyles(() => ({
   select: {
     [theme.breakpoints.up('lg')]: {
       width: '210px',
-      height: '145px',
+      height: '40px',
     },
     [theme.breakpoints.down('md')]: {
       width: '190px',
-      height: '130px',
+      height: '40px',
     },
     [theme.breakpoints.down('sm')]: {
       width: '170px',
-      height: '110px',
+      height: '40px',
     },
     [theme.breakpoints.down('xs')]: {
       width: '150px',
-      height: '100px',
+      height: '40px',
     },
   },
   selectRace: {
@@ -145,34 +144,34 @@ export const useStyles = makeStyles(() => ({
   paper: {
     [theme.breakpoints.up('sm')]: {
       position: 'relative',
-      width: "65%",
+      width: "85%",
       overflowX: "auto",
       margin: theme.spacing(5),
       background: '#ffffff',
     },
     [theme.breakpoints.down('xs')]: {
-      width: '80%',
+      width: '90%',
     },
   },
   card: {
     [theme.breakpoints.up('lg')]: {
       marginTop: theme.spacing(2),
-      maxWidth: '35vw',
+      maxWidth: '60vw',
       maxHeight: '80vh',
     },
     [theme.breakpoints.down('md')]: {
       marginTop: theme.spacing(2),
-      maxWidth: '40vw',
+      maxWidth: '70vw',
       maxHeight: '80vh',
     },
     [theme.breakpoints.down('sm')]: {
       marginTop: theme.spacing(2),
-      maxWidth: '50vw',
+      maxWidth: '80vw',
       maxHeight: '70vh',
     },
     [theme.breakpoints.down('xs')]: {
       marginTop: theme.spacing(2),
-      maxWidth: '80vw',
+      maxWidth: '90vw',
       maxHeight: '60vh',
     }
   },
@@ -181,16 +180,16 @@ export const useStyles = makeStyles(() => ({
     padding: '3%',
     marginRight: theme.spacing(1),
     [theme.breakpoints.up('lg')]: {
-      height: 330,
+      height: 340,
     },
     [theme.breakpoints.down('md')]: {
-      height: 300,
+      height: 310,
     },
     [theme.breakpoints.down('sm')]: {
-      height: 250,
+      height: 280,
     },
     [theme.breakpoints.down('xs')]: {
-      height: 180,
+      height: 200,
     }
   },
   teamCard: {

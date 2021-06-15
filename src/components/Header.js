@@ -85,7 +85,7 @@ const Header = () => {
               </Grid>
               <Grid item xs={4} sm={4} md={4} lg={4} align="center">
                 {/* <img src={logo} alt="" align='center' className={classes.logo}/> */}
-                <Typography variant="h4">F1 Grid Check</Typography>
+                <Typography variant="h3">F1 Grid Check</Typography>
               </Grid>
               <Grid item xs={6} sm={4} md={4} lg={4} align="right">
                 {(nextRound ? 

@@ -5,14 +5,14 @@ const theme = createMuiTheme({
   overrides: {
     MuiTableCell: {
       root: {
-        fontSize: 10,
+        fontSize: 12,
         padding: '6px',
         '@media(min-width:600px)' : {
-          fontSize: 12,
+          fontSize: 14,
           padding: '12px',
         },
         '@media(min-width:960px)' : {
-          fontSize: 15,
+          fontSize: 16,
         }
       }
     },
@@ -30,9 +30,9 @@ const theme = createMuiTheme({
     },
     MuiTableContainer: {
       root: {
-        width: '80%'
-      }
-    }
+        width: '90%',
+      },
+    },
   },
   typography: {
     fontWeightRegular: 'bold', 
