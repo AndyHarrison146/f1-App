@@ -52,7 +52,7 @@ export const useStyles = makeStyles(() => ({
     marginTop: '5%'
   },
   formControl: {
-    marginTop: theme.spacing(3),
+    margin: theme.spacing(3),
     [theme.breakpoints.up('lg')]: {
       width: '210px',
       height: '40px',
@@ -150,7 +150,11 @@ export const useStyles = makeStyles(() => ({
       background: '#ffffff',
     },
     [theme.breakpoints.down('xs')]: {
-      width: '90%',
+      width: '97%',
+      overflowX: "auto",
+      marginTop: theme.spacing(2),
+      background: '#ffffff',
+      position: 'relative',
     },
   },
   card: {
@@ -334,11 +338,11 @@ export const useStyles = makeStyles(() => ({
     marginTop: theme.spacing(1),
   },
   about: {
-    margin: theme.spacing(3)
+    marginTop: theme.spacing(3)
   },
   aboutText: {
     width: '70%',
-    margin: theme.spacing(2)
-  
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(3),
   }
 }))

@@ -103,7 +103,10 @@ const Header = () => {
               <List>
               {navList.map((route) => {
                 return (
-                  <ListItem divider={true} button key={`${route}`} onClick={() => history.push(`/${route}`)} styles={{ fontSize: 10}}>
+                  <ListItem divider={true} button key={`${route}`} onClick={() => {
+                    setNavState(false)
+                    history.push(`/${route}`)
+                  }} styles={{ fontSize: 10}}>
                     <ListItemText classes={{primary: classes.listItemText}} primary={`${route}`} />
                   </ListItem>
                 )
