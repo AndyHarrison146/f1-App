@@ -104,7 +104,7 @@ const Driver = () => {
         )}
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={12} >
-        <Typography variant='h7' align='center'>All info is sourced from https://ergast.com/mrd/. All Images are sourced from Wikipedia and are used under CC(CreativeCommons) License or to thier respective brands, i do not claim to own the rights to any images used. </Typography>
+        <Typography variant='caption' align='center'>All info is sourced from https://ergast.com/mrd/. All Images are sourced from Wikipedia and are used under CC(CreativeCommons) License. All rights to team logos displayed belong to thier respective brands, i do not claim to own the rights to any images used. </Typography>
       </Grid>
     </Grid>
   )

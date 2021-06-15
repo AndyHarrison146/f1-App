@@ -5,10 +5,10 @@ const theme = createMuiTheme({
   overrides: {
     MuiTableCell: {
       root: {
-        fontSize: 12,
+        fontSize: 11,
         padding: '6px',
         '@media(min-width:600px)' : {
-          fontSize: 14,
+          fontSize: 13,
           padding: '12px',
         },
         '@media(min-width:960px)' : {
@@ -84,6 +84,9 @@ const theme = createMuiTheme({
       '@media(min-width:1280px)' : {
         fontSize: 29,
       }
+    },
+    caption: {
+      fontSize: 8,
     }
   },
   palette: {

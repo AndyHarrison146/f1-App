@@ -71,7 +71,7 @@ export const useStyles = makeStyles(() => ({
     },
   },
   formControlRace: {
-    margin: '1.8%',
+    marginTop: theme.spacing(3),
     [theme.breakpoints.up('lg')]: {
       width: '230px',
       height: '145px',
@@ -92,6 +92,7 @@ export const useStyles = makeStyles(() => ({
     },
   },
   paperSelect: {
+  marginTop: '8%',
   marginBottom: '1%',
   background: '#ffffff',
   borderRadius: '4px',
