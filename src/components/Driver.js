@@ -9,8 +9,7 @@ import { CircularProgress } from '@material-ui/core';
 import Selector from './Selector';
 import ImgApi from './ImgApi';
 import noImage from '../img/No_Image_Available.jpg'
-import {useStyles} from '../styles';
-
+import { useStyles } from '../styles';
 
 const Driver = () => {
   const classes = useStyles();
@@ -33,20 +32,20 @@ const Driver = () => {
   const getDriverChampionships = () => {
     const championshipURL = `http://ergast.com/api/f1/drivers/${driverId}/driverStandings/1.json?limit=1000`;
     axios.get(championshipURL)
-    .then(res => {
-      const championshipRes = res.data.MRData.StandingsTable.StandingsLists;
-      setDriverChampionships(championshipRes);
-    })
+      .then(res => {
+        const championshipRes = res.data.MRData.StandingsTable.StandingsLists;
+        setDriverChampionships(championshipRes);
+      })
   }
 
   const getDriver = () => {
     setDriverData('')
     const driverURL = `http://ergast.com/api/f1/drivers/${driverId}.json?limit=1000`;
     axios.get(driverURL)
-    .then(res => {
-      const driverRes = res.data.MRData.DriverTable.Drivers[0];
-      setDriverData(driverRes);
-    })
+      .then(res => {
+        const driverRes = res.data.MRData.DriverTable.Drivers[0];
+        setDriverData(driverRes);
+      })
   }
 
   const getWins = () => {
@@ -59,8 +58,8 @@ const Driver = () => {
 
   useEffect(() => {
     getAllDrivers()
-  },[])
-  
+  }, [])
+
   useEffect(() => {
     getDriver()
     getDriverChampionships()
@@ -70,38 +69,38 @@ const Driver = () => {
 
   return (
     <Grid container
-    spacing={0}
-    direction='row'
-    align="center"
-    justify='space-around'
-    style={{ minHeight: '100vh', minWidth: '100vw' }}>
+      spacing={0}
+      direction='row'
+      align="center"
+      justify='space-around'
+      style={{ minHeight: '100vh', minWidth: '100vw' }}>
       <Grid item xs={12} sm={12} md={6} lg={6} >
         <Selector driverId={driverId} changeDriverId={setDriverId} driverArr={driverArr} />
         {(driverData ?
           <Card className={classes.card} >
             <CardActionArea>
-              <CardContent style={{justifyContent: "center", display: "flex" }}>
+              <CardContent style={{ justifyContent: "center", display: "flex" }}>
                 <ImgApi driverData={driverData} imgUrl={imgUrl} changeImgUrl={setImgUrl} driverId={driverId} />
-                <div style={{alignItems: 'center'}}>
+                <div style={{ alignItems: 'center' }}>
                   <Typography variant="h3" align='center'>{`${driverData.givenName} ${driverData.familyName}`}</Typography>
                   <Typography variant="h5" align='center'>{`Drivers Championships: ${driverChampionships.length}`}
                   </Typography>
-                  <Typography  variant="h5" align='center'>{`Wins: ${wins}`}</Typography>
+                  <Typography variant="h5" align='center'>{`Wins: ${wins}`}</Typography>
                   <img src={imgUrl || noImage} className={classes.driverImg} alt="" />
-                  <div style={{width: '90%', alignContent: 'center'}}>
+                  <div style={{ width: '90%', alignContent: 'center' }}>
                     <Typography variant="h6" >{`
-                    Name: ${driverData.givenName} ${driverData.familyName}`} <br/> {`Nationality: ${driverData.nationality}`} <br/> {`Date of birth: ${driverData.dateOfBirth}`} <br/> {`Driver I.D: ${driverData.driverId}`} <br/> {driverData.permanentNumber ? (`Driver Number: ${driverData.permanentNumber}`) : ('Driver Number: N/A')}  <br/>
-                    <a href={driverData.url}>Wikipedia Link</a>
+                    Name: ${driverData.givenName} ${driverData.familyName}`} <br /> {`Nationality: ${driverData.nationality}`} <br /> {`Date of birth: ${driverData.dateOfBirth}`} <br /> {`Driver I.D: ${driverData.driverId}`} <br /> {driverData.permanentNumber ? (`Driver Number: ${driverData.permanentNumber}`) : ('Driver Number: N/A')}  <br />
+                      <a href={driverData.url}>Wikipedia Link</a>
                     </Typography>
                     <h5>note** not all drivers have pictures. Please report if images are available on Wikipedia.</h5>
                     <href>contact us</href>
                   </div>
                 </div>
               </CardContent>
-            </CardActionArea>  
+            </CardActionArea>
           </Card>
-          : 
-          <CircularProgress className={classes.circle}/>
+          :
+          <CircularProgress className={classes.circle} />
         )}
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={12} >
