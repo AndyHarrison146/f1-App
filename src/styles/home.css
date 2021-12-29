@@ -1,0 +1,296 @@
+.title-card {
+  width: fit-content;
+  height: 40px;
+  margin-top: 5px;
+  padding-top: 20px;
+  padding-inline: 30px;
+}
+
+.position-card {
+  width: 600px;
+  height: 100px;
+}
+
+@media (max-width: 600px) {
+  .title-card {
+    padding-top: 10px;
+    height: 30px;
+  }
+
+  .position-card {
+    margin-top: 10px;
+    border-radius: 25px;
+    width: 370px;
+    height: 50px;
+  }
+
+  .position {
+    text-align: left;
+    float: left;
+    width: 300px;
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+
+  .driver {
+    float: left;
+    width: 180px;
+  }
+
+  .time-text {
+    float: right;
+    width: fit-content;
+  }
+
+  .points-text {
+    margin-left: 10px;
+    float: left;
+    width: 30px;
+  }
+
+  .position-bottom {
+    width: 300px;
+    float: Left;
+    margin-left: 10px;
+    text-align: left;
+  }
+
+  .team-img-ferrari {
+    width: 70px;
+    float: left;
+    margin-left: -27px;
+  }
+  .team-img-red_bull {
+    width: 70px;
+    float: left;
+  }
+  .team-img-mercedes {
+    width: 70px;
+    float: left;
+  }
+  .team-img-alphatauri {
+    width: 70px;
+    float: left;
+    margin-left: -20px;
+  }
+  .team-img-williams {
+    width: 70px;
+    float: left;
+  }
+  .team-img-haas {
+    width: 70px;
+    float: left;
+  }
+  .team-img-alfa {
+    width: 70px;
+    float: left;
+    margin-left: -10px;
+  }
+  .team-img-aston_martin {
+    width: 70px;
+    float: left;
+    margin-left: -20px;
+  }
+  .team-img-mclaren {
+    width: 70px;
+    float: left;
+  }
+  .team-img-alpine {
+    width: 70px;
+    float: left;
+    margin-left: -20px;
+  }
+
+  .team-img-constructor {
+    width: 200px;
+    float: left;
+  }
+
+  .team {
+    float: left;
+    width: 198px;
+  }
+
+  .points {
+    float: left;
+  }
+
+  .time {
+    float: right;
+  }
+
+  .wins-text {
+    margin-left: 15px;
+    float: left;
+    width: 70px;
+  }
+
+  .points-text-standings {
+    float: right;
+  }
+
+  .wins {
+    float: left;
+    margin-left: 2px;
+  }
+
+  .points-standings {
+    float: right;
+  }
+
+  .wins-constructor {
+    float: left;
+  }
+
+  .side-card-champion {
+    width: 150px;
+    height: 130px;
+    margin-left: 5px;
+  }
+}
+
+@media (min-width: 600px) {
+  .title-card {
+    padding-top: 10px;
+    height: 30px;
+  }
+
+  .position-card {
+    width: 460px;
+    height: 70px;
+  }
+
+  .position {
+    text-align: left;
+    float: left;
+    width: 370px;
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+
+  .driver {
+    float: left;
+    width: 220px;
+  }
+
+  .time-text {
+    float: right;
+    width: fit-content;
+  }
+
+  .points-text {
+    float: left;
+    width: 38px;
+  }
+
+  .position-bottom {
+    width: 375px;
+    float: Left;
+    margin-left: 10px;
+    text-align: left;
+  }
+
+  .team-img-ferrari {
+    width: 100px;
+    float: left;
+    margin-top: 5px;
+    margin-left: -35px;
+  }
+  .team-img-red_bull {
+    width: 100px;
+    float: left;
+    margin-top: 5px;
+  }
+  .team-img-mercedes {
+    width: 100px;
+    float: left;
+    margin-top: 5px;
+  }
+  .team-img-alphatauri {
+    width: 100px;
+    float: left;
+    margin-top: 5px;
+    margin-left: -30px;
+  }
+  .team-img-williams {
+    width: 100px;
+    float: left;
+    margin-top: 5px;
+  }
+  .team-img-haas {
+    width: 100px;
+    float: left;
+    margin-top: 5px;
+  }
+  .team-img-alfa {
+    width: 100px;
+    float: left;
+    margin-top: 5px;
+    margin-left: -10px;
+  }
+  .team-img-aston_martin {
+    width: 100px;
+    float: left;
+    margin-top: 5px;
+    margin-left: -30px;
+  }
+  .team-img-mclaren {
+    width: 100px;
+    float: left;
+    margin-top: 5px;
+  }
+  .team-img-alpine {
+    width: 100px;
+    float: left;
+    margin-top: 5px;
+    margin-left: -30px;
+  }
+
+  .team-img-constructor {
+    width: 200px;
+    float: left;
+  }
+
+  .team {
+    float: left;
+    width: 198px;
+  }
+
+  .points {
+    margin-left: 33px;
+    float: left;
+  }
+
+  .time {
+    float: right;
+  }
+
+  .wins-text {
+    margin-left: 15px;
+    float: left;
+    width: 70px;
+  }
+
+  .points-text-standings {
+    float: right;
+  }
+
+  .wins {
+    float: left;
+    margin-left: 2px;
+  }
+
+  .points-standings {
+    float: right;
+  }
+
+  .wins-constructor {
+    float: left;
+  }
+}
+
+@media (min-width: 960px) {
+}
+
+@media (min-width: 1280px) {
+}

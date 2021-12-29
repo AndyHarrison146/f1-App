@@ -1,0 +1,133 @@
+.color-red {
+  float: left;
+  border-right: solid 1px #8d99ae;
+  background-color: #dc0000;
+  width: 60px;
+  height: 80px;
+}
+.color-lightBlue {
+  float: left;
+  border-right: solid 1px #8d99ae;
+  background-color: #00d2be;
+  width: 60px;
+  height: 80px;
+}
+.color-purple {
+  float: left;
+  border-right: solid 1px #8d99ae;
+  background-color: #0600ef;
+  height: 80px;
+  width: 60px;
+}
+
+.color-orange {
+  float: left;
+  border-right: solid 1px #8d99ae;
+  background-color: #ff9800;
+  width: 60px;
+  height: 80px;
+}
+.color-darkerBlue {
+  float: left;
+  border-right: solid 1px #8d99ae;
+  background-color: #2b4562;
+  width: 60px;
+  height: 80px;
+}
+.color-blue {
+  float: left;
+  border-right: solid 1px #8d99ae;
+  background-color: #0090ff;
+  width: 60px;
+  height: 80px;
+}
+.color-green {
+  float: left;
+  border-right: solid 1px #8d99ae;
+  background-color: #006f62;
+  width: 60px;
+  height: 80px;
+}
+.color-darkRed {
+  float: left;
+  border-right: solid 1px #8d99ae;
+  background-color: #900000;
+  width: 60px;
+  height: 80px;
+}
+.color-darkBlue {
+  float: left;
+  border-right: solid 1px #8d99ae;
+  background-color: #005aff;
+  width: 60px;
+  height: 80px;
+}
+.color-white {
+  float: left;
+  border-right: solid 1px #8d99ae;
+  background-color: #ffffff;
+  width: 60px;
+  height: 80px;
+}
+
+.white-number {
+  margin-top: 30px;
+  color: #fafafa;
+}
+
+.black-number {
+  margin-top: 30px;
+  color: #000000;
+}
+
+@media (max-width: 600px) {
+  .color-red {
+    width: 40px;
+    padding-top: 10px;
+  }
+  .color-lightBlue {
+    width: 40px;
+    padding-top: 10px;
+  }
+  .color-purple {
+    width: 40px;
+    padding-top: 10px;
+  }
+
+  .color-orange {
+    width: 40px;
+    padding-top: 10px;
+  }
+  .color-darkerBlue {
+    width: 40px;
+    padding-top: 10px;
+  }
+  .color-blue {
+    width: 40px;
+    padding-top: 10px;
+  }
+  .color-green {
+    width: 40px;
+    padding-top: 10px;
+  }
+  .color-darkRed {
+    width: 40px;
+    padding-top: 10px;
+  }
+  .color-darkBlue {
+    width: 40px;
+    padding-top: 10px;
+  }
+  .color-white {
+    width: 40px;
+    padding-top: 10px;
+  }
+
+  .white-number {
+    color: #fafafa;
+  }
+
+  .black-number {
+    color: #000000;
+  }
+}

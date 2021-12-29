@@ -1,17 +1,35 @@
 .App {
   text-align: center;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  font-size: 20px
+  background-color: #edf2f4;
+  font-size: 20px;
+  font-family: Arial;
 }
 
 option {
-  font-weight:bold;
+  font-weight: bold;
   font-size: 1.3rem;
   margin-left: 10%;
 }
 
+.select#select-multiple-native {
+  height: 115px;
+}
+
+.h3-text {
+  margin: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.title-card-year {
+  width: fit-content;
+  height: 50px;
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-inline: 20px;
+}
 
 @media (max-width: 600px) {
   .text {
@@ -19,92 +37,179 @@ option {
   }
   .App {
     text-align: right;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    font-size: 12px
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
   option {
-    font-weight:bold;
-    font-size: 0.9rem;
-    margin-left: 5%;
-  }
-  select#select-multiple-native {
-    height: 80px;
-  }
-  select#Race {
-    height: 80px;
-  }
-}
-@media (min-width: 600px) {
-  .App {
-    text-align: right;
-    background-repeat:no-repeat;
-    background-size: cover;
-    background-position: center;
-    font-size: 12px
-  }
-
-  option {
-    font-weight:bold;
+    font-weight: bold;
     font-size: 1rem;
     margin-left: 5%;
   }
   select#select-multiple-native {
-    height: 90px;
+    height: 86px;
   }
-  
+  select#Race {
+    height: 80px;
+  }
+
+  .h3-text {
+    margin: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .title-card-year {
+    width: fit-content;
+    height: 45px;
+    padding-top: 5px;
+    padding-inline: 20px;
+  }
+}
+
+@media (min-width: 600px) {
+  .App {
+    text-align: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  option {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-left: 5%;
+  }
+  select#select-multiple-native {
+    height: 96px;
+  }
+
   select#Race {
     height: 90px;
   }
+
+  .h3-text {
+    margin: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .title-card-year {
+    width: fit-content;
+    height: 60px;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-inline: 30px;
+  }
 }
+
 @media (min-width: 960px) {
   .App {
     text-align: right;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    font-size: 12px
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
-  teamCard {
-    background: linear-gradient(red, blue)
-    
+  .teamCard {
+    background: linear-gradient(red, blue);
   }
 
-  option {
-    font-weight:bold;
-    font-size: 1.1rem;
+  .option {
+    font-weight: bold;
+    font-size: 1.2rem;
     margin-left: 5%;
   }
   select#select-multiple-native {
-    height: 110px;
+    height: 115px;
   }
-  
+
   select#Race {
     height: 110px;
   }
+
+  .position-card {
+    width: 600px;
+    height: 80px;
+  }
+
+  .title-card-year {
+    width: fit-content;
+    height: 60px;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-inline: 35px;
+  }
+
+  .h3-text {
+    margin: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .position-box {
+    float: left;
+    width: 20px;
+  }
+
+  .driver-number-red {
+    color: red;
+    outline-color: black;
+  }
 }
+
 @media (min-width: 1280px) {
   .App {
     text-align: right;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    font-size: 12px
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
   option {
-    font-weight:bold;
-    font-size: 1.1rem;
+    font-weight: bold;
+    font-size: 1.3rem;
     margin-left: 5%;
   }
   select#select-multiple-native {
-    height: 130px;
+    height: 134px;
   }
-  
+
   select#Race {
     height: 130px;
+  }
+
+  .h3-text {
+    margin: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .title-card-year {
+    width: fit-content;
+    height: 60px;
+    margin-top: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-inline: 30px;
+  }
+
+  .h3-text {
+    margin: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .position-box {
+    float: left;
+    width: 20px;
+  }
+
+  .driver-number-red {
+    color: red;
+    outline-color: black;
   }
 }
