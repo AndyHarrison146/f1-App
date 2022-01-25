@@ -1,25 +1,14 @@
 import axios from "axios";
 
-// class DataService {
-//   constructor() {}
-
-//   getLastRace() {
-//     const lastRaceURL = `http://ergast.com/api/f1/current/last/results.json?limit=1000`;
-//     return axios.get(lastRaceURL);
-//   }
-// }
-
-// export default DataService;
-
-export function getServiceLastRace() {
+export function getLastRace() {
   const lastRaceURL = `http://ergast.com/api/f1/current/last/results.json?limit=1000`;
   console.log("here service");
   return axios.get(lastRaceURL);
 }
 
 export function getChampion() {
-  const url = `http://ergast.com/api/f1/last/driverStandings.json?limit=1000`;
-  axios.get(url);
+  const url = `http://ergast.com/api/f1/2021/driverStandings.json?limit=1000`;
+  return axios.get(url);
 }
 
 export function getChampionship() {

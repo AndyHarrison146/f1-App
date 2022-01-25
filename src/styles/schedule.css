@@ -1,0 +1,193 @@
+.flag {
+  float: left;
+  margin-top: 20px;
+  margin-left: 15px;
+}
+
+.flag-img {
+  width: 60px;
+  height: 30px;
+}
+
+.position-race {
+  float: left;
+  text-align: left;
+  width: 500px;
+  height: 70px;
+}
+
+.raceName {
+  float: left;
+  width: 270px;
+  padding-top: 20px;
+  padding-left: 10px;
+}
+
+.race-card {
+  width: 600px;
+  height: 70px;
+}
+
+.raceDate {
+  float: right;
+  margin-top: 5px;
+}
+
+.race-bottom {
+  float: right;
+  margin-top: 10px;
+  margin-left: 60px;
+}
+
+@media (min-width: 600px) {
+  .flag {
+    float: left;
+    margin-top: 20px;
+    margin-left: 15px;
+  }
+
+  .flag-img {
+    width: 60px;
+    height: 30px;
+  }
+
+  .position-race {
+    float: left;
+    text-align: left;
+    width: 500px;
+    height: 70px;
+  }
+
+  .raceName {
+    float: left;
+    width: 270px;
+    padding-top: 20px;
+    padding-left: 10px;
+  }
+
+  .race-card {
+    width: 600px;
+    height: 70px;
+  }
+
+  .raceDate {
+    float: right;
+    margin-top: 5px;
+  }
+
+  .race-bottom {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .race-card {
+    width: 400px;
+    height: 50px;
+  }
+
+  .flag {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+
+  .flag-img {
+    width: 50px;
+    height: 25px;
+  }
+
+  .position-race {
+    width: 320px;
+    height: 50px;
+  }
+
+  .raceName {
+    width: 135px;
+    padding-top: 5px;
+    padding-left: 5px;
+  }
+
+  .raceDate {
+    margin-top: 5px;
+  }
+
+  .race-bottom {
+    margin-top: 5px;
+    margin-left: 10px;
+  }
+}
+
+@media (min-width: 960px) {
+  .race-card {
+    width: 700px;
+    height: 70px;
+  }
+
+  .flag {
+    margin-top: 15px;
+    margin-left: 20px;
+  }
+
+  .flag-img {
+    width: 80px;
+    height: 40px;
+  }
+
+  .position-race {
+    width: 580px;
+    height: 70px;
+  }
+
+  .raceName {
+    width: 300px;
+    padding-top: 10px;
+    padding-left: 10px;
+  }
+
+  .raceDate {
+    margin-top: 5px;
+  }
+
+  .race-bottom {
+    margin-top: 5px;
+    margin-left: 10px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .race-card {
+    width: 900px;
+    height: 80px;
+  }
+
+  .flag {
+    margin-top: 15px;
+    margin-left: 20px;
+  }
+
+  .flag-img {
+    width: 90px;
+    height: 45px;
+  }
+
+  .position-race {
+    width: 780px;
+    height: 70px;
+  }
+
+  .raceName {
+    width: 500px;
+    padding-top: 20px;
+  }
+
+  .raceDate {
+    margin-top: 5px;
+    margin-right: 5px;
+  }
+
+  .race-bottom {
+    margin-top: 5px;
+    margin-right: 5px;
+  }
+}

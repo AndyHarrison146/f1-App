@@ -1,50 +1,74 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
+import "../styles/schedule.css";
 import axios from "axios";
 import { CircularProgress, Grid, Typography, Card } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
 import { useStyles } from "../styles";
-
-const StyledTableCell = withStyles((theme) => ({
-  head: {
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.grey.main,
-  },
-  body: {
-    fontSize: 10,
-    "@media(min-width:600px)": {
-      fontSize: 15,
-    },
-    "@media(min-width:960px)": {
-      fontSize: 19,
-    },
-  },
-}))(TableCell);
-
-const StyledTableRow = withStyles((theme) => ({
-  root: {
-    "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
-}))(TableRow);
+import moment from "moment";
 
 const Schedule = () => {
   const classes = useStyles();
   const [scheduleData, setScheduleData] = useState();
 
   const getSchedule = () => {
-    axios.get(`http://ergast.com/api/f1/current.json`).then((res) => {
+    axios.get(`http://ergast.com/api/f1/2022.json`).then((res) => {
       const schedule = res.data.MRData.RaceTable.Races;
       setScheduleData(schedule);
+      console.log(schedule);
     });
+  };
+
+  const getRaceFlag = (country) => {
+    switch (country) {
+      case "bahrain":
+        return "https://flagcdn.com/w160/bh.png";
+      case "jeddah":
+        return "https://flagcdn.com/w160/sa.png";
+      case "albert_park":
+        return "https://flagcdn.com/w160/au.png";
+      case "imola":
+        return "https://flagcdn.com/w160/it.png";
+      case "miami":
+        return "https://flagcdn.com/w160/us.png";
+      case "catalunya":
+        return "https://flagcdn.com/w160/es.png";
+      case "monaco":
+        return "https://flagcdn.com/w160/mc.png";
+      case "BAK":
+        return "https://flagcdn.com/w160/az.png";
+      case "villeneuve":
+        return "https://flagcdn.com/w160/ca.png";
+      case "silverstone":
+        return "https://flagcdn.com/w160/gb.png";
+      case "red_bull_ring":
+        return "https://flagcdn.com/w160/at.png";
+      case "ricard":
+        return "https://flagcdn.com/w160/fr.png";
+      case "hungaroring":
+        return "https://flagcdn.com/w160/hu.png";
+      case "spa":
+        return "https://flagcdn.com/w160/be.png";
+      case "zandvoort":
+        return "https://flagcdn.com/w160/nl.png";
+      case "monza":
+        return "https://flagcdn.com/w160/it.png";
+      case "sochi":
+        return "https://flagcdn.com/w160/ru.png";
+      case "marina_bay":
+        return "https://flagcdn.com/w160/sg.png";
+      case "suzuka":
+        return "https://flagcdn.com/w160/jp.png";
+      case "americas":
+        return "https://flagcdn.com/w160/us.png";
+      case "rodriguez":
+        return "https://flagcdn.com/w160/mx.png";
+      case "interlagos":
+        return "https://flagcdn.com/w160/br.png";
+      case "yas_marina":
+        return "https://flagcdn.com/w160/ae.png";
+      default:
+        return "";
+    }
   };
 
   useEffect(() => {
@@ -55,60 +79,49 @@ const Schedule = () => {
     <Grid
       container
       spacing={0}
-      direction="row"
       align="center"
+      justifyContent="space-between"
+      alignContent="flex-start"
       style={{ minHeight: "100vh", minWidth: "100vw" }}>
-      {scheduleData ? (
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Card className="title-card">
-            <Typography
-              component={"span"}
-              variant="h4"
-              underLined
-              className="title-text">
-              2021 Calendar
-            </Typography>
-          </Card>
-          <TableContainer className={classes.paper} component={Paper}>
-            <Table className={classes.table} aria-label="customized table">
-              <TableHead>
-                <TableRow>
-                  <StyledTableCell>Round</StyledTableCell>
-                  <StyledTableCell>Race</StyledTableCell>
-                  <StyledTableCell align="right">Date</StyledTableCell>
-                  <StyledTableCell align="right">Time</StyledTableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {scheduleData &&
-                  scheduleData.map((race) => {
-                    const { raceName, round, date, time } = race;
-                    return (
-                      <StyledTableRow key={round}>
-                        <StyledTableCell component="th" scope="row">
-                          {round}
-                        </StyledTableCell>
-                        <StyledTableCell>{raceName}</StyledTableCell>
-                        <StyledTableCell align="right">{date}</StyledTableCell>
-                        <StyledTableCell align="right">
-                          {time.slice(0, 5)}
-                        </StyledTableCell>
-                      </StyledTableRow>
-                    );
-                  })}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <Typography variant="h6" align="center">
-            All info is sourced from https://ergast.com/mrd/.
+      <Grid item xs={12} sm={12} md={12} lg={12}>
+        <Card className="title-card">
+          <Typography component={"span"} variant="h4" className="title-text">
+            2022 Calendar
           </Typography>
-        </Grid>
-      ) : (
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <CircularProgress className={classes.circle} size="3.5rem" />
-          <h3>Loading...</h3>
-        </Grid>
-      )}
+        </Card>
+        {scheduleData &&
+          scheduleData.map((race) => {
+            const { raceName, round, date, time, Circuit } = race;
+            return (
+              <Card className="race-card">
+                <div className="flag">
+                  <img
+                    src={getRaceFlag(Circuit.circuitId)}
+                    alt="Bahrain"
+                    className="flag-img"
+                  />
+                </div>
+                <div key={raceName} className="position-race">
+                  <div className="raceName">
+                    <Typography component={"span"} variant="h3">
+                      {raceName}
+                    </Typography>
+                  </div>
+                  <div className="raceDate">
+                    <Typography component={"span"} variant="h3">
+                      {moment(date).format("MMM Do YYYY")}
+                    </Typography>
+                  </div>
+                  <div className="race-bottom">
+                    <Typography component={"span"} variant="h3">
+                      Time: {time}
+                    </Typography>
+                  </div>
+                </div>
+              </Card>
+            );
+          })}
+      </Grid>
     </Grid>
   );
 };

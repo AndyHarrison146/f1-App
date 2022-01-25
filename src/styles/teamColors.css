@@ -131,3 +131,55 @@
     color: #000000;
   }
 }
+
+@media (min-width: 600px) {
+  .color-red {
+    width: 55px;
+    padding-top: 15px;
+  }
+  .color-lightBlue {
+    width: 55px;
+    padding-top: 15px;
+  }
+  .color-purple {
+    width: 55px;
+    padding-top: 15px;
+  }
+
+  .color-orange {
+    width: 55px;
+    padding-top: 15px;
+  }
+  .color-darkerBlue {
+    width: 55px;
+    padding-top: 15px;
+  }
+  .color-blue {
+    width: 55px;
+    padding-top: 15px;
+  }
+  .color-green {
+    width: 55px;
+    padding-top: 15px;
+  }
+  .color-darkRed {
+    width: 55px;
+    padding-top: 15px;
+  }
+  .color-darkBlue {
+    width: 55px;
+    padding-top: 15px;
+  }
+  .color-white {
+    width: 55px;
+    padding-top: 15px;
+  }
+
+  .white-number {
+    color: #fafafa;
+  }
+
+  .black-number {
+    color: #000000;
+  }
+}

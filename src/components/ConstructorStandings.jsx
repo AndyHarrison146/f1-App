@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Card, Grid, Typography } from "@material-ui/core";
 import { driverTeamInfo, textColor } from "../utils/utils";
-import { getChampionship } from "../services/DataService";
+import { getContructors } from "../services/DataService";
 import SideBar from "./sideBar";
 import CurrentChampion from "./CurrentChampion";
 
-const DriverStandings = () => {
-  const [championshipData, setChampionshipData] = useState();
-  const shownComponent = "driver";
+const ConstructorStandins = () => {
+  const [constructorData, setConstructorData] = useState();
+  const shownComponent = "constructor";
 
   useEffect(() => {
-    getChampionshipData();
+    getConstructorTable();
   }, []);
 
-  const getChampionshipData = () => {
-    getChampionship().then((res) => {
-      setChampionshipData(
-        res.data.MRData.StandingsTable.StandingsLists[0].DriverStandings
+  const getConstructorTable = () => {
+    getContructors().then((res) => {
+      setConstructorData(
+        res.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings
       );
     });
   };
@@ -33,26 +33,24 @@ const DriverStandings = () => {
         <div style={{ marginTop: "30px" }}>
           <Card className="title-card">
             <Typography component={"span"} variant="h4" className="title-text">
-              Current Championship Standings
+              Current Constructor Standings
             </Typography>
           </Card>
         </div>
-        {championshipData &&
-          championshipData.map((driver) => {
-            const { positionText, points, wins, Constructors, Driver } = driver;
-            const teamColor = driverTeamInfo(
-              driver.Constructors[0].name
-            ).primary;
-            const teamImg = driverTeamInfo(driver.Constructors[0].name).url;
+        {constructorData &&
+          constructorData.map((team) => {
+            const { positionText, points, wins, Constructor } = team;
+            const teamColor = driverTeamInfo(Constructor.name).primary;
+            const teamImg = driverTeamInfo(Constructor.name).url;
             return (
               <div>
                 <Card className="position-card">
-                  <div key={Driver.familyName}>
+                  <div key={Constructor.name}>
                     <div className={`color-${teamColor}`}>
                       <Typography
                         component={"span"}
                         variant="h1"
-                        className={textColor(driver.Constructors[0].name)}>
+                        className={textColor(Constructor.name)}>
                         {positionText}
                       </Typography>
                     </div>
@@ -60,10 +58,9 @@ const DriverStandings = () => {
                       <div className="driver">
                         <Typography
                           component={"span"}
-                          variant="h4"
-                          className="driver-number">
-                          #{Driver.permanentNumber}. {Driver.givenName}{" "}
-                          {Driver.familyName}
+                          variant="h5"
+                          className="team-name">
+                          {Constructor.name}
                         </Typography>
                       </div>
                       <div className="wins-text">
@@ -78,23 +75,14 @@ const DriverStandings = () => {
                       </div>
                     </div>
                     <div className="position-bottom">
-                      <div className="team">
-                        {window.innerWidth < 600 ? (
-                          <Typography
-                            component={"span"}
-                            variant="h5"
-                            className="team-name">
-                            {Constructors[0].name}
-                          </Typography>
-                        ) : (
-                          <img
-                            src={teamImg}
-                            alt={Constructors[0].name}
-                            className={`team-img-${Constructors[0].constructorId}`}
-                          />
-                        )}
+                      <div className="team-img-constructor">
+                        <img
+                          src={teamImg}
+                          alt={Constructor.name}
+                          className={`team-img-${Constructor.constructorId}`}
+                        />
                       </div>
-                      <div className="wins">
+                      <div className="wins-constructor">
                         <Typography component={"span"} variant="h5">
                           {wins}
                         </Typography>
@@ -119,4 +107,4 @@ const DriverStandings = () => {
   );
 };
 
-export default DriverStandings;
+export default ConstructorStandins;

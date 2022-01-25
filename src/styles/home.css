@@ -17,6 +17,10 @@
     height: 30px;
   }
 
+  .champion-img {
+    width: 40px;
+  }
+
   .position-card {
     margin-top: 10px;
     border-radius: 25px;
@@ -156,21 +160,21 @@
   }
 
   .position-card {
-    width: 460px;
+    width: 520px;
     height: 70px;
   }
 
   .position {
     text-align: left;
     float: left;
-    width: 370px;
+    width: 420px;
     margin-left: 10px;
     margin-top: 5px;
   }
 
   .driver {
     float: left;
-    width: 220px;
+    width: 240px;
   }
 
   .time-text {
@@ -180,11 +184,11 @@
 
   .points-text {
     float: left;
-    width: 38px;
+    width: 45px;
   }
 
   .position-bottom {
-    width: 375px;
+    width: 420px;
     float: Left;
     margin-left: 10px;
     text-align: left;
@@ -257,7 +261,7 @@
   }
 
   .points {
-    margin-left: 33px;
+    margin-left: 55px;
     float: left;
   }
 
@@ -277,7 +281,7 @@
 
   .wins {
     float: left;
-    margin-left: 2px;
+    margin-left: 65px;
   }
 
   .points-standings {
@@ -286,6 +290,7 @@
 
   .wins-constructor {
     float: left;
+    margin-left: 65px;
   }
 }
 

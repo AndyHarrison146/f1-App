@@ -96,7 +96,7 @@ const theme = createMuiTheme({
       },
     },
     h3: {
-      fontSize: 18,
+      fontSize: 16,
       "@media(min-width:600px)": {
         fontSize: 21,
       },

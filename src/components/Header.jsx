@@ -25,6 +25,7 @@ import {
   faUsers,
   faQuestion,
 } from "@fortawesome/free-solid-svg-icons";
+import moment from "moment";
 
 const Header = () => {
   const classes = useStyles();
@@ -80,18 +81,20 @@ const Header = () => {
       });
   };
 
-  const getNextRound = () => {
-    axios.get("http://ergast.com/api/f1/current.json").then((res) => {
-      if (res.data.MRData.RaceTable.Races.length == lastRound) {
-        console.log("here");
-        getNextYearRound();
-      }
-      setNextRound(res.data.MRData.RaceTable.Races[lastRound]);
-    });
-  };
+  // const getNextRound = () => {
+  //   axios.get("http://ergast.com/api/f1/current.json").then((res) => {
+  //     if (res.data.MRData.RaceTable.Races.length == lastRound) {
+  //       console.log("here");
+  //       getNextYearRound();
+  //     }
+  //     setNextRound(res.data.MRData.RaceTable.Races[lastRound]);
+  //   });
+  // };
 
-  const getNextYearRound = () => {
-    axios.get("http://ergast.com/api/f1/2022.json").then((res) => {
+  const getNextRound = () => {
+    const currentYear = moment().format("YYYY");
+    console.log(currentYear);
+    axios.get(`https://ergast.com/api/f1/${currentYear}.json`).then((res) => {
       setNextRound(res.data.MRData.RaceTable.Races[0]);
     });
   };
@@ -100,9 +103,9 @@ const Header = () => {
   //   getLastRound();
   // }, []);
 
-  // useEffect(() => {
-  //   getNextRound();
-  // }, [lastRound]);
+  useEffect(() => {
+    getNextRound();
+  }, []);
 
   useEffect(() => {
     if (!nextRound) {
