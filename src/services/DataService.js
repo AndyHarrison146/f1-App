@@ -2,7 +2,6 @@ import axios from "axios";
 
 export function getLastRace() {
   const lastRaceURL = `http://ergast.com/api/f1/current/last/results.json?limit=1000`;
-  console.log("here service");
   return axios.get(lastRaceURL);
 }
 

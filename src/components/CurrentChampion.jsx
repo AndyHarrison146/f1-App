@@ -9,14 +9,11 @@ const CurrentChampion = () => {
   const [teamImg, setTeamImg] = useState();
 
   const getChampionData = useCallback(() => {
-    console.log("hi");
     getChampion().then((res) => {
       const leader =
         res.data.MRData.StandingsTable.StandingsLists[0].DriverStandings[0];
-      console.log(leader);
       setChampion(leader);
       setTeamImg(driverTeamInfo(leader.Constructors[0].name));
-      console.log(driverTeamInfo(leader.Constructors[0].name));
     });
   }, []);
 

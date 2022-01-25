@@ -65,7 +65,6 @@ const SideBar = ({ shownComponent }) => {
           )}
           {lastRaceData &&
             lastRaceData[lastRaceData.length - 1].Results.map((driver, idx) => {
-              console.log(driver);
               let top5 = false;
               if (idx < 5) {
                 top5 = true;
@@ -115,7 +114,6 @@ const SideBar = ({ shownComponent }) => {
               </div>
               {championshipData &&
                 championshipData.map((driver, idx) => {
-                  console.log(driver);
                   let top5 = false;
                   if (idx < 5) {
                     top5 = true;
@@ -174,7 +172,6 @@ const SideBar = ({ shownComponent }) => {
                   if (idx < 5) {
                     top5 = true;
                   }
-                  console.log(constructorData);
                   const { positionText, points, wins, Constructor } = team;
                   return (
                     <div>
