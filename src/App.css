@@ -133,11 +133,6 @@ option {
     height: 110px;
   }
 
-  .position-card {
-    width: 600px;
-    height: 80px;
-  }
-
   .title-card-year {
     width: fit-content;
     height: 60px;
@@ -154,11 +149,6 @@ option {
   .position-box {
     float: left;
     width: 20px;
-  }
-
-  .driver-number-red {
-    color: red;
-    outline-color: black;
   }
 }
 
@@ -206,10 +196,5 @@ option {
   .position-box {
     float: left;
     width: 20px;
-  }
-
-  .driver-number-red {
-    color: red;
-    outline-color: black;
   }
 }

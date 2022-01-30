@@ -6,12 +6,14 @@ import {
   getContructors,
   getLastRace,
 } from "../services/DataService";
-import { driverTeamInfo } from "../utils/utils";
+import { driverTeamInfo, useWindowSize } from "../utils/utils";
+import CurrentChampion from "./CurrentChampion";
 
 const SideBar = ({ shownComponent }) => {
   const [championshipData, setChampionshipData] = useState();
   const [lastRaceData, setLastRaceData] = useState();
   const [constructorData, setConstructorData] = useState();
+  const [screenSize, setScreenSize] = useWindowSize();
 
   const getConstructorTable = () => {
     getContructors().then((res) => {
@@ -49,81 +51,34 @@ const SideBar = ({ shownComponent }) => {
 
   return (
     <div>
-      <Grid
-        container
-        spacing={0}
-        align="center"
-        justifyContent="space-between"
-        alignContent="flex-start">
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          {lastRaceData && (
-            <div className="side-bar-text">
-              <Typography component="span" variant="h4">
-                Last Race Top 5
-              </Typography>
-            </div>
-          )}
-          {lastRaceData &&
-            lastRaceData[lastRaceData.length - 1].Results.map((driver, idx) => {
-              let top5 = false;
-              if (idx < 5) {
-                top5 = true;
-              }
-              const { positionText, Constructor, Driver, points } = driver;
-              return (
-                <div>
-                  {top5 && (
-                    <Card key={Driver.givenName} className="sidebar-card">
-                      <div className="side-bar-content">
-                        <div className="sidebar-position">
-                          <Typography
-                            component="span"
-                            variant="h5">{`${positionText}. `}</Typography>
-                        </div>
-                        <div className="sidebar-info">
-                          <div className="sidebar-info-top">
-                            <Typography
-                              component="span"
-                              style={{ float: "left" }}
-                              variant="h5">{`${Driver.givenName} ${Driver.familyName}`}</Typography>
-                          </div>
-                          <div className="sidebar-info-points">
-                            <Typography component="span" variant="h4">
-                              {points}
-                            </Typography>
-                          </div>
-                          <div className="sidebar-info-bottom">
-                            <Typography
-                              component="span"
-                              variant="h6"
-                              style={{ float: "left" }}>
-                              {Constructor.name}
-                            </Typography>
-                          </div>
-                        </div>
-                      </div>
-                    </Card>
-                  )}
-                </div>
-              );
-            })}
-          {championshipData && (
-            <div>
+      {screenSize > 768 && (
+        <Grid
+          container
+          spacing={0}
+          align="center"
+          justifyContent="space-between"
+          alignContent="flex-start">
+          <Grid item xs={12} sm={12} md={12} lg={12}>
+            <CurrentChampion />
+            {lastRaceData && (
               <div className="side-bar-text">
-                <Typography>Championship Standings Top 5</Typography>
+                <Typography component="span" variant="h4">
+                  Last Race Top 5
+                </Typography>
               </div>
-              {championshipData &&
-                championshipData.map((driver, idx) => {
+            )}
+            {lastRaceData &&
+              lastRaceData[lastRaceData.length - 1].Results.map(
+                (driver, idx) => {
                   let top5 = false;
                   if (idx < 5) {
                     top5 = true;
                   }
-                  const { positionText, points, wins, Constructors, Driver } =
-                    driver;
+                  const { positionText, Constructor, Driver, points } = driver;
                   return (
-                    <div>
+                    <div key={Driver.givenName}>
                       {top5 && (
-                        <Card key={Driver.givenName} className="sidebar-card">
+                        <Card className="sidebar-card">
                           <div className="side-bar-content">
                             <div className="sidebar-position">
                               <Typography
@@ -147,7 +102,7 @@ const SideBar = ({ shownComponent }) => {
                                   component="span"
                                   variant="h6"
                                   style={{ float: "left" }}>
-                                  {Constructors[0].name}
+                                  {Constructor.name}
                                 </Typography>
                               </div>
                             </div>
@@ -156,69 +111,121 @@ const SideBar = ({ shownComponent }) => {
                       )}
                     </div>
                   );
-                })}
-            </div>
-          )}
-          {constructorData && (
-            <div>
-              <div className="side-bar-text">
-                <Typography component="span" variant="h4">
-                  Constructor Standings Top 5
-                </Typography>
-              </div>
-              {constructorData &&
-                constructorData.map((team, idx) => {
-                  let top5 = false;
-                  if (idx < 5) {
-                    top5 = true;
-                  }
-                  const { positionText, points, wins, Constructor } = team;
-                  return (
-                    <div>
-                      {top5 && (
-                        <Card key={Constructor.name} className="sidebar-card">
-                          <div className="side-bar-content">
-                            <div style={{ float: "left", width: "100%" }}>
+                }
+              )}
+            {championshipData && (
+              <div>
+                <div className="side-bar-text">
+                  <Typography>Championship Standings Top 5</Typography>
+                </div>
+                {championshipData &&
+                  championshipData.map((driver, idx) => {
+                    let top5 = false;
+                    if (idx < 5) {
+                      top5 = true;
+                    }
+                    const { positionText, points, wins, Constructors, Driver } =
+                      driver;
+                    return (
+                      <div key={Driver.givenName}>
+                        {top5 && (
+                          <Card className="sidebar-card">
+                            <div className="side-bar-content">
                               <div className="sidebar-position">
-                                <Typography component="span" variant="h4">
-                                  {`${positionText}. `}
-                                </Typography>
+                                <Typography
+                                  component="span"
+                                  variant="h5">{`${positionText}. `}</Typography>
                               </div>
                               <div className="sidebar-info">
-                                <div className="sidebar-top">
+                                <div className="sidebar-info-top">
                                   <Typography
                                     component="span"
-                                    variant="h4"
-                                    style={{
-                                      float: "left",
-                                      marginTop: "12px",
-                                    }}>
-                                    {Constructor.name}
-                                  </Typography>
+                                    style={{ float: "left" }}
+                                    variant="h5">{`${Driver.givenName} ${Driver.familyName}`}</Typography>
                                 </div>
-                                <div className="sidebar-points">
-                                  <Typography
-                                    component="span"
-                                    variant="h5"
-                                    style={{
-                                      marginTop: "12px",
-                                      float: "right",
-                                    }}>
+                                <div className="sidebar-info-points">
+                                  <Typography component="span" variant="h5">
                                     {points}
                                   </Typography>
                                 </div>
+                                <div className="sidebar-info-bottom">
+                                  <Typography
+                                    component="span"
+                                    variant="h6"
+                                    style={{ float: "left" }}>
+                                    {Constructors[0].name}
+                                  </Typography>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </Card>
-                      )}
-                    </div>
-                  );
-                })}
-            </div>
-          )}
+                          </Card>
+                        )}
+                      </div>
+                    );
+                  })}
+              </div>
+            )}
+            {constructorData && (
+              <div>
+                <div className="side-bar-text">
+                  <Typography component="span" variant="h4">
+                    Constructor Standings Top 5
+                  </Typography>
+                </div>
+                {constructorData &&
+                  constructorData.map((team, idx) => {
+                    let top5 = false;
+                    if (idx < 5) {
+                      top5 = true;
+                    }
+                    const { positionText, points, wins, Constructor } = team;
+                    return (
+                      <div key={Constructor.name}>
+                        {top5 && (
+                          <Card className="sidebar-card">
+                            <div className="side-bar-content">
+                              <div style={{ float: "left", width: "100%" }}>
+                                <div className="sidebar-position">
+                                  <Typography component="span" variant="h4">
+                                    {`${positionText}. `}
+                                  </Typography>
+                                </div>
+                                <div className="sidebar-info">
+                                  <div className="sidebar-top">
+                                    <Typography
+                                      component="span"
+                                      variant="h4"
+                                      style={{
+                                        float: "left",
+                                        marginTop: "12px",
+                                      }}>
+                                      {Constructor.name}
+                                    </Typography>
+                                  </div>
+                                  <div className="sidebar-points">
+                                    <Typography
+                                      component="span"
+                                      variant="h5"
+                                      style={{
+                                        marginTop: "12px",
+                                        float: "right",
+                                      }}>
+                                      {points}
+                                    </Typography>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </Card>
+                        )}
+                      </div>
+                    );
+                  })}
+              </div>
+            )}
+          </Grid>
         </Grid>
-      </Grid>
+      )}
     </div>
   );
 };

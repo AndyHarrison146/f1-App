@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/home.css";
 import "../styles/teamColors.css";
+import "../styles/re-usedStyles.css";
 import { Grid, Typography } from "@material-ui/core";
 import { useStyles } from "../styles";
 import Button from "@material-ui/core/Button";

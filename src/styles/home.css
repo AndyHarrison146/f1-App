@@ -1,149 +1,62 @@
 .title-card {
   width: fit-content;
-  height: 40px;
   margin-top: 5px;
-  padding-top: 20px;
+  padding-top: 10px;
   padding-inline: 30px;
 }
 
-.position-card {
-  width: 600px;
-  height: 100px;
+.driver {
+  float: left;
+  width: 240px;
+}
+
+.time-text {
+  float: right;
+  width: fit-content;
+}
+
+.points-text {
+  float: left;
+  width: 45px;
+}
+
+.grid-text {
+  float: left;
+}
+
+.grid {
+  float: left;
+}
+
+.team {
+  float: left;
+  width: 198px;
+}
+
+.time {
+  float: right;
+}
+
+.points-text-standings {
+  float: right;
+}
+
+.points-standings {
+  float: right;
+}
+
+.wins-constructor {
+  float: left;
+  margin-left: 65px;
 }
 
 @media (max-width: 600px) {
-  .title-card {
-    padding-top: 10px;
-    height: 30px;
-  }
-
-  .champion-img {
-    width: 40px;
-  }
-
-  .position-card {
-    margin-top: 10px;
-    border-radius: 25px;
-    width: 370px;
-    height: 50px;
-  }
-
-  .position {
-    text-align: left;
-    float: left;
-    width: 300px;
-    margin-left: 10px;
-    margin-top: 5px;
-  }
-
   .driver {
-    float: left;
     width: 180px;
   }
 
-  .time-text {
-    float: right;
-    width: fit-content;
-  }
-
-  .points-text {
-    margin-left: 10px;
-    float: left;
-    width: 30px;
-  }
-
-  .position-bottom {
-    width: 300px;
-    float: Left;
-    margin-left: 10px;
-    text-align: left;
-  }
-
-  .team-img-ferrari {
-    width: 70px;
-    float: left;
-    margin-left: -27px;
-  }
-  .team-img-red_bull {
-    width: 70px;
-    float: left;
-  }
-  .team-img-mercedes {
-    width: 70px;
-    float: left;
-  }
-  .team-img-alphatauri {
-    width: 70px;
-    float: left;
-    margin-left: -20px;
-  }
-  .team-img-williams {
-    width: 70px;
-    float: left;
-  }
-  .team-img-haas {
-    width: 70px;
-    float: left;
-  }
-  .team-img-alfa {
-    width: 70px;
-    float: left;
-    margin-left: -10px;
-  }
-  .team-img-aston_martin {
-    width: 70px;
-    float: left;
-    margin-left: -20px;
-  }
-  .team-img-mclaren {
-    width: 70px;
-    float: left;
-  }
-  .team-img-alpine {
-    width: 70px;
-    float: left;
-    margin-left: -20px;
-  }
-
-  .team-img-constructor {
-    width: 200px;
-    float: left;
-  }
-
   .team {
-    float: left;
     width: 198px;
-  }
-
-  .points {
-    float: left;
-  }
-
-  .time {
-    float: right;
-  }
-
-  .wins-text {
-    margin-left: 15px;
-    float: left;
-    width: 70px;
-  }
-
-  .points-text-standings {
-    float: right;
-  }
-
-  .wins {
-    float: left;
-    margin-left: 2px;
-  }
-
-  .points-standings {
-    float: right;
-  }
-
-  .wins-constructor {
-    float: left;
   }
 
   .side-card-champion {
@@ -154,148 +67,129 @@
 }
 
 @media (min-width: 600px) {
-  .title-card {
-    padding-top: 10px;
-    height: 30px;
-  }
-
-  .position-card {
-    width: 520px;
-    height: 70px;
-  }
-
-  .position {
-    text-align: left;
-    float: left;
-    width: 420px;
-    margin-left: 10px;
-    margin-top: 5px;
-  }
-
   .driver {
-    float: left;
     width: 240px;
   }
 
-  .time-text {
-    float: right;
-    width: fit-content;
-  }
-
   .points-text {
-    float: left;
     width: 45px;
   }
 
-  .position-bottom {
-    width: 420px;
-    float: Left;
-    margin-left: 10px;
-    text-align: left;
-  }
-
   .team-img-ferrari {
-    width: 100px;
-    float: left;
-    margin-top: 5px;
-    margin-left: -35px;
-  }
-  .team-img-red_bull {
-    width: 100px;
-    float: left;
-    margin-top: 5px;
-  }
-  .team-img-mercedes {
-    width: 100px;
-    float: left;
-    margin-top: 5px;
-  }
-  .team-img-alphatauri {
-    width: 100px;
-    float: left;
-    margin-top: 5px;
+    width: 90px;
     margin-left: -30px;
   }
+  .team-img-red_bull {
+    width: 90px;
+  }
+  .team-img-mercedes {
+    width: 90px;
+  }
+  .team-img-alphatauri {
+    width: 90px;
+    margin-left: -25px;
+  }
   .team-img-williams {
-    width: 100px;
-    float: left;
-    margin-top: 5px;
+    width: 90px;
   }
   .team-img-haas {
-    width: 100px;
-    float: left;
-    margin-top: 5px;
+    width: 90px;
   }
   .team-img-alfa {
-    width: 100px;
-    float: left;
-    margin-top: 5px;
+    width: 90px;
     margin-left: -10px;
   }
   .team-img-aston_martin {
-    width: 100px;
-    float: left;
-    margin-top: 5px;
-    margin-left: -30px;
+    width: 90px;
+    margin-left: -20px;
   }
   .team-img-mclaren {
-    width: 100px;
-    float: left;
-    margin-top: 5px;
+    width: 90px;
   }
   .team-img-alpine {
-    width: 100px;
-    float: left;
-    margin-top: 5px;
-    margin-left: -30px;
+    width: 90px;
+    margin-left: -25px;
   }
 
   .team-img-constructor {
     width: 200px;
-    float: left;
   }
 
   .team {
-    float: left;
     width: 198px;
   }
 
-  .points {
-    margin-left: 55px;
-    float: left;
-  }
-
-  .time {
-    float: right;
-  }
-
-  .wins-text {
-    margin-left: 15px;
-    float: left;
-    width: 70px;
-  }
-
-  .points-text-standings {
-    float: right;
-  }
-
-  .wins {
-    float: left;
-    margin-left: 65px;
-  }
-
-  .points-standings {
-    float: right;
-  }
-
   .wins-constructor {
-    float: left;
     margin-left: 65px;
   }
 }
 
 @media (min-width: 960px) {
+  .team {
+    width: 250px;
+  }
+
+  .driver {
+    width: 290px;
+  }
+
+  .wins-constructor {
+    margin-left: 115px;
+  }
 }
 
 @media (min-width: 1280px) {
+  .team {
+    width: 455px;
+  }
+
+  .driver {
+    width: 445px;
+  }
+
+  .grid-text {
+    width: 120px;
+  }
+
+  .grid {
+    width: 70px;
+  }
+
+  .wins-constructor {
+    margin-left: 115px;
+  }
+}
+@media (min-width: 1680px) {
+  .team {
+    width: 713px;
+  }
+
+  .driver {
+    width: 700px;
+  }
+
+  .grid-text {
+    width: 120px;
+  }
+
+  .grid {
+    width: 100px;
+  }
+
+  .points-text {
+    margin-left: 15px;
+  }
+
+  .wins-text {
+    margin-left: 58px;
+    width: 70px;
+  }
+
+  .wins {
+    margin-left: 55px;
+  }
+
+  .wins-constructor {
+    margin-left: 80px;
+  }
 }

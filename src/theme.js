@@ -16,6 +16,9 @@ const theme = createMuiTheme({
         "@media(min-width:960px)": {
           marginTop: "15px",
         },
+        "@media(min-width:1280px)": {
+          borderRadius: "45px",
+        },
       },
     },
     MuiDrawer: {
@@ -84,7 +87,7 @@ const theme = createMuiTheme({
       },
     },
     h4: {
-      fontSize: 16,
+      fontSize: 15,
       "@media(min-width:600px)": {
         fontSize: 18,
       },

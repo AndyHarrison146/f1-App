@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Card, Grid, Typography } from "@material-ui/core";
-import CurrentChampion from "./CurrentChampion";
-import { driverTeamInfo, textColor } from "../utils/utils";
+import { driverTeamInfo, textColor, useWindowSize } from "../utils/utils";
 import { getLastRace } from "../services/DataService";
 import SideBar from "./sideBar";
+import "../styles/re-usedStyles.css";
 
 const LastRace = () => {
   const [lastRaceData, setLastRaceData] = useState();
+  const [screenSize, setScreenSize] = useWindowSize();
   const shownComponent = "lastRace";
 
   useEffect(() => {
@@ -41,12 +42,14 @@ const LastRace = () => {
         )}
         {lastRaceData &&
           lastRaceData[lastRaceData.length - 1].Results.map((driver) => {
-            const { positionText, Time, Constructor, Driver, status } = driver;
+            const { positionText, Time, Constructor, Driver, status, grid } =
+              driver;
+            console.log(driver);
             const teamColor = driverTeamInfo(driver.Constructor.name).primary;
             const teamImg = driverTeamInfo(driver.Constructor.name).url;
             return (
-              <div>
-                <Card className="position-card" key={Driver.familyName}>
+              <div key={Driver.familyName}>
+                <Card className="position-card">
                   <div key={Driver.familyName}>
                     <div className={`color-${teamColor}`}>
                       <Typography
@@ -58,14 +61,19 @@ const LastRace = () => {
                     </div>
                     <div className="position">
                       <div className="driver">
-                        <Typography
-                          component={"span"}
-                          variant="h4"
-                          className="driver-number">
-                          #{driver.number}. {Driver.givenName}{" "}
-                          {Driver.familyName}
+                        <Typography component={"span"} variant="h4">
+                          {`
+                          #${driver.number}. ${Driver.givenName} 
+                          ${Driver.familyName}`}
                         </Typography>
                       </div>
+                      {screenSize > 1280 && (
+                        <div className="grid-text">
+                          <Typography component={"span"} variant="h6">
+                            Grid
+                          </Typography>
+                        </div>
+                      )}
                       <div className="points-text">
                         <Typography component={"span"} variant="h6">
                           Points
@@ -79,11 +87,8 @@ const LastRace = () => {
                     </div>
                     <div className="position-bottom">
                       <div className="team">
-                        {window.innerWidth < 600 ? (
-                          <Typography
-                            component={"span"}
-                            variant="h5"
-                            className="team-name">
+                        {screenSize < 600 ? (
+                          <Typography component={"span"} variant="h5">
                             {Constructor.name}
                           </Typography>
                         ) : (
@@ -94,6 +99,13 @@ const LastRace = () => {
                           />
                         )}
                       </div>
+                      {screenSize > 1280 && (
+                        <div className="grid">
+                          <Typography component={"span"} variant="h5">
+                            {grid}
+                          </Typography>
+                        </div>
+                      )}
                       <div className="points">
                         <Typography component={"span"} variant="h5">
                           {driver.points}
@@ -111,12 +123,9 @@ const LastRace = () => {
             );
           })}
       </Grid>
-      {window.innerWidth < 800 ? null : (
-        <Grid item xs={false} sm={false} md={4} lg={4}>
-          <CurrentChampion />
-          <SideBar shownComponent={shownComponent} />
-        </Grid>
-      )}
+      <Grid item xs={false} sm={false} md={4} lg={4}>
+        <SideBar shownComponent={shownComponent} />
+      </Grid>
     </Grid>
   );
 };

@@ -4,6 +4,7 @@ import { driverTeamInfo, textColor } from "../utils/utils";
 import { getContructors } from "../services/DataService";
 import SideBar from "./sideBar";
 import CurrentChampion from "./CurrentChampion";
+import "../styles/re-usedStyles.css";
 
 const ConstructorStandins = () => {
   const [constructorData, setConstructorData] = useState();
@@ -32,7 +33,7 @@ const ConstructorStandins = () => {
       <Grid item xs={12} sm={8} md={8} lg={8}>
         <div style={{ marginTop: "30px" }}>
           <Card className="title-card">
-            <Typography component={"span"} variant="h4" className="title-text">
+            <Typography component={"span"} variant="h4">
               Current Constructor Standings
             </Typography>
           </Card>
@@ -42,6 +43,7 @@ const ConstructorStandins = () => {
             const { positionText, points, wins, Constructor } = team;
             const teamColor = driverTeamInfo(Constructor.name).primary;
             const teamImg = driverTeamInfo(Constructor.name).url;
+            console.log(team);
             return (
               <div>
                 <Card className="position-card">
@@ -56,10 +58,7 @@ const ConstructorStandins = () => {
                     </div>
                     <div className="position">
                       <div className="driver">
-                        <Typography
-                          component={"span"}
-                          variant="h5"
-                          className="team-name">
+                        <Typography component={"span"} variant="h5">
                           {Constructor.name}
                         </Typography>
                       </div>
@@ -75,14 +74,14 @@ const ConstructorStandins = () => {
                       </div>
                     </div>
                     <div className="position-bottom">
-                      <div className="team-img-constructor">
+                      <div className="team">
                         <img
                           src={teamImg}
                           alt={Constructor.name}
                           className={`team-img-${Constructor.constructorId}`}
                         />
                       </div>
-                      <div className="wins-constructor">
+                      <div className="wins">
                         <Typography component={"span"} variant="h5">
                           {wins}
                         </Typography>
@@ -100,7 +99,6 @@ const ConstructorStandins = () => {
           })}
       </Grid>
       <Grid item xs={false} sm={4} md={4} lg={4}>
-        <CurrentChampion />
         <SideBar shownComponent={shownComponent} />
       </Grid>
     </Grid>

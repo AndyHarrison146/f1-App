@@ -1,57 +1,29 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
-import axios from "axios";
-import { CircularProgress, Grid, Typography, Card } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
+import "../styles/year.css";
+import "../styles/re-usedStyles.css";
+import { Card, Grid, Typography } from "@material-ui/core";
+import { driverTeamInfo, textColor, useWindowSize } from "../utils/utils";
+import { GetYearChampion, getYearData } from "../services/DataService";
 import Selector from "./Selector";
-import { useStyles } from "../styles";
-
-const StyledTableCell = withStyles((theme) => ({
-  head: {
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.grey.main,
-  },
-  body: {
-    fontSize: 10,
-    "@media(min-width:600px)": {
-      fontSize: 15,
-    },
-    "@media(min-width:960px)": {
-      fontSize: 19,
-    },
-  },
-}))(TableCell);
-
-const StyledTableRow = withStyles((theme) => ({
-  root: {
-    "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
-}))(TableRow);
+import { getRaceFlag } from "../utils/utils";
 
 function Year() {
-  const classes = useStyles();
   const [yearData, setYearData] = useState();
   const [year, setYear] = useState(2020);
   const [championshipWinner, setChampionshipWinner] = useState();
+  const [screenSize, setScreenSize] = useWindowSize();
 
-  const getYearData = () => {
+  const getYearSelectorData = () => {
     setYearData("");
-    const f1Url = `http://ergast.com/api/f1/${year}/results.json?limit=1000`;
-    axios.get(f1Url).then((res) => {
+    getYearData(year).then((res) => {
       const races = res.data.MRData.RaceTable;
       setYearData(races);
     });
-    const championshipURL = `http://ergast.com/api/f1/${year}/driverStandings.json?limit=1000`;
-    axios.get(championshipURL).then((res) => {
+  };
+
+  const GetYearChampionData = () => {
+    GetYearChampion(year).then((res) => {
       const winner =
         res.data.MRData.StandingsTable.StandingsLists[0].DriverStandings[0];
       setChampionshipWinner(winner);
@@ -59,78 +31,120 @@ function Year() {
   };
 
   useEffect(() => {
-    getYearData();
+    getYearSelectorData(year);
+    GetYearChampionData(year);
   }, [year]);
 
   return (
     <Grid
       container
       spacing={0}
-      direction="row"
       align="center"
+      justifyContent="space-between"
+      alignContent="flex-start"
       style={{ minHeight: "100vh", minWidth: "100vw" }}>
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <Selector year={year} changeYear={setYear} />
-        {yearData ? (
-          <div>
+        {yearData && championshipWinner && (
+          <div style={{ marginTop: "30px" }}>
             <Card className="title-card-year">
               <Typography component={"span"} variant="h4">
                 {`${year} Season Results`}
               </Typography>
-              {championshipWinner && (
-                <Typography variant="h4">{`Championship Winner: ${championshipWinner.Driver.givenName} ${championshipWinner.Driver.familyName}`}</Typography>
-              )}
+              <Typography variant="h4">{`Championship Winner: ${championshipWinner.Driver.givenName} ${championshipWinner.Driver.familyName}`}</Typography>
             </Card>
-            <TableContainer className={classes.paper} component={Paper}>
-              <Typography component={"span"} variant="h4"></Typography>
-              <Table className={classes.table} aria-label="customized table">
-                <TableHead>
-                  <TableRow>
-                    <StyledTableCell>Round</StyledTableCell>
-                    <StyledTableCell>Race</StyledTableCell>
-                    <StyledTableCell align="right">Winner</StyledTableCell>
-                    <StyledTableCell align="right">Team</StyledTableCell>
-                    <StyledTableCell align="right">Time</StyledTableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {yearData &&
-                    yearData.Races.map((race) => {
-                      const { raceName, round, Results } = race;
-                      return (
-                        <StyledTableRow key={round}>
-                          <StyledTableCell component="th" scope="row">
+            {yearData &&
+              yearData.Races.map((race) => {
+                console.log(race);
+                const { raceName, round, Results, Circuit } = race;
+                return (
+                  <Card key={round} className="race-card">
+                    <Grid
+                      container
+                      align="left"
+                      style={{ minHeight: "100%", minWidth: "100%" }}>
+                      <Grid item xs={1} sm={1} md={2} lg={1}>
+                        <div className="race-round">
+                          <Typography component={"span"} variant="h2">
                             {round}
-                          </StyledTableCell>
-                          <StyledTableCell>{raceName}</StyledTableCell>
-                          <StyledTableCell align="right">
-                            {Results[0].Driver.givenName}{" "}
-                            {Results[0].Driver.familyName}
-                          </StyledTableCell>
-                          <StyledTableCell align="right">
-                            {Results[0].Constructor.name}
-                          </StyledTableCell>
-                          <StyledTableCell align="right">
-                            {Results[0].Time.time}
-                          </StyledTableCell>
-                        </StyledTableRow>
-                      );
-                    })}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </div>
-        ) : (
-          <div>
-            <CircularProgress className={classes.circle} size="3.5rem" />
-            <h3>Loading...</h3>
+                          </Typography>
+                        </div>
+                        {screenSize > 960 ? (
+                          <div className="flag-round">
+                            <img
+                              src={getRaceFlag(Circuit.Location.country)}
+                              alt="Bahrain"
+                              className="flag-img-year"
+                            />
+                          </div>
+                        ) : null}
+                        {screenSize > 960 ? (
+                          <div className="flag-round">
+                            <img
+                              src={getRaceFlag(Results[0].Driver.nationality)}
+                              alt="Bahrain"
+                              className="flag-img-year"
+                            />
+                          </div>
+                        ) : null}
+                      </Grid>
+                      <Grid item xs={6} sm={6} md={6} lg={6}>
+                        <div className="year-race-name">
+                          <Typography component={"span"} variant="h5">
+                            {raceName}
+                          </Typography>
+                        </div>
+                        <div className="winner-year">
+                          <Typography component={"span"} variant="h5">
+                            {`Winner: ${Results[0].Driver.givenName} ${Results[0].Driver.familyName}`}
+                          </Typography>
+                        </div>
+                      </Grid>
+                      <Grid item xs={3} sm={3} md={2} lg={2}>
+                        <div className="team-year">
+                          <Typography component={"span"} variant="h5">
+                            Team:
+                          </Typography>
+                        </div>
+                        <div className="winner-team-year">
+                          <Typography component={"span"} variant="h5">
+                            {`${Results[0].Constructor.name}`}
+                          </Typography>
+                        </div>
+                      </Grid>
+                      <Grid item xs={2} sm={2} md={2} lg={3}>
+                        <div className="grid-year">
+                          <Typography component={"span"} variant="h6">
+                            Grid:
+                          </Typography>
+                          <Typography component={"span"} variant="h5">
+                            {` ${Results[0].grid} `}
+                          </Typography>
+                          {screenSize > 1280 && (
+                            <div>
+                              <Typography component={"span"} variant="h6">
+                                Time:
+                              </Typography>
+                              <Typography component={"span"} variant="h5">
+                                {` ${Results[0].Time.time} `}
+                              </Typography>
+                            </div>
+                          )}
+                        </div>
+                      </Grid>
+                    </Grid>
+                  </Card>
+                );
+              })}
           </div>
         )}
       </Grid>
-      <Grid item xs={12} sm={12} md={12} lg={12}>
-        <Typography variant="h6" align="center">
-          All info is sourced from https://ergast.com/mrd/.
-        </Typography>
+      <Grid item xs={2} sm={2} md={2} lg={3}>
+        <div className="bottom-text">
+          <Typography component={"span"} variant="h5">
+            dsfhfjsifheuishfsuefsiuefhushefishfihseh
+          </Typography>
+        </div>
       </Grid>
     </Grid>
   );

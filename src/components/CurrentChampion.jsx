@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Card, Typography } from "@material-ui/core";
+import { Card, Grid, Typography } from "@material-ui/core";
 import { getChampion } from "../services/DataService";
 import { Teams } from "../assets/Teams";
 import { driverTeamInfo } from "../utils/utils";
+import "../styles/sidebar.css";
 
 const CurrentChampion = () => {
   const [champion, setChampion] = useState();
@@ -32,14 +33,15 @@ const CurrentChampion = () => {
           </div>
           <img src={Teams[1].driver1Url} className="champion-img" />
           <Typography>{`#${champion.Driver.permanentNumber} ${champion.Driver.givenName} ${champion.Driver.familyName}`}</Typography>
-          {teamImg && (
-            <img
-              src={teamImg.url}
-              alt={champion.Constructors[0].name}
-              style={{ marginLeft: "75px" }}
-              className={`team-img-${champion.Constructors[0].constructorId}`}
-            />
-          )}
+          <Grid item xs={12} sm={12} md={12} lg={12}>
+            {teamImg && (
+              <img
+                src={teamImg.url}
+                alt={champion.Constructors[0].name}
+                className={`team-img-${champion.Constructors[0].constructorId} champion-logo`}
+              />
+            )}
+          </Grid>
         </Card>
       )}
     </div>
