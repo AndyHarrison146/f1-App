@@ -190,6 +190,18 @@ export const getRaceFlag = (country) => {
       return "https://flagcdn.com/w160/ar.png";
     case "South Africa":
       return "https://flagcdn.com/w160/za.png";
+    case "Thai":
+      return "https://flagcdn.com/w160/th.png";
+    case "Danish":
+      return "https://flagcdn.com/w160/dk.png";
+    case "Swedish":
+      return "https://flagcdn.com/w160/se.png";
+    case "New Zealander":
+      return "https://flagcdn.com/w160/nz.png";
+    case "Indonesian":
+      return "https://flagcdn.com/w160/id.png";
+    case "Venezuelan":
+      return "https://flagcdn.com/w160/ve.png";
     default:
       return "";
   }

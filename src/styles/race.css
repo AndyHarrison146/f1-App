@@ -1,0 +1,107 @@
+.driver-race {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.points-race {
+  text-align: center;
+  margin-top: 5px;
+}
+.team-race {
+  margin-left: 5px;
+}
+
+.race-pos {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.points-race-number {
+  text-align: center;
+}
+
+.time-text {
+  text-align: center;
+  margin-right: 20px;
+  margin-top: 5px;
+}
+
+.time-status {
+  text-align: center;
+  float: right;
+  margin-right: 20px;
+}
+
+@media (max-width: 600px) {
+  .driver-race {
+    margin-top: 5px;
+    margin-left: 5px;
+  }
+
+  .team-race {
+    margin-left: 5px;
+  }
+
+  .race-pos {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+}
+
+@media (min-width: 600px) {
+  .driver-race {
+    margin-top: 10px;
+  }
+
+  .race-pos {
+    width: 20px;
+    margin-top: 18px;
+    margin-left: 15px;
+  }
+
+  .grid-race {
+    text-align: center;
+    margin-top: 5px;
+  }
+
+  .grid-race-number {
+    text-align: center;
+  }
+
+  .flag-img-race {
+    width: 45px;
+    height: 30px;
+  }
+
+  .flag-race {
+    margin-top: 18px;
+    width: 50px;
+  }
+}
+@media (min-width: 960px) {
+}
+@media (min-width: 1280px) {
+  .time-text {
+    text-align: center;
+    margin-right: 35px;
+    margin-top: 5px;
+  }
+
+  .time-status {
+    text-align: center;
+    float: right;
+    margin-right: 35px;
+  }
+
+  .flag-img-race {
+    width: 60px;
+    height: 45px;
+  }
+
+  .flag-race {
+    margin-top: 15px;
+    width: 70px;
+  }
+}
+@media (min-width: 1680px) {
+}

@@ -34,3 +34,13 @@ export const getYearData = (year) => {
   const f1Url = `http://ergast.com/api/f1/${year}/results.json?limit=1000`;
   return axios.get(f1Url);
 };
+
+export const getRoundsFromSeason = (season) => {
+  return axios.get(`http://ergast.com/api/f1/${season}.json?limit=1000`);
+};
+
+export const getRaceFromSeason = (season, round) => {
+  return axios.get(
+    `http://ergast.com/api/f1/${season}/${round}/results.json?limit=1000`
+  );
+};
