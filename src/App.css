@@ -50,7 +50,7 @@ option {
     margin-left: 5%;
   }
   select#select-multiple-native {
-    height: 86px;
+    height: 135px;
   }
   select#Race {
     height: 80px;
@@ -85,7 +85,7 @@ option {
     margin-left: 5%;
   }
   select#select-multiple-native {
-    height: 96px;
+    height: 163px;
   }
 
   select#Race {
@@ -126,7 +126,7 @@ option {
     margin-left: 5%;
   }
   select#select-multiple-native {
-    height: 115px;
+    height: 170px;
   }
 
   select#Race {
@@ -168,7 +168,7 @@ option {
     margin-left: 5%;
   }
   select#select-multiple-native {
-    height: 134px;
+    height: 204px;
   }
 
   select#Race {

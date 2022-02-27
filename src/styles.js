@@ -55,20 +55,20 @@ export const useStyles = makeStyles(() => ({
   formControl: {
     margin: "2%",
     [theme.breakpoints.up("lg")]: {
-      width: "210px",
-      height: "145px",
+      width: "280px",
+      height: "220px",
     },
     [theme.breakpoints.down("md")]: {
-      width: "190px",
-      height: "130px",
+      width: "260px",
+      height: "190px",
     },
     [theme.breakpoints.down("sm")]: {
-      width: "170px",
-      height: "110px",
+      width: "220px",
+      height: "180px",
     },
     [theme.breakpoints.down("xs")]: {
-      width: "150px",
-      height: "100px",
+      width: "190px",
+      height: "150px",
     },
   },
   formControlRace: {
@@ -106,20 +106,20 @@ export const useStyles = makeStyles(() => ({
   },
   select: {
     [theme.breakpoints.up("lg")]: {
-      width: "210px",
-      height: "145px",
+      width: "280px",
+      height: "220px",
     },
     [theme.breakpoints.down("md")]: {
-      width: "190px",
-      height: "130px",
+      width: "260px",
+      height: "190px",
     },
     [theme.breakpoints.down("sm")]: {
-      width: "170px",
-      height: "110px",
+      width: "220px",
+      height: "180px",
     },
     [theme.breakpoints.down("xs")]: {
-      width: "150px",
-      height: "100px",
+      width: "190px",
+      height: "150px",
     },
   },
   selectRace: {

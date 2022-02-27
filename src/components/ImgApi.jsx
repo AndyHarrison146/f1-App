@@ -1,174 +1,118 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { names } from "../assets/Names";
-import { shortNames } from "../assets/ShortenedNames";
+import {
+  getWikiProfileImg,
+  getWikiImgTitle,
+  getWikiImgFromTitle,
+} from "../services/DataService";
+import noImage from "../img/No_Image_Available.jpg";
+import { useStyles } from "../styles";
 import load from "../img/load.gif";
+import "../styles/driver.css";
 
-const ImgApi = ({ driverData, changeImgUrl, imgUrl }) => {
+const ImgApi = ({ driverData, driverUrl, driverId, setDriverUrl }) => {
+  const classes = useStyles();
   const [title, setTitle] = useState();
-  const [longNameChecked, setLongNameChecked] = useState(false);
-  const [longName, setLongName] = useState(
-    `${driverData.givenName}_${driverData.familyName}`
-  );
-  const [shortName, setShortName] = useState(
-    `${driverData.givenName}_${driverData.familyName}`
-  );
-  const [longNameRacingDriver, setLongNameRacingDriver] = useState(
-    `${driverData.givenName}_${driverData.familyName}_(racing_driver)`
-  );
-  const [shortNameRacingDriver, setShortNameRacingDriver] = useState(
-    `${shortName}_(racing_driver)`
-  );
-
-  const capitalize = (s) => {
-    if (typeof s !== "string") return "";
-    return s.charAt(0).toUpperCase() + s.slice(1);
-  };
-
-  const createShortName = () => {
-    const nameIndex = names.indexOf(driverData.givenName.toLowerCase());
-    if (nameIndex === -1) {
-      return;
-    } else
-      setShortName(
-        capitalize(shortNames[nameIndex]) + "_" + driverData.familyName
-      );
-  };
-
-  useEffect(() => {
-    switch (longName) {
-      case "Carlo_Abate":
-        setLongName(`${driverData.givenName}_Maria_${driverData.familyName}`);
-        break;
-      case "Carlos_Sainz":
-        setLongName(`${driverData.givenName}_${driverData.familyName}_Jr.`);
-        break;
-      case "Juan_Fangio":
-        console.log("here");
-        setLongName(`${driverData.givenName}_Manuel_${driverData.familyName}`);
-        break;
-      case "Wilson_Fittipaldi":
-        setLongName(`${driverData.givenName}_${driverData.familyName}_Júnior`);
-        break;
-      default:
-        return;
-    }
-  }, [longName]);
+  const [wikiName, setWikiName] = useState();
+  const [noProfileImg, setNoProfileImg] = useState(false);
+  const [noImg, setNoImg] = useState(false);
+  const [imgUrl, setImgUrl] = useState("");
 
   const getProfileImg = (name) => {
-    const url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&maxlag=1&prop=pageimages&list=&titles=${name}&piprop=thumbnail%7Cname%7Coriginal&format=json`;
-    return new Promise((resolve, reject) => {
-      axios.get(url).then((res) => {
-        if (!res.data) {
-          return resolve();
+    getWikiProfileImg(name).then((res) => {
+      const data = res.data.query;
+      const pages = data.pages;
+      console.log(pages);
+      for (const page in pages) {
+        if (pages[page].original?.source) {
+          console.log("1");
+          setImgUrl(pages[page].original.source);
         }
-        const data = res.data.query;
-        if (!data.pages) {
-          return resolve();
-        }
-        const pages = data.pages;
-        for (const page in pages) {
-          if (pages[page].original) {
-            changeImgUrl(pages[page].original.source);
-            reject();
-            console.log("reject66", name);
-          } else {
-            resolve();
-            console.log("resolve69", name);
-          }
-        }
-      });
+      }
     });
   };
 
   const getImgTitle = (name) => {
-    const url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&prop=images&titles=${name}&format=json`;
-    return new Promise((resolve, reject) => {
-      axios.get(url).then((res) => {
-        if (!res.data.query.pages) {
-          changeImgUrl("");
-          console.log("this is the right line");
-        }
+    getWikiImgTitle(name).then((res) => {
+      setTitle(null);
+      if (res.data.query.pages) {
         const pages = res.data.query.pages;
         for (const page in pages) {
+          console.log(page);
           if (pages[page].images) {
             for (const img of pages[page].images) {
+              console.log(img);
               if (img.title.includes(".jpg", ".JPG", ".png", ".PNG")) {
+                console.log("3");
                 const _title = img.title.replace(/\s/g, "_");
                 setTitle(_title);
-                reject();
-                console.log("reject87", _title);
-              } else if (!img.title.includes(".jpg", ".JPG", ".png", ".PNG")) {
-                resolve();
-                if (name === longName) {
-                  setLongNameChecked(true);
-                }
-                if (name === shortNameRacingDriver) {
-                  changeImgUrl("");
-                  console.log("noimage");
-                }
+                break;
               }
             }
           }
         }
-      });
+      }
     });
   };
 
-  const getImgUrl = () => {
-    axios
-      .get(
-        `https://commons.wikimedia.org/w/api.php?origin=*&action=query&format=json&prop=imageinfo&list=&titles=${title}&iiprop=timestamp%7Cuser%7Curl`
-      )
-      .then((res) => {
-        console.log("here 116");
-        const pages = res.data.query.pages;
-        for (const page in pages) {
-          if (pages[page].imageinfo) {
-            if (imgUrl) {
-              return;
-            }
-            changeImgUrl(pages[page].imageinfo[0].url);
-          }
+  const getImgUrl = (title) => {
+    getWikiImgFromTitle(title).then((res) => {
+      const pages = res.data.query.pages;
+      for (const page in pages) {
+        console.log("4");
+        if (pages[page].imageinfo) {
+          console.log("5");
+          setImgUrl(pages[page].imageinfo[0].url);
+          break;
         }
-      });
+      }
+    });
+  };
+
+  const getWikiName = (driverUrl) => {
+    setNoProfileImg(false);
+    const index = driverUrl.lastIndexOf("/");
+    const urlName = driverUrl.substr(index + 1);
+    console.log(urlName);
+    switch (urlName) {
+      case "Alexander_Albon":
+        setWikiName("Alex_Albon");
+        break;
+      case "Joakim_Bonnier":
+        setWikiName("jo_Bonnier");
+        break;
+      default:
+        setWikiName(urlName);
+    }
   };
 
   useEffect(() => {
-    getProfileImg(longName).then(() => {
-      getImgTitle(longName).then(() => {
-        !title &&
-          getProfileImg(longNameRacingDriver).then(() => {
-            getImgTitle(longNameRacingDriver);
-          });
-      });
-    });
-  }, [longName]);
+    driverUrl && getWikiName(driverUrl);
+    setImgUrl("");
+  }, [driverUrl, wikiName]);
 
   useEffect(() => {
-    shortName &&
-      longNameChecked &&
-      getProfileImg(shortName).then(() => {
-        getImgTitle(shortName).then(() => {
-          !title &&
-            getProfileImg(shortNameRacingDriver).then(() => {
-              getImgTitle(shortNameRacingDriver);
-            });
-        });
-      });
-  }, [shortName, longNameChecked]);
+    wikiName && getProfileImg(wikiName);
+    wikiName &&
+      setTimeout(() => {
+        !imgUrl && setNoProfileImg(true);
+      }, 500);
+  }, [wikiName]);
 
   useEffect(() => {
-    title && getImgUrl();
+    noProfileImg && !imgUrl && getImgTitle(wikiName);
+  }, [noProfileImg]);
+
+  useEffect(() => {
+    title && getImgUrl(title);
+    title &&
+      setTimeout(() => {
+        if (imgUrl) return;
+        imgUrl && setImgUrl("");
+      }, 700);
   }, [title]);
 
-  useEffect(() => {
-    createShortName();
-    setLongNameChecked(false);
-    changeImgUrl("load");
-  }, [driverData]);
-
-  return null;
+  return <img src={imgUrl ? imgUrl : noImage} className="driver-img" alt="" />;
 };
 
 export default ImgApi;

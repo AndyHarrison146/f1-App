@@ -44,3 +44,19 @@ export const getRaceFromSeason = (season, round) => {
     `http://ergast.com/api/f1/${season}/${round}/results.json?limit=1000`
   );
 };
+
+export const getWikiProfileImg = (name) => {
+  const url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&maxlag=1&prop=pageimages&list=&titles=${name}&piprop=thumbnail%7Cname%7Coriginal&format=json`;
+  return axios.get(url);
+};
+
+export const getWikiImgTitle = (name) => {
+  const url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&prop=images&titles=${name}&format=json`;
+  return axios.get(url);
+};
+
+export const getWikiImgFromTitle = (title) => {
+  return axios.get(
+    `https://commons.wikimedia.org/w/api.php?origin=*&action=query&format=json&prop=imageinfo&list=&titles=${title}&iiprop=timestamp%7Cuser%7Curl`
+  );
+};
