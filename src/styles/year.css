@@ -1,0 +1,163 @@
+.race-round {
+  float: left;
+  margin-top: 10px;
+  width: 20px;
+  height: 50px;
+  margin-left: 10px;
+}
+
+.flag-round {
+  float: left;
+  width: 50px;
+  margin-top: 10px;
+}
+
+.year-race-name {
+  float: left;
+  text-align: left;
+  margin-top: 3px;
+}
+
+.winner-year {
+  float: left;
+}
+
+.bottom-text {
+  margin: 100px;
+}
+
+@media (max-width: 600px) {
+  .race-round {
+    margin-top: 13px;
+    width: 20px;
+    height: 50px;
+    margin-left: 10px;
+  }
+
+  .flag-round {
+    width: 50px;
+    margin-top: 10px;
+  }
+
+  .team-year {
+    margin-top: 2px;
+  }
+
+  .year-race-name {
+    margin-top: 1px;
+  }
+
+  .grid-year {
+    margin-top: 2px;
+    text-align: center;
+    padding-inline: 20px;
+  }
+
+  .winner-year {
+    margin-top: 0px;
+  }
+}
+
+@media (min-width: 600px) {
+  .race-round {
+    margin-top: 20px;
+    width: 20px;
+    height: 50px;
+    margin-left: 10px;
+  }
+
+  .flag-round {
+    width: 50px;
+    margin-top: 5px;
+  }
+
+  .team-year {
+    margin-top: 13px;
+  }
+
+  .year-race-name {
+    margin-top: 13px;
+    width: 280px;
+  }
+
+  .grid-year {
+    margin-top: 8px;
+    text-align: center;
+    padding-inline: 35px;
+  }
+}
+@media (min-width: 960px) {
+  .race-round {
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 10px;
+  }
+
+  .flag-round {
+    margin-top: 5px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+  }
+
+  .flag-img-year {
+    width: 35px;
+  }
+
+  .team-year {
+    margin-top: 8px;
+  }
+
+  .year-race-name {
+    margin-top: 5px;
+    width: 310px;
+  }
+
+  .winner-year {
+    margin-top: 10px;
+  }
+
+  .grid-year {
+    margin-top: 8px;
+    text-align: center;
+    padding-inline: 35px;
+  }
+}
+@media (min-width: 1280px) {
+  .race-round {
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 2px;
+  }
+
+  .flag-round {
+    margin-top: 8px;
+    margin-left: 18px;
+    margin-bottom: 5px;
+  }
+
+  .flag-img-year {
+    width: 38px;
+    height: 23px;
+  }
+
+  .team-year {
+    margin-top: 8px;
+  }
+
+  .year-race-name {
+    margin-top: 5px;
+    width: 420px;
+  }
+
+  .winner-year {
+    margin-top: 10px;
+  }
+
+  .grid-year {
+    margin-top: 8px;
+    text-align: center;
+    padding-inline: 30px;
+  }
+}
+@media (min-width: 1680px) {
+}

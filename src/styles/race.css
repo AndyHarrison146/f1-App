@@ -1,0 +1,285 @@
+.driver-race {
+  margin-top: 2px;
+  margin-left: 5px;
+}
+
+.points-race {
+  text-align: center;
+}
+.team-race {
+  margin-left: 5px;
+}
+
+.race-pos {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.points-race-number {
+  text-align: center;
+}
+
+.time-text {
+  text-align: center;
+  margin-right: 20px;
+}
+
+.time-status {
+  text-align: center;
+  float: right;
+  margin-right: 20px;
+}
+
+.select {
+  width: 230px;
+}
+
+.select-background {
+  background-color: white;
+  float: right;
+}
+
+.select-background-single {
+  background-color: white;
+  float: inline-start;
+  margin-top: 10px;
+}
+
+.select-background-round {
+  background-color: white;
+  float:left;
+}
+
+@media (max-width: 600px) {
+  .driver-race {
+    margin-top: 2px;
+    margin-left: 5px;
+  }
+
+  .team-race {
+    margin-left: 5px;
+  }
+
+  .race-pos {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+
+  .select {
+    width: 170px;
+    height: 150px;
+  }
+
+  .select-background {
+    width:170px;
+    height: 150px;
+    margin: 10px;
+  }
+
+  .select-background-single {
+    width:170px;
+    height: 150px;
+    margin: 10px;
+  }
+
+  .select-background-round {
+    width:170px;
+    height: 150px;
+    margin: 10px;
+  }
+}
+
+@media (min-width: 600px) {
+  .driver-race {
+    margin-top: 10px;
+  }
+
+  .race-pos {
+    width: 20px;
+    margin-top: 18px;
+    margin-left: 15px;
+  }
+
+  .grid-race {
+    text-align: center;
+    margin-top: 5px;
+  }
+
+  .grid-race-number {
+    text-align: center;
+  }
+
+  .flag-img-race {
+    width: 45px;
+    height: 30px;
+  }
+
+  .flag-race {
+    margin-top: 18px;
+    width: 50px;
+  }
+
+  .select {
+    width: 230px;
+    height: 180px;
+  }
+
+  .select-background {
+    width:230px;
+    height: 180px;
+    margin: 20px;
+  }
+
+  
+  .select-background-single {
+    width:230px;
+    height: 180px;
+  }
+
+  .select-background-round {
+    width:230px;
+    height: 180px;
+    margin: 20px;
+  }
+}
+@media (min-width: 960px) {
+  .driver-race {
+    margin-top: 10px;
+  }
+
+  .race-pos {
+    width: 20px;
+    margin-top: 18px;
+    margin-left: 15px;
+  }
+
+  .grid-race {
+    text-align: center;
+    margin-top: 5px;
+  }
+
+  .grid-race-number {
+    text-align: center;
+  }
+
+  .flag-img-race {
+    width: 45px;
+    height: 30px;
+  }
+
+  .flag-race {
+    margin-top: 18px;
+    width: 50px;
+  }
+
+  .select {
+    width: 230px;
+    height:188px;
+  }
+
+  .select-background {
+    width:230px;
+    height:188px;
+    margin: 30px;
+  }
+
+  .select-background-single {
+    width:230px;
+    height:188px;
+  }
+
+  .select-background-round {
+    width:230px;
+    height:188px;
+    margin: 30px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .time-text {
+    text-align: center;
+    margin-right: 35px;
+  }
+
+  .time-status {
+    text-align: center;
+    float: right;
+    margin-right: 35px;
+  }
+
+  .flag-img-race {
+    width: 60px;
+    height: 45px;
+  }
+
+  .flag-race {
+    margin-top: 15px;
+    width: 70px;
+  }
+
+  .select {
+    width: 250px;
+    height: 220px;
+  }
+
+  .select-background {
+    width: 250px;
+    height: 220px;
+    margin: 30px;
+  }
+
+  .select-background-single {
+    width: 250px;
+    height: 220px;
+  }
+
+  .select-background-round {
+    width: 250px;
+    height: 220px;
+    margin: 30px;
+  }
+}
+@media (min-width: 1680px) {
+  .time-text {
+    text-align: center;
+    margin-right: 35px;
+  }
+
+  .time-status {
+    text-align: center;
+    float: right;
+    margin-right: 35px;
+  }
+
+  .flag-img-race {
+    width: 60px;
+    height: 45px;
+  }
+
+  .flag-race {
+    margin-top: 15px;
+    width: 70px;
+  }
+
+  .select {
+    width: 250px;
+    height: 220px;
+  }
+
+  .select-background {
+    width: 250px;
+    height: 220px;
+    margin: 30px;
+  }
+
+  .select-background-single {
+    width: 250px;
+    height: 220px;
+  }
+
+  .select-background-round {
+    width: 250px;
+    height: 220px;
+    margin: 30px;
+  }
+}

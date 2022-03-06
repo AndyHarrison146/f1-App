@@ -1,0 +1,103 @@
+.close-button {
+  width: 20px;
+  float: left;
+  margin: 15px !important;
+}
+
+.close-icon {
+  width: 30px;
+}
+
+.driver-img-team {
+  border-radius: 20px;
+}
+
+.team-card-img-left {
+  float: left;
+}
+
+.team-card-img-right {
+  float: right;
+}
+
+.team-card-img {
+  width: 100%;
+  float: left;
+}
+
+@media (max-width: 600px) {
+  .team-card-img-left {
+    text-align: center;
+    margin-left: 40px;
+  }
+
+  .team-card-img-right {
+    text-align: center;
+    margin-right: 40px;
+  }
+
+  .driver-img-team {
+    height: 90px;
+  }
+}
+@media (min-width: 600px) {
+  .team-card-img-left {
+    text-align: center;
+    margin-left: 100px;
+  }
+
+  .team-card-img-right {
+    text-align: center;
+    margin-right: 100px;
+  }
+
+  .driver-img-team {
+    height: 170px;
+  }
+
+}
+@media (min-width: 960px) {
+  .team-card-img-left {
+    text-align: center;
+    margin-left: 160px;
+  }
+
+  .team-card-img-right {
+    text-align: center;
+    margin-right: 160px;
+  }
+
+  .driver-img-team {
+    height: 230px;
+  }
+}
+@media (min-width: 1280px) {
+  .team-card-img-left {
+    text-align: center;
+    margin-left: 160px;
+  }
+
+  .team-card-img-right {
+    text-align: center;
+    margin-right: 160px;
+  }
+
+  .driver-img-team {
+    height: 290px;
+  }
+}
+@media (min-width: 1680px) {
+  .team-card-img-left {
+    text-align: center;
+    margin-left: 170px;
+  }
+
+  .team-card-img-right {
+    text-align: center;
+    margin-right: 170px;
+  }
+
+  .driver-img-team {
+    height: 300px;
+  }
+}

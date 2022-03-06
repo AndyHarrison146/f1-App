@@ -9,7 +9,7 @@ const About = () => {
       <Grid container
       spacing={0}
       align="center"
-      justify='space-around'
+      Content='space-around'
       alignContent='flex-start'
       style={{ minHeight: '100vh', minWidth: '100vw' }}>
         <Grid item xs={12} sm={12} md={12} lg={12}>

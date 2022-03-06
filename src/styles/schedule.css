@@ -1,0 +1,139 @@
+.position-race {
+  float: left;
+  text-align: left;
+  width: 500px;
+  height: 70px;
+}
+
+.raceName {
+  float: left;
+  width: 270px;
+  padding-top: 30px;
+  padding-left: 10px;
+}
+
+.race-card {
+  width: 600px;
+  height: 70px;
+}
+
+.raceDate {
+  float: right;
+  margin-top: 5px;
+}
+
+.race-bottom {
+  float: right;
+  margin-top: 5px;
+  margin-left: 60px;
+}
+
+@media (min-width: 600px) {
+  .position-race {
+    width: 500px;
+    height: 70px;
+  }
+
+  .raceName {
+    width: 270px;
+    padding-top: 20px;
+    padding-left: 10px;
+  }
+
+  .race-card {
+    width: 600px;
+    height: 70px;
+  }
+
+  .raceDate {
+    margin-top: 5px;
+    margin-right: 20px;
+  }
+
+  .race-bottom {
+    margin-top: 5px;
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .race-card {
+    width: 370px;
+    height: 50px;
+  }
+
+  .position-race {
+    width: 320px;
+    height: 50px;
+  }
+
+  .raceName {
+    width: 135px;
+    padding-top: 5px;
+    padding-left: 5px;
+  }
+
+  .raceDate {
+    margin-top: 5px;
+    margin-right: 17px;
+  }
+
+  .race-bottom {
+    margin-top: 0px;
+    margin-right: 17px;
+  }
+}
+
+@media (min-width: 960px) {
+  .race-card {
+    width: 700px;
+    height: 70px;
+  }
+
+  .position-race {
+    width: 580px;
+    height: 70px;
+  }
+
+  .raceName {
+    width: 300px;
+    padding-top: 10px;
+    padding-left: 10px;
+  }
+
+  .raceDate {
+    margin-top: 5px;
+  }
+
+  .race-bottom {
+    margin-top: 5px;
+    margin-left: 10px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .race-card {
+    width: 1100px;
+    height: 80px;
+  }
+
+  .position-race {
+    width: 780px;
+    height: 70px;
+  }
+
+  .raceName {
+    width: 500px;
+    padding-top: 20px;
+  }
+
+  .raceDate {
+    margin-top: 5px;
+    margin-right: 30px;
+  }
+
+  .race-bottom {
+    margin-top: 5px;
+    margin-right: 30px;
+  }
+}

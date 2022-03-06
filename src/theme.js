@@ -1,103 +1,159 @@
-// import { createMuiTheme } from '@material-ui/core/styles';
-import { unstable_createMuiStrictModeTheme as createMuiTheme } from '@material-ui/core';
+import { unstable_createMuiStrictModeTheme as createMuiTheme } from "@material-ui/core";
 
 const theme = createMuiTheme({
   overrides: {
+    MuiCard: {
+      root: {
+        marginTop: "50px",
+        borderRadius: "30px",
+        "@media(max-width:600px)": {
+          marginTop: "10px",
+        },
+        "@media(min-width:600px)": {
+          borderRadius: "35px",
+          marginTop: "12px",
+        },
+        "@media(min-width:960px)": {
+          marginTop: "15px",
+        },
+        "@media(min-width:1280px)": {
+          borderRadius: "45px",
+        },
+      },
+    },
+    MuiDrawer: {
+      paper: {
+        width: 200,
+      },
+    },
     MuiTableCell: {
       root: {
-        fontSize: 10,
-        padding: '6px',
-        '@media(min-width:600px)' : {
-          fontSize: 12,
-          padding: '12px',
+        fontSize: 14,
+        padding: "1px",
+        paddingLeft: "10px",
+        paddingRight: "10px",
+        "@media(min-width:600px)": {
+          fontSize: 17,
         },
-        '@media(min-width:960px)' : {
-          fontSize: 15,
-        }
-      }
+        "@media(min-width:960px)": {
+          fontSize: 19,
+        },
+      },
     },
     MuiButton: {
       textSizeLarge: {
-        fontSize: '1.5em',
+        fontSize: "1.5em",
         fontWeight: 600,
-        textTransform: 'none'
-      }
+        textTransform: "none",
+      },
     },
     MuiPaper: {
       rounded: {
-        borderRadius: '20px',
-      }
-    }
+        borderRadius: "10px",
+        "@media(min-width:600px)": {
+          borderRadius: "30px",
+        },
+        "@media(min-width:960px)": {
+          borderRadius: "60px",
+        },
+      },
+    },
   },
   typography: {
-    fontWeightRegular: 'bold', 
-    fontFamily: 'Segoe UI',
+    fontWeightRegular: "bold",
+    fontFamily: "Arial",
     h6: {
-      fontSize: 10,
-      '@media(min-width:600px)' : {
+      fontSize: 12,
+      "@media(min-width:600px)": {
         fontSize: 14,
       },
-      '@media(min-width:960px)' : {
+      "@media(min-width:960px)": {
         fontSize: 16,
       },
-      '@media(min-width:1280px)' : {
-        fontSize: 20,
-      }
-    },
-    h5: {
-      fontSize: 13,
-      '@media(min-width:600px)' : {
+      "@media(min-width:1280px)": {
         fontSize: 18,
       },
-      '@media(min-width:960px)' : {
-        fontSize: 20,
-      },
-      '@media(min-width:1280px)' : {
-        fontSize: 25,
-      }
     },
-    h4: {
-      fontSize: 12,
-      '@media(min-width:600px)' : {
-        fontSize: 17,
+    h5: {
+      fontSize: 14,
+      "@media(min-width:600px)": {
+        fontSize: 16,
       },
-      '@media(min-width:960px)' : {
+      "@media(min-width:960px)": {
+        fontSize: 18,
+      },
+      "@media(min-width:1280px)": {
         fontSize: 21,
       },
-      '@media(min-width:1280px)' : {
-        fontSize: 25,
-      }
+    },
+    h4: {
+      fontSize: 13,
+      "@media(min-width:600px)": {
+        fontSize: 18,
+      },
+      "@media(min-width:960px)": {
+        fontSize: 21,
+      },
+      "@media(min-width:1280px)": {
+        fontSize: 24,
+      },
     },
     h3: {
-      fontSize: 19,
-      '@media(min-width:600px)' : {
-        fontSize: 22,
+      fontSize: 16,
+      "@media(min-width:600px)": {
+        fontSize: 21,
       },
-      '@media(min-width:960px)' : {
-        fontSize: 25,
+      "@media(min-width:960px)": {
+        fontSize: 24,
       },
-      '@media(min-width:1280px)' : {
-        fontSize: 29,
-      }
-    }
+      "@media(min-width:1280px)": {
+        fontSize: 28,
+      },
+    },
+    h2: {
+      fontSize: 20,
+      "@media(min-width:600px)": {
+        fontSize: 24,
+      },
+      "@media(min-width:960px)": {
+        fontSize: 28,
+      },
+      "@media(min-width:1280px)": {
+        fontSize: 32,
+      },
+    },
+    h1: {
+      fontSize: 26,
+      "@media(min-width:600px)": {
+        fontSize: 30,
+      },
+      "@media(min-width:960px)": {
+        fontSize: 36,
+      },
+      "@media(min-width:1280px)": {
+        fontSize: 40,
+      },
+    },
   },
   palette: {
     primary: {
-      main: '#801313',
+      main: "#801313",
     },
     secondary: {
-      main: '#212121',
-      
+      main: "#edf2f4",
+    },
+    black: {
+      main: "#0b090a",
     },
     grey: {
-      main: '#fafafa',
+      main: "#fafafa",
     },
     pale: {
-     main: '#FCF4D9',
-     contrastText: '#383838',
+      main: "#FCF4D9",
+      contrastText: "#383838",
     },
     background: {
-      paper: '#fafafa',
+      paper: "#fafafa",
     },
   },
   zIndex: {

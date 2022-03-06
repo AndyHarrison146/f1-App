@@ -1,0 +1,195 @@
+.title-card {
+  width: fit-content;
+  margin-top: 5px;
+  padding-top: 10px;
+  padding-inline: 30px;
+}
+
+.driver {
+  float: left;
+  width: 240px;
+}
+
+.time-text {
+  float: right;
+  width: fit-content;
+}
+
+.points-text {
+  float: left;
+  width: 45px;
+}
+
+.grid-text {
+  float: left;
+}
+
+.grid {
+  float: left;
+}
+
+.team {
+  float: left;
+  width: 198px;
+}
+
+.time {
+  float: right;
+}
+
+.points-text-standings {
+  float: right;
+}
+
+.points-standings {
+  float: right;
+}
+
+.wins-constructor {
+  float: left;
+  margin-left: 65px;
+}
+
+@media (max-width: 600px) {
+  .driver {
+    width: 180px;
+  }
+
+  .team {
+    width: 198px;
+  }
+
+  .side-card-champion {
+    width: 150px;
+    height: 130px;
+    margin-left: 5px;
+  }
+}
+
+@media (min-width: 600px) {
+  .driver {
+    width: 240px;
+  }
+
+  .points-text {
+    width: 45px;
+  }
+
+  .team-img-ferrari {
+    width: 90px;
+    margin-left: -30px;
+  }
+  .team-img-red_bull {
+    width: 90px;
+  }
+  .team-img-mercedes {
+    width: 90px;
+  }
+  .team-img-alphatauri {
+    width: 90px;
+    margin-left: -25px;
+  }
+  .team-img-williams {
+    width: 90px;
+  }
+  .team-img-haas {
+    width: 90px;
+  }
+  .team-img-alfa {
+    width: 90px;
+    margin-left: -10px;
+  }
+  .team-img-aston_martin {
+    width: 90px;
+    margin-left: -20px;
+  }
+  .team-img-mclaren {
+    width: 90px;
+  }
+  .team-img-alpine {
+    width: 90px;
+    margin-left: -25px;
+  }
+
+  .team-img-constructor {
+    width: 200px;
+  }
+
+  .team {
+    width: 198px;
+  }
+
+  .wins-constructor {
+    margin-left: 65px;
+  }
+}
+
+@media (min-width: 960px) {
+  .team {
+    width: 250px;
+  }
+
+  .driver {
+    width: 290px;
+  }
+
+  .wins-constructor {
+    margin-left: 115px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .team {
+    width: 455px;
+  }
+
+  .driver {
+    width: 445px;
+  }
+
+  .grid-text {
+    width: 120px;
+  }
+
+  .grid {
+    width: 70px;
+  }
+
+  .wins-constructor {
+    margin-left: 115px;
+  }
+}
+@media (min-width: 1680px) {
+  .team {
+    width: 713px;
+  }
+
+  .driver {
+    width: 700px;
+  }
+
+  .grid-text {
+    width: 120px;
+  }
+
+  .grid {
+    width: 100px;
+  }
+
+  .points-text {
+    margin-left: 15px;
+  }
+
+  .wins-text {
+    margin-left: 58px;
+    width: 70px;
+  }
+
+  .wins {
+    margin-left: 55px;
+  }
+
+  .wins-constructor {
+    margin-left: 80px;
+  }
+}
