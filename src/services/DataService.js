@@ -45,6 +45,46 @@ export const getRaceFromSeason = (season, round) => {
   );
 };
 
+export   const getAllDrivers = () => {
+  const driverURL = `http://ergast.com/api/f1/drivers.json?limit=1000`;
+  return axios.get(driverURL)
+}
+
+export const getDriver = (driverId) => {
+  const driverURL = `http://ergast.com/api/f1/drivers/${driverId}.json?limit=1000`;
+  return axios.get(driverURL);
+}
+
+export const getWins = (driverId) => {
+  const winUrl = `http://ergast.com/api/f1/drivers/${driverId}/results/1.json?limit=1000`;
+  return axios.get(winUrl);
+}
+
+export const getTeam = (teamName) => {
+  return axios
+    .get(`http://ergast.com/api/f1/constructors/${teamName}.json?limit=1000`)
+}
+
+export const getTeamWins = (teamName) => {
+  return axios
+    .get(
+      `http://ergast.com/api/f1/constructors/${teamName}/results/1.json?limit=1000`
+    )
+}
+
+export const getTeamChampionships = (teamName) => {
+  return axios
+    .get(
+      `https://ergast.com/api/f1/constructors/${teamName}/constructorStandings/1.json?limit=1000`
+    )
+}
+
+
+export const getAllDriversChampionships = () => {
+  return axios
+    .get(`http://ergast.com/api/f1/driverStandings/1.json?limit=1000`)
+}
+
 export const getWikiProfileImg = (name) => {
   const url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&maxlag=1&prop=pageimages&list=&titles=${name}&piprop=thumbnail%7Cname%7Coriginal&format=json`;
   return axios.get(url);

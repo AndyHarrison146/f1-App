@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Card, Grid, Typography } from "@material-ui/core";
-import { driverTeamInfo, textColor, useWindowSize } from "../utils/utils";
+import { driverTeamInfo, textColor } from "../utils/utils";
 import {
   getChampionship,
-  getDriverChampionships,
 } from "../services/DataService";
 import SideBar from "./sideBar";
-import CurrentChampion from "./CurrentChampion";
 import "../styles/re-usedStyles.css";
 
 const DriverStandings = () => {
   const [championshipData, setChampionshipData] = useState();
-  const [screenSize, setScreenSize] = useWindowSize();
   const shownComponent = "driver";
 
   useEffect(() => {
@@ -45,7 +42,6 @@ const DriverStandings = () => {
         {championshipData &&
           championshipData.map((driver) => {
             const { positionText, points, wins, Constructors, Driver } = driver;
-            console.log(driver);
             const teamColor = driverTeamInfo(
               driver.Constructors[0].name
             ).primary;

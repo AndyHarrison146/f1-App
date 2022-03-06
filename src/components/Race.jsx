@@ -60,7 +60,7 @@ const Race = () => {
       align="center"
       justifyContent="space-between"
       alignContent="flex-start"
-      style={{ minHeight: "100vh", minWidth: "100vw" }}>
+      style={{ minHeight: "100vh", minWidth: "100vw", marginBottom: '40px' }}>
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <Selector
           season={season}
@@ -88,7 +88,6 @@ const Race = () => {
                   status,
                   points,
                 } = driver;
-                console.log(driver);
                 return (
                   <Card key={Driver.familyName} className="race-card">
                     <Grid
@@ -174,13 +173,6 @@ const Race = () => {
               })}
           </div>
         )}
-      </Grid>
-      <Grid item xs={2} sm={2} md={2} lg={3}>
-        <div className="bottom-text">
-          <Typography component={"span"} variant="h5">
-            dsfhfjsifheuishfsuefsiuefhushefishfihseh
-          </Typography>
-        </div>
       </Grid>
     </Grid>
   );

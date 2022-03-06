@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import { CircularProgress } from "@material-ui/core";
+import { getAllDrivers, getDriverChampionships, getDriver, getWins } from "../services/DataService";
 import Selector from "./Selector";
 import ImgApi from "./ImgApi";
 import "../styles/driver.css";
@@ -16,28 +15,24 @@ const Driver = () => {
   const [driverData, setDriverData] = useState();
   const [wins, setWins] = useState();
   const [driverUrl, setDriverUrl] = useState();
-  let championships = 0;
 
-  const getAllDrivers = () => {
-    const driverURL = `http://ergast.com/api/f1/drivers.json?limit=1000`;
-    axios.get(driverURL).then((res) => {
+  const getDrivers = () => {
+    getAllDrivers().then((res) => {
       let arr = res.data.MRData.DriverTable.Drivers;
       setDriverArr(arr);
       setDriverArrSurname(arr);
     });
   };
 
-  const getDriverChampionships = () => {
-    const championshipURL = `http://ergast.com/api/f1/drivers/${driverId}/driverStandings/1.json?limit=1000`;
-    axios.get(championshipURL).then((res) => {
+  const getDriverTitles = (driverId) => {
+    getDriverChampionships(driverId).then((res) => {
       const championshipRes = res.data.MRData.StandingsTable.StandingsLists;
       setDriverChampionships(championshipRes);
     });
   };
 
-  const getDriver = () => {
-    const driverURL = `http://ergast.com/api/f1/drivers/${driverId}.json?limit=1000`;
-    axios.get(driverURL).then((res) => {
+  const getSelectedDriver = (driverId) => {
+    getDriver(driverId).then((res) => {
       const driverRes = res.data.MRData.DriverTable.Drivers[0];
       const driverWiki = driverRes.url;
       setDriverUrl(driverWiki);
@@ -45,26 +40,21 @@ const Driver = () => {
     });
   };
 
-  const getWins = () => {
-    const winUrl = `http://ergast.com/api/f1/drivers/${driverId}/results/1.json?limit=1000`;
-    axios.get(winUrl).then((res) => {
+  const getDriverWins = (driverId) => {
+    getWins(driverId).then((res) => {
       const winRes = res.data.MRData.RaceTable.Races;
       setWins(winRes.length);
     });
   };
 
   useEffect(() => {
-    getAllDrivers();
+    getDrivers();
   }, []);
 
   useEffect(() => {
-    console.log(driverArr);
-  }, [driverArr]);
-
-  useEffect(() => {
-    driverId && getDriver();
-    getDriverChampionships();
-    getWins();
+    driverId && getSelectedDriver(driverId);
+    driverId && getDriverTitles(driverId);
+    driverId && getDriverWins(driverId);
   }, [driverId]);
 
   return (
@@ -96,9 +86,9 @@ const Driver = () => {
                   style={{ marginBottom: "20px" }}>
                   {`${driverData.givenName} ${driverData.familyName}`}
                 </Typography>
-                <Typography variant="h4" align="center">
+                {driverChampionships && <Typography variant="h4" align="center">
                   {`Drivers Championships: ${driverChampionships.length}`}
-                </Typography>
+                </Typography>}
                 <Typography
                   variant="h5"
                   align="center">{`Wins: ${wins}`}</Typography>
@@ -152,12 +142,14 @@ const Driver = () => {
         )}
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={12}>
-        <Typography variant="h6" align="center">
+        <div style={{marginTop: '20px', width: '400px'}}>
+          <Typography variant="h6" align="center">
           All info is sourced from https://ergast.com/mrd/. All Images are
           sourced from Wikipedia and are used under CC(CreativeCommons) License
           or to thier respective brands, i do not claim to own the rights to any
           images used.
         </Typography>
+        </div>
       </Grid>
     </Grid>
   );

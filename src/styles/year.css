@@ -40,17 +40,21 @@
   }
 
   .team-year {
-    margin-top: 7px;
+    margin-top: 2px;
   }
 
   .year-race-name {
-    margin-top: 5px;
+    margin-top: 1px;
   }
 
   .grid-year {
-    margin-top: 8px;
+    margin-top: 2px;
     text-align: center;
     padding-inline: 20px;
+  }
+
+  .winner-year {
+    margin-top: 0px;
   }
 }
 

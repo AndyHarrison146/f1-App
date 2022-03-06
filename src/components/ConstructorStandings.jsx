@@ -33,7 +33,7 @@ const ConstructorStandins = () => {
       <Grid item xs={12} sm={8} md={8} lg={8}>
         <div style={{ marginTop: "30px" }}>
           <Card className="title-card">
-            <Typography component={"span"} variant="h4">
+            <Typography component={"span"} variant="h3">
               Current Constructor Standings
             </Typography>
           </Card>
@@ -43,7 +43,6 @@ const ConstructorStandins = () => {
             const { positionText, points, wins, Constructor } = team;
             const teamColor = driverTeamInfo(Constructor.name).primary;
             const teamImg = driverTeamInfo(Constructor.name).url;
-            console.log(team);
             return (
               <div>
                 <Card className="position-card">

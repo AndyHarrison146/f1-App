@@ -9,10 +9,12 @@ import alfa from "../img/logos/Alfa_Romeo.png";
 import williams from "../img/logos/Williams.png";
 import haas from "../img/logos/Haas F1 Team.png";
 import latifi from "../img/latifi.jpg";
+import noImage from "../img/No_Image_Available.jpg";
 
 export const Teams = [
   {
     name: "Mercedes",
+    displayName: 'Mercedes-AMG Petronas Formula One',
     id: "mercedes",
     url: mercedes,
     driver1: "Lewis Hamilton",
@@ -26,6 +28,7 @@ export const Teams = [
   },
   {
     name: "Red Bull",
+    displayName: 'Oracle Red Bull Racing',
     id: "red_bull",
     url: redbull,
     driver1: "Max Verstappen",
@@ -38,6 +41,7 @@ export const Teams = [
   },
   {
     name: "McLaren",
+    displayName: 'McLaren F1 Team',
     id: "mclaren",
     url: mclaren,
     driver1: "Lando Norris",
@@ -50,6 +54,7 @@ export const Teams = [
   },
   {
     name: "Ferrari",
+    displayName: 'Scuderia Ferrari',
     id: "ferrari",
     url: ferrari,
     driver1: "Charles Leclerc",
@@ -62,6 +67,7 @@ export const Teams = [
   },
   {
     name: "Alpine F1 Team",
+    displayName: 'BWT Alpine F1 Team',
     id: "alpine",
     url: alpine,
     driver1: "Esteban Ocon",
@@ -74,6 +80,7 @@ export const Teams = [
   },
   {
     name: "AlphaTauri",
+    displayName: 'Scuderia AlphaTauri',
     id: "alphatauri",
     url: alphaTauri,
     driver1: "Pierre Gasly",
@@ -81,11 +88,12 @@ export const Teams = [
       "https://upload.wikimedia.org/wikipedia/commons/3/3e/Pierre_Gasly_2017_Malaysia.jpg",
     driver2: "Yuki Tsunoda",
     driver2Url:
-      "https://upload.wikimedia.org/wikipedia/commons/0/0a/Yuki_Tsunoda_Scuderia_AlphaTauri.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/e/eb/2021_US_GP%2C_Tsunoda.jpg",
     teamPrincipal: "Franz Tost",
   },
   {
     name: "Aston Martin",
+    displayName: 'Aston Martin Aramco Cognizant',
     id: "aston_martin",
     url: aston,
     driver1: "Lance Stroll",
@@ -98,6 +106,7 @@ export const Teams = [
   },
   {
     name: "Alfa Romeo",
+    displayName: 'Alfa Romeo F1 Team ORLEN',
     id: "alfa",
     url: alfa,
     driver1: "Guanyu Zhou",
@@ -110,6 +119,7 @@ export const Teams = [
   },
   {
     name: "Williams",
+    displayName: 'Williams Racing',
     id: "williams",
     url: williams,
     driver1: "Alexander Albon",
@@ -121,14 +131,15 @@ export const Teams = [
   },
   {
     name: "Haas F1 Team",
+    displayName: 'Haas F1 Team',
     id: "haas",
     url: haas,
     driver1: "Mick Schumacher",
     driver1Url:
       "https://upload.wikimedia.org/wikipedia/commons/e/eb/Mick_Schumacher_-_2019202181015_2019-07-21_Champions_for_Charity_-_1500_-_B70I1535.jpg",
-    driver2: "Nikita Mazepin",
+    driver2: "TBA",
     driver2Url:
-      "https://upload.wikimedia.org/wikipedia/commons/e/e8/%D0%9D%D0%B8%D0%BA%D0%B8%D1%82%D0%B0_%D0%9C%D0%B0%D0%B7%D0%B5%D0%BF%D0%B8%D0%BD_-_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B2%D1%8C%D1%8E_-_2019%2C_02.jpg",
+      noImage,
     teamPrincipal: "Guenther Steiner",
   },
 ];

@@ -32,18 +32,6 @@ option {
 }
 
 @media (max-width: 600px) {
-  .text {
-    font-size: 6px;
-  }
-  .App {
-    text-align: right;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    font-size: 12px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
   option {
     font-weight: bold;
     font-size: 1rem;
@@ -56,11 +44,6 @@ option {
     height: 80px;
   }
 
-  .h3-text {
-    margin: 5px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
   .title-card-year {
     width: fit-content;
     height: 45px;
@@ -70,15 +53,6 @@ option {
 }
 
 @media (min-width: 600px) {
-  .App {
-    text-align: right;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    font-size: 12px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
   option {
     font-weight: bold;
     font-size: 1.1rem;
@@ -92,11 +66,6 @@ option {
     height: 90px;
   }
 
-  .h3-text {
-    margin: 5px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
   .title-card-year {
     width: fit-content;
     height: 60px;
@@ -107,19 +76,6 @@ option {
 }
 
 @media (min-width: 960px) {
-  .App {
-    text-align: right;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    font-size: 12px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-  .teamCard {
-    background: linear-gradient(red, blue);
-  }
-
   .option {
     font-weight: bold;
     font-size: 1.2rem;
@@ -140,27 +96,9 @@ option {
     padding-top: 10px;
     padding-inline: 35px;
   }
-
-  .h3-text {
-    margin: 5px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-  .position-box {
-    float: left;
-    width: 20px;
-  }
 }
 
 @media (min-width: 1280px) {
-  .App {
-    text-align: right;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    font-size: 12px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
 
   option {
     font-weight: bold;
@@ -175,10 +113,6 @@ option {
     height: 130px;
   }
 
-  .h3-text {
-    margin: 5px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
   .title-card-year {
     width: fit-content;
     height: 60px;
@@ -186,15 +120,5 @@ option {
     padding-top: 5px;
     padding-bottom: 5px;
     padding-inline: 30px;
-  }
-
-  .h3-text {
-    margin: 5px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-  .position-box {
-    float: left;
-    width: 20px;
   }
 }

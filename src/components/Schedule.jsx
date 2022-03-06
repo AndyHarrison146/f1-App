@@ -7,7 +7,6 @@ import moment from "moment";
 import { getRaceFlag } from "../utils/utils";
 
 const Schedule = () => {
-  const classes = useStyles();
   const [scheduleData, setScheduleData] = useState();
 
   const getSchedule = () => {
@@ -28,7 +27,7 @@ const Schedule = () => {
       align="center"
       justifyContent="space-between"
       alignContent="flex-start"
-      style={{ minHeight: "100vh", minWidth: "100vw" }}>
+      style={{ minHeight: "100vh", minWidth: "100vw", marginBottom: '40px'}}>
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <Card className="title-card">
           <Typography component={"span"} variant="h4">
@@ -38,7 +37,7 @@ const Schedule = () => {
         {scheduleData &&
           scheduleData.map((race) => {
             const { raceName, round, date, time, Circuit } = race;
-            console.log(race);
+            const editedTime = time.slice(0, -1);
             return (
               <Card className="race-card" key={round}>
                 <Grid
@@ -49,7 +48,7 @@ const Schedule = () => {
                     <div className="flag">
                       <img
                         src={getRaceFlag(Circuit.Location.country)}
-                        alt="Bahrain"
+                        alt="No Flag"
                         className="flag-img"
                       />
                     </div>
@@ -69,7 +68,7 @@ const Schedule = () => {
                     </div>
                     <div className="race-bottom">
                       <Typography component={"span"} variant="h4">
-                        Time:{time}
+                        Time:{editedTime}
                       </Typography>
                     </div>
                   </Grid>

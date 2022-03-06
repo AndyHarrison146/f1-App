@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import {
   getWikiProfileImg,
@@ -6,26 +5,20 @@ import {
   getWikiImgFromTitle,
 } from "../services/DataService";
 import noImage from "../img/No_Image_Available.jpg";
-import { useStyles } from "../styles";
-import load from "../img/load.gif";
 import "../styles/driver.css";
 
-const ImgApi = ({ driverData, driverUrl, driverId, setDriverUrl }) => {
-  const classes = useStyles();
+const ImgApi = ({ driverUrl }) => {
   const [title, setTitle] = useState();
   const [wikiName, setWikiName] = useState();
   const [noProfileImg, setNoProfileImg] = useState(false);
-  const [noImg, setNoImg] = useState(false);
   const [imgUrl, setImgUrl] = useState("");
 
   const getProfileImg = (name) => {
     getWikiProfileImg(name).then((res) => {
       const data = res.data.query;
       const pages = data.pages;
-      console.log(pages);
       for (const page in pages) {
         if (pages[page].original?.source) {
-          console.log("1");
           setImgUrl(pages[page].original.source);
         }
       }
@@ -38,12 +31,9 @@ const ImgApi = ({ driverData, driverUrl, driverId, setDriverUrl }) => {
       if (res.data.query.pages) {
         const pages = res.data.query.pages;
         for (const page in pages) {
-          console.log(page);
           if (pages[page].images) {
             for (const img of pages[page].images) {
-              console.log(img);
               if (img.title.includes(".jpg", ".JPG", ".png", ".PNG")) {
-                console.log("3");
                 const _title = img.title.replace(/\s/g, "_");
                 setTitle(_title);
                 break;
@@ -59,9 +49,7 @@ const ImgApi = ({ driverData, driverUrl, driverId, setDriverUrl }) => {
     getWikiImgFromTitle(title).then((res) => {
       const pages = res.data.query.pages;
       for (const page in pages) {
-        console.log("4");
         if (pages[page].imageinfo) {
-          console.log("5");
           setImgUrl(pages[page].imageinfo[0].url);
           break;
         }
@@ -73,7 +61,6 @@ const ImgApi = ({ driverData, driverUrl, driverId, setDriverUrl }) => {
     setNoProfileImg(false);
     const index = driverUrl.lastIndexOf("/");
     const urlName = driverUrl.substr(index + 1);
-    console.log(urlName);
     switch (urlName) {
       case "Alexander_Albon":
         setWikiName("Alex_Albon");

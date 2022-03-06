@@ -51,17 +51,23 @@ const Home = () => {
             <Button
               onClick={changeLastRace}
               color={showLastRace ? "primary" : "default"}>
-              Last Race
+                <Typography variant="h3" align="center">
+                  Last Race
+                </Typography>
             </Button>
             <Button
               onClick={changeDriverTable}
               color={showDriverTable ? "primary" : "default"}>
-              Driver Standings
+                <Typography variant="h3" align="center">
+                  Driver Standings             
+                </Typography>
             </Button>
             <Button
               onClick={changeConstructorTable}
               color={showConstructorTable ? "primary" : "default"}>
-              Constructor Standings
+                <Typography variant="h3" align="center">
+                  Constructor Standings
+                </Typography>
             </Button>
           </ButtonGroup>
         </Grid>

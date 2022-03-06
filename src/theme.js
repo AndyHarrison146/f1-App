@@ -63,7 +63,7 @@ const theme = createMuiTheme({
     fontWeightRegular: "bold",
     fontFamily: "Arial",
     h6: {
-      fontSize: 9,
+      fontSize: 12,
       "@media(min-width:600px)": {
         fontSize: 14,
       },
@@ -87,7 +87,7 @@ const theme = createMuiTheme({
       },
     },
     h4: {
-      fontSize: 15,
+      fontSize: 13,
       "@media(min-width:600px)": {
         fontSize: 18,
       },

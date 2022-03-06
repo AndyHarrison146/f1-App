@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
-import background from "./img/backgroundImg.jpg";
 import Header from "./components/Header.jsx";
 import { ThemeProvider } from "@material-ui/core";
 import theme from "./theme";

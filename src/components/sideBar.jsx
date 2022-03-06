@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "../styles/sidebar.css";
-import { Card, CircularProgress, Grid, Typography } from "@material-ui/core";
+import { Card, Grid, Typography } from "@material-ui/core";
 import {
   getChampionship,
   getContructors,
   getLastRace,
 } from "../services/DataService";
-import { driverTeamInfo, useWindowSize } from "../utils/utils";
+import { useWindowSize } from "../utils/utils";
 import CurrentChampion from "./CurrentChampion";
 
 const SideBar = ({ shownComponent }) => {
@@ -62,7 +62,7 @@ const SideBar = ({ shownComponent }) => {
             <CurrentChampion />
             {lastRaceData && (
               <div className="side-bar-text">
-                <Typography component="span" variant="h4">
+                <Typography component="span" variant="h5">
                   Last Race Top 5
                 </Typography>
               </div>
@@ -116,7 +116,7 @@ const SideBar = ({ shownComponent }) => {
             {championshipData && (
               <div>
                 <div className="side-bar-text">
-                  <Typography>Championship Standings Top 5</Typography>
+                  <Typography component="span" variant="h5">Championship Standings Top 5</Typography>
                 </div>
                 {championshipData &&
                   championshipData.map((driver, idx) => {
@@ -168,7 +168,7 @@ const SideBar = ({ shownComponent }) => {
             {constructorData && (
               <div>
                 <div className="side-bar-text">
-                  <Typography component="span" variant="h4">
+                  <Typography component="span" variant="h5">
                     Constructor Standings Top 5
                   </Typography>
                 </div>

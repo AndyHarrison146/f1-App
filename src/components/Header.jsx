@@ -8,7 +8,6 @@ import {
   ListItem,
   ListItemText,
   List,
-  CircularProgress,
   Grid,
   Typography,
 } from "@material-ui/core";
@@ -77,7 +76,6 @@ const Header = () => {
       .then((res) => {
         const _lastRound = res.data.MRData.RaceTable.round;
         setLastRound(_lastRound);
-        console.log(res.data.MRData.RaceTable);
       });
   };
 
@@ -93,7 +91,6 @@ const Header = () => {
 
   const getNextRound = () => {
     const currentYear = moment().format("YYYY");
-    console.log(currentYear);
     axios.get(`https://ergast.com/api/f1/${currentYear}.json`).then((res) => {
       setNextRound(res.data.MRData.RaceTable.Races[0]);
     });

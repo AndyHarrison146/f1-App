@@ -32,7 +32,7 @@ const LastRace = () => {
         {lastRaceData && (
           <div style={{ marginTop: "30px" }}>
             <Card className="title-card">
-              <Typography component={"span"} variant="h4">{`${
+              <Typography component={"span"} variant="h3">{`${
                 lastRaceData[lastRaceData.length - 1].Circuit.circuitName
               } Round: ${
                 lastRaceData[lastRaceData.length - 1].round
@@ -44,7 +44,6 @@ const LastRace = () => {
           lastRaceData[lastRaceData.length - 1].Results.map((driver) => {
             const { positionText, Time, Constructor, Driver, status, grid } =
               driver;
-            console.log(driver);
             const teamColor = driverTeamInfo(driver.Constructor.name).primary;
             const teamImg = driverTeamInfo(driver.Constructor.name).url;
             return (
