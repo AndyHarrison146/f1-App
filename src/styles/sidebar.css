@@ -1,0 +1,346 @@
+@media (max-width: 600px) {
+  .champion-card-div {
+    display: none;
+  }
+
+  .champion-card {
+    display: none;
+  }
+
+  .champion-text {
+    width: 200px;
+    margin-bottom: 10px;
+  }
+
+  .champion-img {
+    width: 100px;
+  }
+
+  .champion-logo {
+    margin-left: 75px;
+  }
+
+  .sidebar-card {
+    width: 250px;
+    height: 50px;
+  }
+
+  .side-bar-content {
+    margin-top: 3px;
+    width: 250px;
+    height: 50px;
+  }
+
+  .side-bar-text {
+    width: 220px;
+    margin-top: 30px;
+  }
+
+  .sidebar-position {
+    float: left;
+    width: 30px;
+    height: 50px;
+    margin-left: 5px;
+    padding-top: 12px;
+  }
+
+  .sidebar-info {
+    float: left;
+    height: 50px;
+    width: 200px;
+  }
+
+  .sidebar-info-top {
+    float: left;
+    margin-top: 3px;
+    width: 160px;
+    height: 20px;
+  }
+
+  .sidebar-info-bottom {
+    float: left;
+    width: 160px;
+    height: 20px;
+  }
+
+  .sidebar-info-points {
+    float: right;
+    margin-right: 10px;
+    margin-top: 12px;
+    width: 30px;
+    height: 50px;
+  }
+}
+
+@media (min-width: 600px) {
+  .champion-card-div {
+    margin-top: 60px;
+  }
+
+  .champion-card {
+    width: 250px;
+    height: 300px;
+  }
+
+  .champion-text {
+    width: 200px;
+    margin-bottom: 10px;
+  }
+
+  .champion-img {
+    width: 100px;
+  }
+
+  .champion-logo {
+    margin-left: 75px;
+  }
+
+  .sidebar-card {
+    width: 250px;
+    height: 50px;
+  }
+
+  .side-bar-content {
+    margin-top: 3px;
+    width: 250px;
+    height: 50px;
+  }
+
+  .side-bar-text {
+    width: 220px;
+    margin-top: 30px;
+  }
+
+  .sidebar-position {
+    float: left;
+    width: 30px;
+    height: 50px;
+    margin-left: 5px;
+    padding-top: 12px;
+  }
+
+  .sidebar-info {
+    float: left;
+    height: 50px;
+    width: 200px;
+  }
+
+  .sidebar-info-top {
+    float: left;
+    margin-top: 3px;
+    width: 160px;
+    height: 20px;
+  }
+
+  .sidebar-info-bottom {
+    float: left;
+    width: 160px;
+    height: 20px;
+  }
+
+  .sidebar-info-points {
+    float: right;
+    margin-right: 10px;
+    margin-top: 12px;
+    width: 30px;
+    height: 50px;
+  }
+}
+
+@media (min-width: 960px) {
+  .champion-card {
+    width: 300px;
+    height: 350px;
+  }
+
+  .champion-text {
+    width: 250px;
+  }
+
+  .champion-img {
+    width: 130px;
+  }
+
+  .champion-logo {
+    margin-left: 95px;
+  }
+
+  .sidebar-card {
+    width: 300px;
+  }
+
+  .side-bar-content {
+    width: 300px;
+    height: 50px;
+  }
+
+  .side-bar-text {
+    width: 240px;
+    margin-top: 30px;
+  }
+
+  .sidebar-position {
+    width: 40px;
+  }
+
+  .sidebar-info {
+    width: 240px;
+  }
+
+  .sidebar-info-top {
+    width: 180px;
+  }
+
+  .sidebar-info-bottom {
+    width: 180px;
+  }
+
+  .sidebar-info-points {
+    width: 40px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .champion-card-div {
+    margin-top: 90px;
+  }
+
+  .champion-card {
+    width: 350px;
+    height: 450px;
+  }
+
+  .champion-text {
+    width: 300px;
+    margin-bottom: 10px;
+  }
+
+  .champion-img {
+    width: 170px;
+  }
+
+  .champion-logo {
+    margin-left: 115px;
+  }
+
+  .sidebar-card {
+    width: 350px;
+    height: 70px;
+  }
+
+  .side-bar-content {
+    margin-top: 8px;
+    width: 350px;
+    height: 70px;
+  }
+
+  .side-bar-text {
+    width: 320px;
+    margin-top: 40px;
+  }
+
+  .sidebar-position {
+    float: left;
+    width: 30px;
+    height: 70px;
+    margin-left: 10px;
+    padding-top: 12px;
+  }
+
+  .sidebar-info {
+    float: left;
+    height: 50px;
+    width: 270px;
+  }
+
+  .sidebar-info-top {
+    float: left;
+    margin-top: 3px;
+    width: 220px;
+    height: 20px;
+  }
+
+  .sidebar-info-bottom {
+    float: left;
+    width: 220px;
+    height: 20px;
+  }
+
+  .sidebar-info-points {
+    float: right;
+    margin-right: 5px;
+    margin-top: 12px;
+    width: 30px;
+    height: 50px;
+  }
+}
+
+@media (min-width: 1680px) {
+  .champion-card-div {
+    margin-top: 90px;
+  }
+
+  .champion-card {
+    width: 380px;
+    height: 450px;
+  }
+
+  .champion-text {
+    width: 320px;
+    margin-bottom: 10px;
+  }
+
+  .champion-img {
+    width: 170px;
+  }
+
+  .champion-logo {
+    margin-left: 120px;
+  }
+
+  .sidebar-card {
+    width: 370px;
+    height: 70px;
+  }
+
+  .side-bar-content {
+    margin-top: 8px;
+    width: 370px;
+    height: 70px;
+  }
+
+  .side-bar-text {
+    width: 340px;
+    margin-top: 40px;
+  }
+
+  .sidebar-position {
+    width: 30px;
+    height: 70px;
+    margin-left: 10px;
+    padding-top: 12px;
+  }
+
+  .sidebar-info {
+    height: 50px;
+    width: 300px;
+  }
+
+  .sidebar-info-top {
+    margin-top: 3px;
+    width: 260px;
+    height: 20px;
+  }
+
+  .sidebar-info-bottom {
+    width: 260px;
+    height: 20px;
+  }
+
+  .sidebar-info-points {
+    margin-right: 5px;
+    margin-top: 12px;
+    width: 30px;
+    height: 50px;
+  }
+}
