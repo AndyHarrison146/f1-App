@@ -61,7 +61,7 @@ const Header = () => {
   const history = useHistory();
   const [navState, setNavState] = useState(false);
   const [lastRound, setLastRound] = useState();
-  const [nextRound, setNextRound] = useState("");
+  const [nextRound, setNextRound] = useState();
   const [time, setTime] = useState();
 
   const toggleDrawer = (open) => {
@@ -75,34 +75,32 @@ const Header = () => {
       .get("http://ergast.com/api/f1/current/last/results.json")
       .then((res) => {
         const _lastRound = res.data.MRData.RaceTable.round;
-        setLastRound(_lastRound);
+        console.log(res.data.MRData.RaceTable);
+        setLastRound(Number(_lastRound));
       });
   };
 
-  // const getNextRound = () => {
-  //   axios.get("http://ergast.com/api/f1/current.json").then((res) => {
-  //     if (res.data.MRData.RaceTable.Races.length == lastRound) {
-  //       console.log("here");
-  //       getNextYearRound();
-  //     }
-  //     setNextRound(res.data.MRData.RaceTable.Races[lastRound]);
-  //   });
-  // };
-
   const getNextRound = () => {
-    const currentYear = moment().format("YYYY");
-    axios.get(`https://ergast.com/api/f1/${currentYear}.json`).then((res) => {
-      setNextRound(res.data.MRData.RaceTable.Races[0]);
+    axios.get("http://ergast.com/api/f1/current.json").then((res) => {
+      console.log(res.data.MRData.RaceTable);
+      setNextRound(res.data.MRData.RaceTable.Races[lastRound]);
     });
   };
 
-  // useEffect(() => {
-  //   getLastRound();
-  // }, []);
+  // const getNextRound = () => {
+  //   const currentYear = moment().format("YYYY");
+  //   axios.get(`https://ergast.com/api/f1/${currentYear}.json`).then((res) => {
+  //     setNextRound(res.data.MRData.RaceTable.Races[0]);
+  //   });
+  // };
+
+  useEffect(() => {
+    getLastRound();
+  }, []);
 
   useEffect(() => {
     getNextRound();
-  }, []);
+  }, [lastRound]);
 
   useEffect(() => {
     if (!nextRound) {
