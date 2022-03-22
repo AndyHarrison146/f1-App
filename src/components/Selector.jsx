@@ -105,7 +105,7 @@ const Selector = ({changeYear, driverArr, changeDriverId, teamArr, changeTeam, s
         </Grid>)
       )}
       {pathname === '/Race' && season && (
-        <Grid xs={6} sm={6} md={6} lg={6}>
+        <Grid item xs={6} sm={6} md={6} lg={6}>
           <div className='select-background-round'>
             <Select
               className='select'
