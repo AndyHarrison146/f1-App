@@ -31,23 +31,27 @@
 }
 
 .select {
-  width: 230px;
+  width: 200px;
+}
+
+.select-label {
+  align-self: center;
 }
 
 .select-background {
   background-color: white;
-  float: right;
 }
 
-.select-background-single {
+.select-background-year {
   background-color: white;
-  float: inline-start;
-  margin-top: 10px;
 }
 
 .select-background-round {
   background-color: white;
-  float:left;
+}
+
+.option-selector {
+  margin-left: 10px;
 }
 
 @media (max-width: 600px) {
@@ -66,26 +70,24 @@
   }
 
   .select {
-    width: 170px;
-    height: 150px;
+    width: 200px;
+    height: 38px;
   }
 
   .select-background {
-    width:170px;
-    height: 150px;
-    margin: 10px;
+    width:200px;
+    height: 38px;
+    margin-top: 10px;
   }
 
-  .select-background-single {
-    width:170px;
-    height: 150px;
-    margin: 10px;
+  .select-background-year {
+    width:  200px;
+    height: 38px;
   }
 
   .select-background-round {
-    width:170px;
-    height: 150px;
-    margin: 10px;
+    width: 200px;
+    height: 38px;
   }
 }
 
@@ -121,25 +123,24 @@
 
   .select {
     width: 230px;
-    height: 180px;
+    height: 38px;
   }
 
   .select-background {
     width:230px;
-    height: 180px;
+    height: 38px;
     margin: 20px;
   }
 
   
-  .select-background-single {
-    width:230px;
-    height: 180px;
+  .select-background-year {
+    width:  200px;
+    height: 38px;
   }
 
   .select-background-round {
-    width:230px;
-    height: 180px;
-    margin: 20px;
+    width: 200px;
+    height: 38px;
   }
 }
 @media (min-width: 960px) {
@@ -174,24 +175,25 @@
 
   .select {
     width: 230px;
-    height:188px;
+    height: 38px;
   }
 
   .select-background {
     width:230px;
-    height:188px;
+    height: 38px;
     margin: 30px;
   }
 
-  .select-background-single {
-    width:230px;
-    height:188px;
+  .select-background-year {
+    width:  200px;
+    height: 38px;
+    margin-left: 150px;
   }
 
   .select-background-round {
-    width:230px;
-    height:188px;
-    margin: 30px;
+    width: 200px;
+    height: 38px;
+    margin-right: 150px;
   }
 }
 
@@ -219,24 +221,25 @@
 
   .select {
     width: 250px;
-    height: 220px;
+    height: 38px;
   }
 
   .select-background {
     width: 250px;
-    height: 220px;
+    height: 38px;
     margin: 30px;
   }
 
-  .select-background-single {
-    width: 250px;
-    height: 220px;
+  .select-background-year {
+    width:  200px;
+    height: 38px;
+    margin-left: 220px;
   }
 
   .select-background-round {
-    width: 250px;
-    height: 220px;
-    margin: 30px;
+    width: 200px;
+    height: 38px;
+    margin-right: 220px;
   }
 }
 @media (min-width: 1680px) {
@@ -263,23 +266,23 @@
 
   .select {
     width: 250px;
-    height: 220px;
+    height: 38px;
   }
 
   .select-background {
     width: 250px;
-    height: 220px;
+    height: 38px;
     margin: 30px;
   }
-
-  .select-background-single {
-    width: 250px;
-    height: 220px;
+  .select-background-year {
+    width:  200px;
+    height: 38px;
+    margin-left: 450px;
   }
 
   .select-background-round {
-    width: 250px;
-    height: 220px;
-    margin: 30px;
+    width: 200px;
+    height: 38px;
+    margin-right: 450px;
   }
 }
