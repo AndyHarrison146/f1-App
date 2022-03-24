@@ -60,7 +60,7 @@ const Header = () => {
   const history = useHistory();
   const [navState, setNavState] = useState(false);
   const [lastRound, setLastRound] = useState();
-  const [nextRound, setNextRound] = useState("");
+  const [nextRound, setNextRound] = useState();
   const [time, setTime] = useState();
 
   const toggleDrawer = (open) => {

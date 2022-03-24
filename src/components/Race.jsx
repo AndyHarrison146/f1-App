@@ -125,7 +125,7 @@ const Race = () => {
                             Team:
                           </Typography>
                           <Typography component={"span"} variant="h5">
-                            {Constructor.name}
+                            {` ${Constructor.name}`}
                           </Typography>
                         </div>
                       </Grid>
