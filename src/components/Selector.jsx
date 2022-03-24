@@ -95,12 +95,12 @@ const Selector = ({changeYear, driverArr, changeDriverId, teamArr, changeTeam, s
 
   return (
     <>
+      {pathname !== '/Race' && options &&(
       <Grid      
       container
       spacing={0}
       alignContent='center'
       style={{ minHeight: "100px", minWidth: "100%" }}>
-        {pathname !== '/Race' && options &&(
           <Grid item xs={12} sm={12} md={12} lg={12}>
               <div className='select-background'>
                 <Select
@@ -111,14 +111,14 @@ const Selector = ({changeYear, driverArr, changeDriverId, teamArr, changeTeam, s
                 />
               </div>
           </Grid>
-        )}
       </Grid>
+      )}
+      {pathname === '/Race' && (
       <Grid      
       container
-      spacing={4}
+      spacing={0}
       alignContent='center'
       style={{ minHeight: "100px", minWidth: "100%" }}>
-        {pathname === '/Race' && (
           <Grid item xs={6} sm={6} md={6} lg={6}>
             <div className='select-background-year'>
               <Select
@@ -129,7 +129,6 @@ const Selector = ({changeYear, driverArr, changeDriverId, teamArr, changeTeam, s
               />
             </div>
           </Grid>
-        )}
         {racesArr && (
           <Grid item xs={6} sm={6} md={6} lg={6}>
             <div className='select-background-round'>
@@ -142,7 +141,8 @@ const Selector = ({changeYear, driverArr, changeDriverId, teamArr, changeTeam, s
             </div>
           </Grid>
         )}
-      </Grid>
+        </Grid>
+        )}
     </>
   )
 }
