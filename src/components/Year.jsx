@@ -46,7 +46,6 @@ function Year() {
       spacing={0}
       align="center"
       justifyContent="space-between"
-      alignContent="center"
       style={{ minHeight: "100vh", minWidth: "100vw", marginBottom: '40px' }}>
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <Selector year={year} changeYear={setYear} />
@@ -60,7 +59,6 @@ function Year() {
               </Typography>
               <Typography variant="h4">{`Championship Winner: ${championshipWinner.Driver.givenName} ${championshipWinner.Driver.familyName}`}</Typography>
             </Card>
-              
             {yearData &&
               yearData.Races.map((race) => {
                 const { raceName, round, Results, Circuit } = race;

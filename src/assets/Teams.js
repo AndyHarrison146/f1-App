@@ -9,7 +9,6 @@ import alfa from "../img/logos/Alfa_Romeo.png";
 import williams from "../img/logos/Williams.png";
 import haas from "../img/logos/Haas F1 Team.png";
 import latifi from "../img/latifi.jpg";
-import noImage from "../img/No_Image_Available.jpg";
 
 export const Teams = [
   {

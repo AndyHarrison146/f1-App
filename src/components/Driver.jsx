@@ -10,7 +10,7 @@ import "../styles/driver.css";
 const Driver = () => {
   const [driverChampionships, setDriverChampionships] = useState();
   const [driverId, setDriverId] = useState();
-  const [driverArr, setDriverArr] = useState([]);
+  const [driverArr, setDriverArr] = useState();
   const [driverArrSurname, setDriverArrSurname] = useState([]);
   const [driverData, setDriverData] = useState();
   const [wins, setWins] = useState();
@@ -48,6 +48,7 @@ const Driver = () => {
   };
 
   useEffect(() => {
+    if(driverArr) return;
     getDrivers();
   }, []);
 
@@ -65,6 +66,7 @@ const Driver = () => {
       justifyContent="space-around"
       style={{ minHeight: "100vh", minWidth: "100vw" }}>
       <Grid item xs={12} sm={12} md={6} lg={6}>
+        {driverArr && (
         <Selector
           driverId={driverId}
           changeDriverId={setDriverId}
@@ -72,6 +74,7 @@ const Driver = () => {
           driverArrSurname={driverArrSurname}
           setDriverUrl={setDriverUrl}
         />
+        )}
         {driverData && (
           <Card className="driver-card">
             <Grid

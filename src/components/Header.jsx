@@ -24,7 +24,6 @@ import {
   faUsers,
   faQuestion,
 } from "@fortawesome/free-solid-svg-icons";
-import moment from "moment";
 
 const Header = () => {
   const classes = useStyles();
@@ -75,14 +74,12 @@ const Header = () => {
       .get("http://ergast.com/api/f1/current/last/results.json")
       .then((res) => {
         const _lastRound = res.data.MRData.RaceTable.round;
-        console.log(res.data.MRData.RaceTable);
         setLastRound(Number(_lastRound));
       });
   };
 
   const getNextRound = () => {
     axios.get("http://ergast.com/api/f1/current.json").then((res) => {
-      console.log(res.data.MRData.RaceTable);
       setNextRound(res.data.MRData.RaceTable.Races[lastRound]);
     });
   };
@@ -106,9 +103,9 @@ const Header = () => {
     if (!nextRound) {
       return;
     }
-    let countdownDate = new Date(
-      `${nextRound.date} ${nextRound.time}`
-    ).getTime();
+    const date = nextRound.date + ' ' + nextRound.time;
+    const formattedDate = date.replace(/\-/g, '/');
+    let countdownDate = new Date(formattedDate).getTime();
     let x = setInterval(function () {
       let now = new Date().getTime();
       let distance = countdownDate - now;
