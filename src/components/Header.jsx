@@ -140,10 +140,10 @@ const Header = () => {
                 <MenuIcon />
               </IconButton>
             </Grid>
-            <Grid item xs={6} sm={4} md={4} lg={4} align="center">
+            <Grid item xs={5} sm={4} md={4} lg={4} align="center">
               <Typography variant="h1">F1 Grid Check</Typography>
             </Grid>
-            <Grid item xs={4} sm={4} md={4} lg={4} align="right">
+            <Grid item xs={5} sm={4} md={4} lg={4} align="right">
               {nextRound ? (
                 <div className="time-race">
                   <Typography variant="h6">
