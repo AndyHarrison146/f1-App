@@ -9,7 +9,6 @@ import alfa from "../img/logos/Alfa_Romeo.png";
 import williams from "../img/logos/Williams.png";
 import haas from "../img/logos/Haas F1 Team.png";
 import latifi from "../img/latifi.jpg";
-import noImage from "../img/No_Image_Available.jpg";
 
 export const Teams = [
   {
@@ -137,9 +136,8 @@ export const Teams = [
     driver1: "Mick Schumacher",
     driver1Url:
       "https://upload.wikimedia.org/wikipedia/commons/e/eb/Mick_Schumacher_-_2019202181015_2019-07-21_Champions_for_Charity_-_1500_-_B70I1535.jpg",
-    driver2: "TBA",
-    driver2Url:
-      noImage,
+    driver2: "Kevin Magnussen",
+    driver2Url: 'https://upload.wikimedia.org/wikipedia/commons/1/18/2017_United_States_Grand_Prix_Magnussen_2_%2824128155318%29.jpg',
     teamPrincipal: "Guenther Steiner",
   },
 ];

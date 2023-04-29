@@ -51,6 +51,10 @@
 }
 
 @media (max-width: 600px) {
+  .time-race {
+    width: 150px;
+  }
+
   .driver {
     width: 180px;
   }

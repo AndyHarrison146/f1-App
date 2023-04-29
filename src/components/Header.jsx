@@ -24,7 +24,6 @@ import {
   faUsers,
   faQuestion,
 } from "@fortawesome/free-solid-svg-icons";
-import moment from "moment";
 
 const Header = () => {
   const classes = useStyles();
@@ -61,7 +60,7 @@ const Header = () => {
   const history = useHistory();
   const [navState, setNavState] = useState(false);
   const [lastRound, setLastRound] = useState();
-  const [nextRound, setNextRound] = useState("");
+  const [nextRound, setNextRound] = useState();
   const [time, setTime] = useState();
 
   const toggleDrawer = (open) => {
@@ -75,42 +74,38 @@ const Header = () => {
       .get("http://ergast.com/api/f1/current/last/results.json")
       .then((res) => {
         const _lastRound = res.data.MRData.RaceTable.round;
-        setLastRound(_lastRound);
+        setLastRound(Number(_lastRound));
       });
   };
 
-  // const getNextRound = () => {
-  //   axios.get("http://ergast.com/api/f1/current.json").then((res) => {
-  //     if (res.data.MRData.RaceTable.Races.length == lastRound) {
-  //       console.log("here");
-  //       getNextYearRound();
-  //     }
-  //     setNextRound(res.data.MRData.RaceTable.Races[lastRound]);
-  //   });
-  // };
-
   const getNextRound = () => {
-    const currentYear = moment().format("YYYY");
-    axios.get(`https://ergast.com/api/f1/${currentYear}.json`).then((res) => {
-      setNextRound(res.data.MRData.RaceTable.Races[0]);
+    axios.get("http://ergast.com/api/f1/current.json").then((res) => {
+      setNextRound(res.data.MRData.RaceTable.Races[lastRound]);
     });
   };
 
-  // useEffect(() => {
-  //   getLastRound();
-  // }, []);
+  // const getNextRound = () => {
+  //   const currentYear = moment().format("YYYY");
+  //   axios.get(`https://ergast.com/api/f1/${currentYear}.json`).then((res) => {
+  //     setNextRound(res.data.MRData.RaceTable.Races[0]);
+  //   });
+  // };
+
+  useEffect(() => {
+    getLastRound();
+  }, []);
 
   useEffect(() => {
     getNextRound();
-  }, []);
+  }, [lastRound]);
 
   useEffect(() => {
     if (!nextRound) {
       return;
     }
-    let countdownDate = new Date(
-      `${nextRound.date} ${nextRound.time}`
-    ).getTime();
+    const date = nextRound.date + ' ' + nextRound.time;
+    const formattedDate = date.replace(/\-/g, '/');
+    let countdownDate = new Date(formattedDate).getTime();
     let x = setInterval(function () {
       let now = new Date().getTime();
       let distance = countdownDate - now;
@@ -145,16 +140,16 @@ const Header = () => {
                 <MenuIcon />
               </IconButton>
             </Grid>
-            <Grid item xs={4} sm={4} md={4} lg={4} align="center">
+            <Grid item xs={5} sm={4} md={4} lg={4} align="center">
               <Typography variant="h1">F1 Grid Check</Typography>
             </Grid>
-            <Grid item xs={6} sm={4} md={4} lg={4} align="right">
+            <Grid item xs={5} sm={4} md={4} lg={4} align="right">
               {nextRound ? (
-                <div>
+                <div className="time-race">
                   <Typography variant="h6">
                     {`Next Race: Round ${nextRound.round} ${nextRound.raceName} `}
                   </Typography>
-                  <Typography variant="h4">{time}</Typography>
+                  <Typography variant="h4">{time ? time : ''}</Typography>
                 </div>
               ) : (
                 <div>

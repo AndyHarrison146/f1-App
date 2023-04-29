@@ -15,7 +15,6 @@
 .year-race-name {
   float: left;
   text-align: left;
-  margin-top: 3px;
 }
 
 .winner-year {
@@ -43,18 +42,9 @@
     margin-top: 2px;
   }
 
-  .year-race-name {
-    margin-top: 1px;
-  }
-
   .grid-year {
-    margin-top: 2px;
     text-align: center;
     padding-inline: 20px;
-  }
-
-  .winner-year {
-    margin-top: 0px;
   }
 }
 

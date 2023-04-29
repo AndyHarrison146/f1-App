@@ -2,6 +2,9 @@ import { unstable_createMuiStrictModeTheme as createMuiTheme } from "@material-u
 
 const theme = createMuiTheme({
   overrides: {
+    MuiFocused: {
+      borderRadius: '5px'
+    },
     MuiCard: {
       root: {
         marginTop: "50px",

@@ -1,132 +1,149 @@
-import React from 'react';
-import Select from "@material-ui/core/Select";
+import React, {useEffect, useState} from 'react';
+import Select from 'react-select'
 import { years } from '../assets/Years';
-import {useStyles} from '../styles';
 import { Grid } from "@material-ui/core";
 import '../styles/race.css';
 
-
 const Selector = ({changeYear, driverArr, changeDriverId, teamArr, changeTeam, season, races, changeRound, changeRaceData, changeSeason}) => {
+  const [selected, setSelected] = useState();
+  const [racesArr, setRacesArr] = useState();
+  const [options, setOptions] = useState();
   const pathname = window.location.pathname;
-
-  const handleChange = (event) => {
-    const { options } = event.target;
-    const value = [];
-    for (let i = 0, l = options.length; i < l; i += 1) {
-      if (options[i].selected) {
-        value.push(options[i].value);
-      }
-    }
-    if (pathname === '/Year') {
-      changeYear((parseInt(value)))
-    }
-    if (pathname === '/Race') {
-      changeSeason(value)
-      changeRaceData('')
-    }
-    if (pathname === '/Driver') {
-      changeDriverId('')
-      changeDriverId(value)
-    }
-    if (pathname === '/Team') {
-      changeTeam(value)
+  
+  useEffect(() => {
+    handleOptions();
+  }, []);
+  
+  useEffect(() => {
+    races && hydrateRaceOptions(races);
+  }, [races]);
+      
+  const hydrateDriverOptions = () => {
+    const _driverArr = [];
+    driverArr.forEach((driver) => {
+      _driverArr.push({
+            value: driver.driverId,
+            label: `${driver.givenName} ${driver.familyName}`
+      })
+    })
+    if(driverArr.length === _driverArr.length) {
+      setOptions(_driverArr);
     }
   };
 
-  const handleRaceChange = (event) => {
-    const { options } = event.target;
-    const value = [];
-    for (let i = 0, l = options.length; i < l; i += 1) {
-      if (options[i].selected) {
-        value.push(options[i].value);
-      }
+  const hydrateRaceOptions = (racesRes) => {
+    const _racesArr = [];
+    racesRes.forEach((race) => {
+      _racesArr.push({
+            value: race.round,
+            label: `${race.round} ${race.raceName}`
+      })
+    })
+    if(racesRes.length === _racesArr.length) {
+      setRacesArr(_racesArr);
     }
-    if (pathname === '/Race' && season) {
-      changeRound(value)
-    }
+  }
 
+  const handleOptions = () => {
+    switch(pathname) {
+      case '/Year':
+        setOptions(years);
+        break
+      case '/Driver':
+        if(driverArr) {
+          hydrateDriverOptions();
+        }
+        break
+      case '/Race':
+        setOptions(years);
+        break
+      default:
+        return;
+    }
+  }
+
+  const handleChange = (select) => {
+    const {value} = select;
+    switch(pathname) {
+      case '/Year':
+        setSelected(value)
+        changeYear((parseInt(value)))
+        break
+      case '/Race': 
+        setSelected(value)
+        changeSeason(value)
+        changeRaceData('')
+        break
+      case '/Driver':
+        setSelected(value)
+        changeDriverId(value)
+        break
+      case '/Team':
+        setSelected(value)
+        changeTeam(value)
+        break
+      default:
+        return;
+    }
+  };
+
+
+  const handleRaceChange = (select) => {
+    const { value } = select;
+    changeRound(parseInt(value));
   }
 
   return (
-    <Grid      
-    container
-    spacing={0}
-    alignContent='center'
-    style={{ minHeight: "100px", minWidth: "100%" }}>
-    {pathname !== '/Race' && (
-    <Grid item xs={12} sm={12} md={12} lg={12}>
-        <div className='select-background-single'>
-          <Select
-          className='select'
-          type="select-multiple"
-          multiple
-          native
-          onChange={handleChange}
-          inputProps={{
-            id: "select-multiple-native",
-          }}
-          >
-            {pathname === '/Driver' && driverArr.map((driver) => (
-              <option style={{textAlign: 'left'}} key={`${driver.givenName} ${driver.familyName}`} value={driver.driverId}>
-              {`${driver.givenName} ${driver.familyName}`}
-              </option>
-            ))}
-            {pathname === '/Year' && years.map((season) => (
-              <option style={{textAlign: 'center'}} key={season} value={season}>
-              {season}
-              </option>
-            ))}
-            {pathname === '/Team' && teamArr.map((team) => (
-              <option style={{textAlign: 'left'}} key={team.constructorId} value={team.constructorId}>{team.name}</option>
-              ))}
-          </Select>
-        </div>
-      </Grid>)}
-      {(pathname === '/Race' && (
-        <Grid item xs={6} sm={6} md={6} lg={6}>
-          <div className='select-background'>
-            <Select
-            className='select'
-            type="select-multiple"
-            multiple
-            native
-            onChange={handleChange}
-            inputProps={{
-              id: "select-multiple-native",
-            }}
-            >
-              {years.map((season) => (
-                <option style={{textAlign: 'center'}} key={season} value={season}>
-                {season}
-                </option>
-              ))}
-            </Select>
-          </div>
-        </Grid>)
+    <>
+      {pathname !== '/Race' && options &&(
+      <Grid      
+      container
+      spacing={0}
+      alignContent='center'
+      style={{ minHeight: "100px", minWidth: "100%" }}>
+          <Grid item xs={12} sm={12} md={12} lg={12}>
+              <div className='select-background'>
+                <Select
+                className='select'
+                onChange={handleChange}
+                defaultValue={selected}
+                options={options}
+                />
+              </div>
+          </Grid>
+      </Grid>
       )}
-      {pathname === '/Race' && season && (
-        <Grid xs={6} sm={6} md={6} lg={6}>
-          <div className='select-background-round'>
-            <Select
+      {pathname === '/Race' && (
+      <Grid      
+      container
+      spacing={0}
+      alignContent='center'
+      style={{ minHeight: "100px", minWidth: "100%" }}>
+          <Grid item xs={6} sm={6} md={6} lg={6}>
+            <div className='select-background-year'>
+              <Select
               className='select'
-              type="select-multiple"
-              multiple
-              native
-              onChange={handleRaceChange}
-              inputProps={{
-                id: "select-multiple-native",
-              }}
-              >
-              {pathname === '/Race' && races && races.map((season) => (
-                <option style={{textAlign: 'left'}} key={season.round} value={season.round}>
-                  {season.round} {season.raceName}
-                </option>
-              ))}
-            </Select>
-          </div>
+              onChange={handleChange}
+              defaultValue={selected}
+              options={options}
+              />
+            </div>
+          </Grid>
+        {racesArr && (
+          <Grid item xs={6} sm={6} md={6} lg={6}>
+            <div className='select-background-round'>
+              <Select
+                className='select'
+                onChange={handleRaceChange}
+                defaultValue={selected}
+                options={racesArr}
+                />
+            </div>
+          </Grid>
+        )}
         </Grid>
-      )}
-    </Grid>
+        )}
+    </>
   )
 }
 
