@@ -7,20 +7,20 @@ const theme = createMuiTheme({
     },
     MuiCard: {
       root: {
-        marginTop: "50px",
-        borderRadius: "30px",
+        marginTop: "10px",
+        borderRadius: "8px",
         "@media(max-width:600px)": {
-          marginTop: "10px",
+          marginTop: "5px",
         },
         "@media(min-width:600px)": {
-          borderRadius: "35px",
-          marginTop: "12px",
+          borderRadius: "8px",
+          marginTop: "5px",
         },
         "@media(min-width:960px)": {
-          marginTop: "15px",
+          marginTop: "5px",
         },
         "@media(min-width:1280px)": {
-          borderRadius: "45px",
+          borderRadius: "8px",
         },
       },
     },
@@ -78,7 +78,19 @@ const theme = createMuiTheme({
       },
     },
     h5: {
-      fontSize: 14,
+      fontSize: 12,
+      "@media(min-width:600px)": {
+        fontSize: 14,
+      },
+      "@media(min-width:960px)": {
+        fontSize: 16,
+      },
+      "@media(min-width:1280px)": {
+        fontSize: 18,
+      },
+    },
+    h4: {
+      fontSize: 13,
       "@media(min-width:600px)": {
         fontSize: 16,
       },
@@ -89,8 +101,8 @@ const theme = createMuiTheme({
         fontSize: 21,
       },
     },
-    h4: {
-      fontSize: 13,
+    h3: {
+      fontSize: 16,
       "@media(min-width:600px)": {
         fontSize: 18,
       },
@@ -101,8 +113,8 @@ const theme = createMuiTheme({
         fontSize: 24,
       },
     },
-    h3: {
-      fontSize: 16,
+    h2: {
+      fontSize: 18,
       "@media(min-width:600px)": {
         fontSize: 21,
       },
@@ -113,8 +125,8 @@ const theme = createMuiTheme({
         fontSize: 28,
       },
     },
-    h2: {
-      fontSize: 20,
+    h1: {
+      fontSize: 24,
       "@media(min-width:600px)": {
         fontSize: 24,
       },
@@ -123,18 +135,6 @@ const theme = createMuiTheme({
       },
       "@media(min-width:1280px)": {
         fontSize: 32,
-      },
-    },
-    h1: {
-      fontSize: 26,
-      "@media(min-width:600px)": {
-        fontSize: 30,
-      },
-      "@media(min-width:960px)": {
-        fontSize: 36,
-      },
-      "@media(min-width:1280px)": {
-        fontSize: 40,
       },
     },
   },

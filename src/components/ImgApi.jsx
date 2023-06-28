@@ -6,98 +6,47 @@ import {
 } from "../services/DataService";
 import noImage from "../img/No_Image_Available.jpg";
 import "../styles/driver.css";
+import useProfileImage from "../hooks/useProfileImage";
+import useImageTitle from "../hooks/useImageTitle";
+import useWikiImage from "../hooks/useWikiImage";
 
 const ImgApi = ({ driverUrl }) => {
-  const [title, setTitle] = useState();
-  const [wikiName, setWikiName] = useState();
-  const [noProfileImg, setNoProfileImg] = useState(false);
-  const [imgUrl, setImgUrl] = useState("");
-
-  const getProfileImg = (name) => {
-    getWikiProfileImg(name).then((res) => {
-      const data = res.data.query;
-      const pages = data.pages;
-      for (const page in pages) {
-        if (pages[page].original?.source) {
-          setImgUrl(pages[page].original.source);
-        }
-      }
-    });
-  };
-
-  const getImgTitle = (name) => {
-    getWikiImgTitle(name).then((res) => {
-      setTitle(null);
-      if (res.data.query.pages) {
-        const pages = res.data.query.pages;
-        for (const page in pages) {
-          if (pages[page].images) {
-            for (const img of pages[page].images) {
-              if (img.title.includes(".jpg", ".JPG", ".png", ".PNG")) {
-                const _title = img.title.replace(/\s/g, "_");
-                setTitle(_title);
-                break;
-              }
-            }
-          }
-        }
-      }
-    });
-  };
-
-  const getImgUrl = (title) => {
-    getWikiImgFromTitle(title).then((res) => {
-      const pages = res.data.query.pages;
-      for (const page in pages) {
-        if (pages[page].imageinfo) {
-          setImgUrl(pages[page].imageinfo[0].url);
-          break;
-        }
-      }
-    });
-  };
+  // const [title, setTitle] = useState();
 
   const getWikiName = (driverUrl) => {
-    setNoProfileImg(false);
     const index = driverUrl.lastIndexOf("/");
     const urlName = driverUrl.substr(index + 1);
     switch (urlName) {
       case "Alexander_Albon":
-        setWikiName("Alex_Albon");
-        break;
+        return ("Alex_Albon");
       case "Joakim_Bonnier":
-        setWikiName("jo_Bonnier");
-        break;
+        return ("jo_Bonnier");
       default:
-        setWikiName(urlName);
+        return (urlName);
     }
   };
+  
+  const wikiName = driverUrl && getWikiName()
+  const [imgUrl, setImgUrl] = useState("");
+  const { profileImage, error: profileError } = useProfileImage(wikiName);
+  const { imageTitle, error: titleError } = useImageTitle(profileError, wikiName);
+  // const { wikiImage, error: wikiImageError } = useWikiImage(imageTitle);
 
-  useEffect(() => {
-    driverUrl && getWikiName(driverUrl);
-    setImgUrl("");
-  }, [driverUrl, wikiName]);
 
-  useEffect(() => {
-    wikiName && getProfileImg(wikiName);
-    wikiName &&
-      setTimeout(() => {
-        !imgUrl && setNoProfileImg(true);
-      }, 500);
-  }, [wikiName]);
+  console.log(profileImage)
 
-  useEffect(() => {
-    noProfileImg && !imgUrl && getImgTitle(wikiName);
-  }, [noProfileImg]);
+  // useEffect(() => {
+  //   driverUrl && getWikiName(driverUrl);
+  // }, [driverUrl, wikiName]);
 
-  useEffect(() => {
-    title && getImgUrl(title);
-    title &&
-      setTimeout(() => {
-        if (imgUrl) return;
-        imgUrl && setImgUrl("");
-      }, 700);
-  }, [title]);
+  if(profileImage) {
+    setImgUrl(profileImage);
+  } 
+  //else if(profileError && wikiImage) {
+  //   setImgUrl(wikiImage);
+  // } else {
+  //   setImgUrl('');
+  // };
 
   return <img src={imgUrl ? imgUrl : noImage} className="driver-img" alt="" />;
 };

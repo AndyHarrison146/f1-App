@@ -1,24 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Card, Grid, Typography } from "@material-ui/core";
+import { Card, CircularProgress, Grid, Typography } from "@material-ui/core";
 import { driverTeamInfo, textColor, useWindowSize } from "../utils/utils";
-import { getLastRace } from "../services/DataService";
 import SideBar from "./sideBar";
 import "../styles/re-usedStyles.css";
+import useLastRace from "../hooks/useLastRace";
 
 const LastRace = () => {
-  const [lastRaceData, setLastRaceData] = useState();
+  const { lastRace, error } = useLastRace();
   const [screenSize, setScreenSize] = useWindowSize();
   const shownComponent = "lastRace";
 
-  useEffect(() => {
-    getLastRaceData();
-  }, []);
-
-  const getLastRaceData = () => {
-    getLastRace().then((res) => {
-      setLastRaceData(res.data.MRData.RaceTable.Races);
-    });
-  };
+  if(!lastRace) return <CircularProgress />;
 
   return (
     <Grid
@@ -29,19 +21,19 @@ const LastRace = () => {
       alignContent="flex-start"
       style={{ minHeight: "100vh", minWidth: "100vw" }}>
       <Grid item xs={12} sm={8} md={8} lg={8}>
-        {lastRaceData && (
-          <div style={{ marginTop: "30px" }}>
+        {lastRace && (
+          <div>
             <Card className="title-card">
               <Typography component={"span"} variant="h3">{`${
-                lastRaceData[lastRaceData.length - 1].Circuit.circuitName
+                lastRace.RaceTable.Races[lastRace.RaceTable.Races.length - 1].Circuit.circuitName
               } Round: ${
-                lastRaceData[lastRaceData.length - 1].round
+                lastRace.RaceTable.Races[lastRace.RaceTable.Races.length - 1].round
               }`}</Typography>
             </Card>
           </div>
         )}
-        {lastRaceData &&
-          lastRaceData[lastRaceData.length - 1].Results.map((driver) => {
+        {lastRace &&
+          lastRace.RaceTable.Races[lastRace.RaceTable.Races.length - 1].Results.map((driver) => {
             const { positionText, Time, Constructor, Driver, status, grid } =
               driver;
             const teamColor = driverTeamInfo(driver.Constructor.name).primary;

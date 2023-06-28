@@ -135,44 +135,148 @@
 @media (min-width: 600px) {
   .color-red {
     width: 55px;
-    padding-top: 15px;
+    padding-top: 25px;
   }
   .color-lightBlue {
     width: 55px;
-    padding-top: 15px;
+    padding-top: 25px;
   }
   .color-purple {
     width: 55px;
-    padding-top: 15px;
+    padding-top: 25px;
   }
 
   .color-orange {
     width: 55px;
-    padding-top: 15px;
+    padding-top: 25px;
   }
   .color-darkerBlue {
     width: 55px;
-    padding-top: 15px;
+    padding-top: 25px;
   }
   .color-blue {
     width: 55px;
-    padding-top: 15px;
+    padding-top: 25px;
   }
   .color-green {
     width: 55px;
-    padding-top: 15px;
+    padding-top: 25px;
   }
   .color-darkRed {
     width: 55px;
-    padding-top: 15px;
+    padding-top: 25px;
   }
   .color-darkBlue {
     width: 55px;
-    padding-top: 15px;
+    padding-top: 25px;
   }
   .color-white {
     width: 55px;
-    padding-top: 15px;
+    padding-top: 25px;
+  }
+
+  .white-number {
+    color: #fafafa;
+  }
+
+  .black-number {
+    color: #000000;
+  }
+}
+
+@media (min-width: 960px) {
+  .color-red {
+    width: 55px;
+    padding-top: 20px;
+  }
+  .color-lightBlue {
+    width: 55px;
+    padding-top: 20px;
+  }
+  .color-purple {
+    width: 55px;
+    padding-top: 20px;
+  }
+
+  .color-orange {
+    width: 55px;
+    padding-top: 20px;
+  }
+  .color-darkerBlue {
+    width: 55px;
+    padding-top: 20px;
+  }
+  .color-blue {
+    width: 55px;
+    padding-top: 20px;
+  }
+  .color-green {
+    width: 55px;
+    padding-top: 20px;
+  }
+  .color-darkRed {
+    width: 55px;
+    padding-top: 20px;
+  }
+  .color-darkBlue {
+    width: 55px;
+    padding-top: 20px;
+  }
+  .color-white {
+    width: 55px;
+    padding-top: 20px;
+  }
+
+  .white-number {
+    color: #fafafa;
+  }
+
+  .black-number {
+    color: #000000;
+  }
+}
+
+@media (min-width: 1280px) {
+  .color-red {
+    width: 55px;
+    padding-top: 25px;
+  }
+  .color-lightBlue {
+    width: 55px;
+    padding-top: 25px;
+  }
+  .color-purple {
+    width: 55px;
+    padding-top: 25px;
+  }
+
+  .color-orange {
+    width: 55px;
+    padding-top: 25px;
+  }
+  .color-darkerBlue {
+    width: 55px;
+    padding-top: 25px;
+  }
+  .color-blue {
+    width: 55px;
+    padding-top: 25px;
+  }
+  .color-green {
+    width: 55px;
+    padding-top: 25px;
+  }
+  .color-darkRed {
+    width: 55px;
+    padding-top: 25px;
+  }
+  .color-darkBlue {
+    width: 55px;
+    padding-top: 25px;
+  }
+  .color-white {
+    width: 55px;
+    padding-top: 25px;
   }
 
   .white-number {

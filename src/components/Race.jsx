@@ -6,52 +6,32 @@ import { useWindowSize } from "../utils/utils";
 import {
   getRoundsFromSeason,
   getRaceFromSeason,
-  getLastRace,
+  // getLastRace,
 } from "../services/DataService";
 import Selector from "./Selector";
 import { getRaceFlag } from "../utils/utils";
+import RaceSelect from "./RaceSelect";
+import useSeasonResults from "../hooks/useSeasonResults";
 
 const Race = () => {
-  const [round, setRound] = useState();
   const [season, setSeason] = useState();
+  const { results, error } = useSeasonResults(season)
+  const [round, setRound] = useState();
   const [races, setRaces] = useState();
   const [raceData, setRaceData] = useState();
   const [screenSize, setScreenSize] = useWindowSize();
 
-  const getLastRaceData = () => {
-    getLastRace().then((res) => {
-      const lastRace = res.data.MRData.RaceTable.Races[0];
-      if (!season) {
-        setSeason(lastRace.season);
-      }
-      setRaceData(lastRace);
-    });
-  };
+  const handleSeasonChange = (season) => {
+    setSeason(season.value)
+  }
 
-  const getRounds = (selectedSeason) => {
-    getRoundsFromSeason(selectedSeason).then((res) => {
-      const rounds = res.data.MRData.RaceTable.Races;
-      setRaces(rounds);
-    });
-  };
+  const handleRoundChange = ({value}) => {
+    setRound(value)
+    results.RaceTable.Races.forEach(race => {
+      if(race.round === value) setRaceData(race)
+    })
 
-  const getRoundData = (selectedSeason, selectedRace) => {
-    getRaceFromSeason(selectedSeason, selectedRace).then((res) => {
-      const raceRes = res.data.MRData.RaceTable.Races[0];
-      setRaceData(raceRes);
-    });
-  };
-  useEffect(() => {
-    getLastRaceData();
-  }, []);
-
-  useEffect(() => {
-    season && getRounds(season);
-  }, [season]);
-
-  useEffect(() => {
-    season && round && getRoundData(season, round);
-  }, [round]);
+  }
 
   return (
     <Grid
@@ -60,17 +40,17 @@ const Race = () => {
       align="center"
       justifyContent="space-between"
       alignContent="flex-start"
-      style={{ minHeight: "100vh", minWidth: "100vw", marginBottom: '40px' }}>
+      style={{ minHeight: "100vh", minWidth: "100vw", marginBottom: '20px' }}>
       <Grid item xs={12} sm={12} md={12} lg={12}>
-        <Selector
-          season={season}
-          changeSeason={setSeason}
-          races={races}
-          changeRound={setRound}
-          changeRaceData={setRaceData}
+        <RaceSelect 
+          season={season} 
+          round={round}
+          roundsArr={results?.RaceTable.Races}
+          onSeasonChange={handleSeasonChange} 
+          onRoundChange={handleRoundChange} 
         />
         {raceData && (
-          <div style={{ marginTop: "30px" }}>
+          <div>
             <Card className="title-card">
               <Typography component={"span"} variant="h4">
                 {`${season} ${raceData.raceName} Results`}
@@ -122,9 +102,6 @@ const Race = () => {
                         </div>
                         <div className="team-race">
                           <Typography component={"span"} variant="h5">
-                            Team:
-                          </Typography>
-                          <Typography component={"span"} variant="h5">
                             {` ${Constructor.name}`}
                           </Typography>
                         </div>
@@ -143,7 +120,7 @@ const Race = () => {
                           </div>
                         </Grid>
                       )}
-                      <Grid item xs={2} sm={2} md={2} lg={2}>
+                      <Grid item xs={2} sm={2} md={2} lg={3}>
                         <div className="points-race">
                           <Typography component={"span"} variant="h5">
                             Points:
@@ -155,8 +132,8 @@ const Race = () => {
                           </Typography>
                         </div>
                       </Grid>
-                      <Grid item xs={3} sm={2} md={2} lg={2}>
-                        <div className="time-text">
+                      <Grid item xs={3} sm={2} md={2} lg={1}>
+                        <div className="time-text" style={{marginTop: screenSize > 600 ? '15px' : '5px'}}>
                           <Typography component={"span"} variant="h5">
                             Time:
                           </Typography>
