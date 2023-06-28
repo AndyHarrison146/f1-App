@@ -73,7 +73,7 @@ const Home = () => {
         </Grid>
         {showLastRace && <LastRace />}
         {showDriverTable && <DriverStandings />}
-        {showConstructorTable && <ConstructorStandins />}
+        {showConstructorTable && <ConstructorStandins />} 
       </Grid>
       <Typography variant="h6" align="center">
         All info is sourced from https://ergast.com/mrd/.

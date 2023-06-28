@@ -1,27 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Card, Grid, Typography } from "@material-ui/core";
+import { Card, CircularProgress, Grid, Typography } from "@material-ui/core";
 import { driverTeamInfo, textColor } from "../utils/utils";
 import {
   getChampionship,
 } from "../services/DataService";
 import SideBar from "./sideBar";
 import "../styles/re-usedStyles.css";
+import useChampionship from "../hooks/useChampionship";
 
 const DriverStandings = () => {
-  const [championshipData, setChampionshipData] = useState();
+  const { championship, error } = useChampionship();
   const shownComponent = "driver";
 
-  useEffect(() => {
-    getChampionshipData();
-  }, []);
-
-  const getChampionshipData = () => {
-    getChampionship().then((res) => {
-      setChampionshipData(
-        res.data.MRData.StandingsTable.StandingsLists[0].DriverStandings
-      );
-    });
-  };
+  if(!championship) return <CircularProgress />;
 
   return (
     <Grid
@@ -39,8 +30,8 @@ const DriverStandings = () => {
             </Typography>
           </Card>
         </div>
-        {championshipData &&
-          championshipData.map((driver) => {
+        {championship &&
+          championship.StandingsTable.StandingsLists[0].DriverStandings.map((driver) => {
             const { positionText, points, wins, Constructors, Driver } = driver;
             const teamColor = driverTeamInfo(
               driver.Constructors[0].name

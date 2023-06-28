@@ -1,24 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "../styles/schedule.css";
 import axios from "axios";
-import { Grid, Typography, Card } from "@material-ui/core";
+import { Grid, Typography, Card, CircularProgress } from "@material-ui/core";
 import { useStyles } from "../styles";
 import moment from "moment";
 import { getRaceFlag } from "../utils/utils";
+import useSchedule from "../hooks/useSchedule";
 
 const Schedule = () => {
-  const [scheduleData, setScheduleData] = useState();
+  const { schedule, error } = useSchedule();
 
-  const getSchedule = () => {
-    axios.get(`http://ergast.com/api/f1/2022.json`).then((res) => {
-      const schedule = res.data.MRData.RaceTable.Races;
-      setScheduleData(schedule);
-    });
-  };
-
-  useEffect(() => {
-    getSchedule();
-  }, []);
+  if(!schedule) return <CircularProgress />;
 
   return (
     <Grid
@@ -34,8 +26,8 @@ const Schedule = () => {
             2022 Calendar
           </Typography>
         </Card>
-        {scheduleData &&
-          scheduleData.map((race) => {
+        {schedule &&
+          schedule.RaceTable.Races.map((race) => {
             const { raceName, round, date, time, Circuit } = race;
             const editedTime = time.slice(0, -1);
             return (
@@ -53,14 +45,14 @@ const Schedule = () => {
                       />
                     </div>
                   </Grid>
-                  <Grid item xs={5} sm={5} md={6} lg={6}>
+                  <Grid item xs={5} sm={5} md={5} lg={5}>
                     <div className="raceName">
                       <Typography component={"span"} variant="h4">
                         {raceName}
                       </Typography>
                     </div>
                   </Grid>
-                  <Grid item xs={5} sm={5} md={4} lg={4}>
+                  <Grid item xs={5} sm={5} md={5} lg={5}>
                     <div className="raceDate">
                       <Typography component={"span"} variant="h4">
                         {moment(date).format("MMM Do YYYY")}
@@ -68,7 +60,7 @@ const Schedule = () => {
                     </div>
                     <div className="race-bottom">
                       <Typography component={"span"} variant="h4">
-                        Time:{editedTime}
+                        {editedTime}
                       </Typography>
                     </div>
                   </Grid>
