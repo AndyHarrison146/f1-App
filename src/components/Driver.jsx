@@ -1,62 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import { getAllDrivers, getDriverChampionships, getDriver, getWins } from "../services/DataService";
-import Selector from "./Selector";
 import ImgApi from "./ImgApi";
 import "../styles/driver.css";
+import useDrivers from "../hooks/useDrivers";
+import DriverSelector from "./DriverSelector";
+import useDriver from "../hooks/useDriver";
+import useDriverChampionships from "../hooks/useDriverChampionships";
+import useDriverWins from "../hooks/useDriverWins";
 
 const Driver = () => {
-  const [driverChampionships, setDriverChampionships] = useState();
-  const [driverId, setDriverId] = useState();
-  const [driverArr, setDriverArr] = useState();
-  const [driverArrSurname, setDriverArrSurname] = useState([]);
-  const [driverData, setDriverData] = useState();
-  const [wins, setWins] = useState();
-  const [driverUrl, setDriverUrl] = useState();
+  const [selectedDriver, setSelectedDriver] = useState();
+  const {drivers, error: driversError} = useDrivers()
+  const { driver, error: driverError} = useDriver(selectedDriver?.value);
+  const { driverChampionships, error: driverChampionshipsError} = useDriverChampionships(selectedDriver?.value);
+  const { driverWins, error: driverWinsError} = useDriverWins(selectedDriver?.value);
 
-  const getDrivers = () => {
-    getAllDrivers().then((res) => {
-      let arr = res.data.MRData.DriverTable.Drivers;
-      setDriverArr(arr);
-      setDriverArrSurname(arr);
-    });
-  };
-
-  const getDriverTitles = (driverId) => {
-    getDriverChampionships(driverId).then((res) => {
-      const championshipRes = res.data.MRData.StandingsTable.StandingsLists;
-      setDriverChampionships(championshipRes);
-    });
-  };
-
-  const getSelectedDriver = (driverId) => {
-    getDriver(driverId).then((res) => {
-      const driverRes = res.data.MRData.DriverTable.Drivers[0];
-      const driverWiki = driverRes.url;
-      setDriverUrl(driverWiki);
-      setDriverData(driverRes);
-    });
-  };
-
-  const getDriverWins = (driverId) => {
-    getWins(driverId).then((res) => {
-      const winRes = res.data.MRData.RaceTable.Races;
-      setWins(winRes.length);
-    });
-  };
-
-  useEffect(() => {
-    if(driverArr) return;
-    getDrivers();
+  const handleDriverChange = useCallback((driver) => {
+    setSelectedDriver(driver);
   }, []);
-
-  useEffect(() => {
-    driverId && getSelectedDriver(driverId);
-    driverId && getDriverTitles(driverId);
-    driverId && getDriverWins(driverId);
-  }, [driverId]);
 
   return (
     <Grid
@@ -66,16 +29,14 @@ const Driver = () => {
       justifyContent="space-around"
       style={{ minHeight: "100vh", minWidth: "100vw" }}>
       <Grid item xs={12} sm={12} md={6} lg={6}>
-        {driverArr && (
-        <Selector
-          driverId={driverId}
-          changeDriverId={setDriverId}
-          driverArr={driverArr}
-          driverArrSurname={driverArrSurname}
-          setDriverUrl={setDriverUrl}
+        {drivers && (
+        <DriverSelector
+          selectedDriver={selectedDriver}
+          driverArr={drivers.DriverTable.Drivers}
+          onChange={handleDriverChange}
         />
         )}
-        {driverData && (
+        {driver && (
           <Card className="driver-card">
             <Grid
               container
@@ -87,53 +48,49 @@ const Driver = () => {
                   variant="h1"
                   align="center"
                   style={{ marginBottom: "20px" }}>
-                  {`${driverData.givenName} ${driverData.familyName}`}
+                  {`${driver?.DriverTable.Drivers[0].givenName} ${driver?.DriverTable.Drivers[0].familyName}`}
                 </Typography>
                 {driverChampionships && <Typography variant="h4" align="center">
-                  {`Drivers Championships: ${driverChampionships.length}`}
+                  {`Drivers Championships: ${driverChampionships.StandingsTable.StandingsLists.length}`}
                 </Typography>}
                 <Typography
                   variant="h5"
-                  align="center">{`Wins: ${wins}`}</Typography>
-                <ImgApi
-                  driverData={driverData}
-                  driverId={driverId}
-                  driverUrl={driverUrl}
-                  setDriverUrl={setDriverUrl}
+                  align="center">{`Wins: ${driverWins?.RaceTable.Races.length}`}</Typography>
+                <ImgApi driverUrl={driver?.DriverTable.Drivers[0].url}
                 />
                 <Typography
                   variant="h5"
                   align="center"
                   style={{ marginTop: "10px" }}>{`
-                    Name: ${driverData.givenName} ${driverData.familyName}`}</Typography>
+                    Name: ${driver.DriverTable.Drivers[0].givenName} ${driver.DriverTable.Drivers[0].familyName}`}</Typography>
                 <Typography
                   variant="h5"
                   align="center"
                   style={{
                     marginTop: "10px",
-                  }}>{`Nationality: ${driverData.nationality}`}</Typography>
+                  }}>{`Nationality: ${driver.DriverTable.Drivers[0].nationality}`}</Typography>
                 <Typography
                   variant="h5"
                   align="center"
                   style={{
                     marginTop: "10px",
-                  }}>{`Date of birth: ${driverData.dateOfBirth}`}</Typography>
+                  }}>{`Date of birth: ${driver.DriverTable.Drivers[0].dateOfBirth}`}</Typography>
                 <Typography
                   variant="h5"
                   align="center"
                   style={{
                     marginTop: "10px",
-                  }}>{`Driver I.D: ${driverData.driverId}`}</Typography>
+                  }}>{`Driver I.D: ${driver.DriverTable.Drivers[0].driverId}`}</Typography>
                 <Typography
                   variant="h5"
                   align="center"
                   style={{ marginTop: "10px" }}>
-                  {driverData.permanentNumber
-                    ? `Driver Number: ${driverData.permanentNumber}`
+                  {driver.DriverTable.Drivers[0].permanentNumber
+                    ? `Driver Number: ${driver.DriverTable.Drivers[0].permanentNumber}`
                     : "Driver Number: N/A"}
                 </Typography>
                 <Typography variant="h5" style={{ marginTop: "10px" }}>
-                  <a href={driverData.url}>Wikipedia Link</a>
+                  <a href={driver.DriverTable.Drivers[0].url}>Wikipedia Link</a>
                 </Typography>
                 <h5>
                   note** not all drivers have pictures. Please report if images
@@ -142,7 +99,7 @@ const Driver = () => {
               </Grid>
             </Grid>
           </Card>
-        )}
+                  )}
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <div style={{marginTop: '20px', width: '400px'}}>

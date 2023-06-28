@@ -1,11 +1,7 @@
-.driver-race {
-  margin-top: 2px;
-  margin-left: 5px;
-}
-
 .points-race {
   text-align: center;
 }
+
 .team-race {
   margin-left: 5px;
 }
@@ -56,8 +52,19 @@
 
 @media (max-width: 600px) {
   .driver-race {
-    margin-top: 2px;
+    margin-top: 5px;
     margin-left: 5px;
+  }
+
+  .time-text {
+    text-align: center;
+    margin-right: 20px;
+    margin-top: 5px;
+  }
+
+  .points-race {
+    text-align: center;
+    margin-top: 5px;
   }
 
   .team-race {
@@ -76,24 +83,39 @@
 
   .select-background {
     width:200px;
-    height: 38px;
+    height: 20px;
     margin-top: 10px;
   }
 
   .select-background-year {
     width:  200px;
-    height: 38px;
+    height: 20px;
   }
 
   .select-background-round {
     width: 200px;
-    height: 38px;
+    height: 20px;
   }
 }
 
 @media (min-width: 600px) {
   .driver-race {
-    margin-top: 10px;
+    margin-top: 15px;
+    margin-left: 10px;
+  }
+
+  .time-text {
+    text-align: center;
+    margin-right: 20px;
+  }
+
+  .points-race {
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .team-race {
+    margin-left: 10px;
   }
 
   .race-pos {
@@ -104,7 +126,7 @@
 
   .grid-race {
     text-align: center;
-    margin-top: 5px;
+    margin-top: 15px;
   }
 
   .grid-race-number {
@@ -128,24 +150,34 @@
 
   .select-background {
     width:230px;
-    height: 38px;
+    height: 15px;
     margin: 20px;
   }
 
   
   .select-background-year {
     width:  200px;
-    height: 38px;
+    height: 20px;
   }
 
   .select-background-round {
     width: 200px;
-    height: 38px;
+    height: 20px;
   }
 }
 @media (min-width: 960px) {
   .driver-race {
-    margin-top: 10px;
+    margin-top: 15px;
+  }
+
+  .time-text {
+    text-align: center;
+    margin-right: 20px;
+  }
+
+  .points-race {
+    text-align: center;
+    margin-top: 15px;
   }
 
   .race-pos {
@@ -156,7 +188,7 @@
 
   .grid-race {
     text-align: center;
-    margin-top: 5px;
+    margin-top: 15px;
   }
 
   .grid-race-number {
@@ -180,33 +212,27 @@
 
   .select-background {
     width:230px;
-    height: 38px;
+    height: 15px;
     margin: 30px;
   }
 
   .select-background-year {
     width:  200px;
-    height: 38px;
+    height: 15px;
     margin-left: 150px;
   }
 
   .select-background-round {
     width: 200px;
-    height: 38px;
+    height: 15px;
     margin-right: 150px;
   }
 }
 
 @media (min-width: 1280px) {
   .time-text {
-    text-align: center;
-    margin-right: 35px;
-  }
-
-  .time-status {
-    text-align: center;
-    float: right;
-    margin-right: 35px;
+    text-align: right;
+    margin-right: 20px;
   }
 
   .flag-img-race {
@@ -226,22 +252,23 @@
 
   .select-background {
     width: 250px;
-    height: 38px;
+    height: 15px;
     margin: 30px;
   }
 
   .select-background-year {
     width:  200px;
-    height: 38px;
+    height: 15px;
     margin-left: 220px;
   }
 
   .select-background-round {
     width: 200px;
-    height: 38px;
+    height: 15px;
     margin-right: 220px;
   }
 }
+
 @media (min-width: 1680px) {
   .time-text {
     text-align: center;
@@ -251,7 +278,7 @@
   .time-status {
     text-align: center;
     float: right;
-    margin-right: 35px;
+    margin-right: 20px;
   }
 
   .flag-img-race {
@@ -271,18 +298,18 @@
 
   .select-background {
     width: 250px;
-    height: 38px;
+    height: 15px;
     margin: 30px;
   }
   .select-background-year {
     width:  200px;
-    height: 38px;
+    height: 15px;
     margin-left: 450px;
   }
 
   .select-background-round {
     width: 200px;
-    height: 38px;
+    height: 15px;
     margin-right: 450px;
   }
 }

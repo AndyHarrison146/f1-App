@@ -1,26 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { Card, Grid, Typography } from "@material-ui/core";
+import React from "react";
+import { Card, CircularProgress, Grid, Typography } from "@material-ui/core";
 import { driverTeamInfo, textColor } from "../utils/utils";
-import { getContructors } from "../services/DataService";
 import SideBar from "./sideBar";
-import CurrentChampion from "./CurrentChampion";
 import "../styles/re-usedStyles.css";
+import useConstructors from "../hooks/useConstructors";
 
 const ConstructorStandins = () => {
-  const [constructorData, setConstructorData] = useState();
+  const { constructors, error } = useConstructors();
   const shownComponent = "constructor";
 
-  useEffect(() => {
-    getConstructorTable();
-  }, []);
-
-  const getConstructorTable = () => {
-    getContructors().then((res) => {
-      setConstructorData(
-        res.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings
-      );
-    });
-  };
+  if(!constructors) return <CircularProgress />;
 
   return (
     <Grid
@@ -38,8 +27,8 @@ const ConstructorStandins = () => {
             </Typography>
           </Card>
         </div>
-        {constructorData &&
-          constructorData.map((team) => {
+        {constructors &&
+          constructors.StandingsTable.StandingsLists[0].ConstructorStandings.map((team) => {
             const { positionText, points, wins, Constructor } = team;
             const teamColor = driverTeamInfo(Constructor.name).primary;
             const teamImg = driverTeamInfo(Constructor.name).url;

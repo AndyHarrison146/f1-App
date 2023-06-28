@@ -69,20 +69,20 @@ const Header = () => {
     };
   };
 
-  const getLastRound = () => {
-    axios
-      .get("http://ergast.com/api/f1/current/last/results.json")
-      .then((res) => {
-        const _lastRound = res.data.MRData.RaceTable.round;
-        setLastRound(Number(_lastRound));
-      });
-  };
+  // const getLastRound = () => {
+  //   axios
+  //     .get("http://ergast.com/api/f1/current/last/results.json")
+  //     .then((res) => {
+  //       const _lastRound = res.data.MRData.RaceTable.round;
+  //       setLastRound(Number(_lastRound));
+  //     });
+  // };
 
-  const getNextRound = () => {
-    axios.get("http://ergast.com/api/f1/current.json").then((res) => {
-      setNextRound(res.data.MRData.RaceTable.Races[lastRound]);
-    });
-  };
+  // const getNextRound = () => {
+  //   axios.get("http://ergast.com/api/f1/current.json").then((res) => {
+  //     setNextRound(res.data.MRData.RaceTable.Races[lastRound]);
+  //   });
+  // };
 
   // const getNextRound = () => {
   //   const currentYear = moment().format("YYYY");
@@ -91,39 +91,39 @@ const Header = () => {
   //   });
   // };
 
-  useEffect(() => {
-    getLastRound();
-  }, []);
+  // useEffect(() => {
+  //   getLastRound();
+  // }, []);
 
-  useEffect(() => {
-    getNextRound();
-  }, [lastRound]);
+  // useEffect(() => {
+  //   getNextRound();
+  // }, [lastRound]);
 
-  useEffect(() => {
-    if (!nextRound) {
-      return;
-    }
-    const date = nextRound.date + ' ' + nextRound.time;
-    const formattedDate = date.replace(/\-/g, '/');
-    let countdownDate = new Date(formattedDate).getTime();
-    let x = setInterval(function () {
-      let now = new Date().getTime();
-      let distance = countdownDate - now;
-      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      let hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  // useEffect(() => {
+  //   if (!nextRound) {
+  //     return;
+  //   }
+  //   const date = nextRound.date + ' ' + nextRound.time;
+  //   const formattedDate = date.replace(/\-/g, '/');
+  //   let countdownDate = new Date(formattedDate).getTime();
+  //   let x = setInterval(function () {
+  //     let now = new Date().getTime();
+  //     let distance = countdownDate - now;
+  //     let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  //     let hours = Math.floor(
+  //       (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  //     );
+  //     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  //     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      setTime(days + "d " + hours + "h " + minutes + "m " + seconds + "s");
+  //     setTime(days + "d " + hours + "h " + minutes + "m " + seconds + "s");
 
-      if (distance < 0) {
-        clearInterval(x);
-        setTime("Race Time");
-      }
-    }, 1000);
-  }, [nextRound]);
+  //     if (distance < 0) {
+  //       clearInterval(x);
+  //       setTime("Race Time");
+  //     }
+  //   }, 1000);
+  // }, [nextRound]);
 
   return (
     <Grid container spacing={0} align="center">

@@ -1,53 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "../styles/sidebar.css";
-import { Card, Grid, Typography } from "@material-ui/core";
-import {
-  getChampionship,
-  getContructors,
-  getLastRace,
-} from "../services/DataService";
+import { Card, CircularProgress, Grid, Typography } from "@material-ui/core";
 import { useWindowSize } from "../utils/utils";
 import CurrentChampion from "./CurrentChampion";
+import useConstructors from "../hooks/useConstructors";
+import useLastRace from "../hooks/useLastRace";
+import useChampionship from "../hooks/useChampionship";
 
 const SideBar = ({ shownComponent }) => {
-  const [championshipData, setChampionshipData] = useState();
-  const [lastRaceData, setLastRaceData] = useState();
-  const [constructorData, setConstructorData] = useState();
+  const { constructors, constructorError } = useConstructors();
+  const { lastRace, lastError } = useLastRace();
+  const { championship, championshipError } = useChampionship();
   const [screenSize, setScreenSize] = useWindowSize();
 
-  const getConstructorTable = () => {
-    getContructors().then((res) => {
-      setConstructorData(
-        res.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings
-      );
-    });
-  };
-
-  const getLastRaceData = () => {
-    getLastRace().then((res) => {
-      setLastRaceData(res.data.MRData.RaceTable.Races);
-    });
-  };
-
-  const getChampionshipData = () => {
-    getChampionship().then((res) => {
-      setChampionshipData(
-        res.data.MRData.StandingsTable.StandingsLists[0].DriverStandings
-      );
-    });
-  };
-
-  useEffect(() => {
-    if (shownComponent === "lastRace") {
-      getChampionshipData();
-      getConstructorTable();
-    } else if (shownComponent === "driver") {
-      getLastRaceData();
-      getConstructorTable();
-    } else if (shownComponent === "constructor") {
-      getChampionshipData();
-    } else return;
-  }, []);
+  if(!championship) return <CircularProgress />;
 
   return (
     <div>
@@ -60,15 +26,15 @@ const SideBar = ({ shownComponent }) => {
           alignContent="flex-start">
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <CurrentChampion />
-            {lastRaceData && (
+            {lastRace && (
               <div className="side-bar-text">
                 <Typography component="span" variant="h5">
                   Last Race Top 5
                 </Typography>
               </div>
             )}
-            {lastRaceData &&
-              lastRaceData[lastRaceData.length - 1].Results.map(
+            {lastRace &&
+              lastRace.RaceTable.Races[lastRace.RaceTable.Races.length - 1].Results.map(
                 (driver, idx) => {
                   let top5 = false;
                   if (idx < 5) {
@@ -113,13 +79,13 @@ const SideBar = ({ shownComponent }) => {
                   );
                 }
               )}
-            {championshipData && (
+            {championship && (
               <div>
                 <div className="side-bar-text">
                   <Typography component="span" variant="h5">Championship Standings Top 5</Typography>
                 </div>
-                {championshipData &&
-                  championshipData.map((driver, idx) => {
+                {championship &&
+                  championship.StandingsTable.StandingsLists[0].DriverStandings.map((driver, idx) => {
                     let top5 = false;
                     if (idx < 5) {
                       top5 = true;
@@ -165,15 +131,15 @@ const SideBar = ({ shownComponent }) => {
                   })}
               </div>
             )}
-            {constructorData && (
+            {constructors && (
               <div>
                 <div className="side-bar-text">
                   <Typography component="span" variant="h5">
                     Constructor Standings Top 5
                   </Typography>
                 </div>
-                {constructorData &&
-                  constructorData.map((team, idx) => {
+                {constructors &&
+                  constructors.StandingsTable.StandingsLists[0].ConstructorStandings.map((team, idx) => {
                     let top5 = false;
                     if (idx < 5) {
                       top5 = true;

@@ -23,6 +23,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^5.0.0",
     "react-select": "^5.2.2",
+    "swr": "^2.1.5",
     "web-vitals": "^1.1.0"
   },
   "scripts": {

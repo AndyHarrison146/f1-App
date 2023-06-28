@@ -1,6 +1,7 @@
 .title-card {
   width: fit-content;
-  margin-top: 5px;
+  margin-top: 30px !important;
+  margin-bottom: 20px;
   padding-top: 10px;
   padding-inline: 30px;
 }
@@ -22,6 +23,7 @@
 }
 
 .position {
+  text-align: center;
   text-align: left;
   float: left;
   width: 420px;
@@ -388,6 +390,7 @@
   }
 
   .position {
+    margin-top: 15px;
     width: 800px;
   }
 

@@ -4,7 +4,7 @@ import { years } from '../assets/Years';
 import { Grid } from "@material-ui/core";
 import '../styles/race.css';
 
-const Selector = ({changeYear, driverArr, changeDriverId, teamArr, changeTeam, season, races, changeRound, changeRaceData, changeSeason}) => {
+const Selector = ({onChange, driverArr, changeDriverId, teamArr, changeTeam, season, races, changeRound, changeRaceData, changeSeason}) => {
   const [selected, setSelected] = useState();
   const [racesArr, setRacesArr] = useState();
   const [options, setOptions] = useState();
@@ -66,8 +66,8 @@ const Selector = ({changeYear, driverArr, changeDriverId, teamArr, changeTeam, s
     const {value} = select;
     switch(pathname) {
       case '/Year':
-        setSelected(value)
-        changeYear((parseInt(value)))
+        setSelected(parseInt(value))
+        onChange((parseInt(value)))
         break
       case '/Race': 
         setSelected(value)
@@ -106,7 +106,7 @@ const Selector = ({changeYear, driverArr, changeDriverId, teamArr, changeTeam, s
                 <Select
                 className='select'
                 onChange={handleChange}
-                defaultValue={selected}
+                value={selected}
                 options={options}
                 />
               </div>
