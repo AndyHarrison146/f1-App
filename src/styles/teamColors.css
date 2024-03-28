@@ -27,10 +27,10 @@
   width: 60px;
   height: 80px;
 }
-.color-darkerBlue {
+.color-brightBlue {
   float: left;
   border-right: solid 1px #8d99ae;
-  background-color: #2b4562;
+  background-color: #6692FF;
   width: 60px;
   height: 80px;
 }
@@ -45,6 +45,13 @@
   float: left;
   border-right: solid 1px #8d99ae;
   background-color: #006f62;
+  width: 60px;
+  height: 80px;
+}
+.color-brightGreen {
+  float: left;
+  border-right: solid 1px #8d99ae;
+  background-color: #52e252;
   width: 60px;
   height: 80px;
 }
@@ -93,6 +100,10 @@
     width: 40px;
     padding-top: 10px;
   }
+  .color-brightGreen {
+    width: 40px;
+    padding-top: 10px;
+  }
 
   .color-orange {
     width: 40px;
@@ -110,7 +121,7 @@
     width: 40px;
     padding-top: 10px;
   }
-  .color-darkRed {
+  .color-brightBlue {
     width: 40px;
     padding-top: 10px;
   }
@@ -142,6 +153,14 @@
     padding-top: 25px;
   }
   .color-purple {
+    width: 55px;
+    padding-top: 25px;
+  }
+  .color-brightBlue {
+    width: 55px;
+    padding-top: 25px;
+  }
+  .color-brightGreen {
     width: 55px;
     padding-top: 25px;
   }
@@ -190,6 +209,14 @@
     padding-top: 20px;
   }
   .color-lightBlue {
+    width: 55px;
+    padding-top: 20px;
+  }
+  .color-brightBlue {
+    width: 55px;
+    padding-top: 20px;
+  }
+  .color-brightGreen {
     width: 55px;
     padding-top: 20px;
   }
