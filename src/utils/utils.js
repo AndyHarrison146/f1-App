@@ -50,9 +50,9 @@ export const driverTeamInfo = (team) => {
         secondary: "white-number",
         url: Teams[3].url,
       };
-    case "AlphaTauri":
+    case "RB F1 Team":
       return {
-        primary: "darkerBlue",
+        primary: "brightBlue",
         secondary: "white-number",
         url: Teams[5].url,
       };
@@ -80,9 +80,9 @@ export const driverTeamInfo = (team) => {
         secondary: "white-number",
         url: Teams[8].url,
       };
-    case "Alfa Romeo":
+    case "Sauber":
       return {
-        primary: "darkRed",
+        primary: "brightGreen",
         secondary: "white-number",
         url: Teams[7].url,
       };

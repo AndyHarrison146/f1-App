@@ -45,10 +45,10 @@ function App() {
               path="/Year"
               render={(props) => <Year {...props} className={classes.root} />}
             />
-            <Route
+            {/* <Route
               path="/Driver"
               render={(props) => <Driver {...props} className={classes.root} />}
-            />
+            /> */}
             <Route
               path="/Team"
               render={(props) => <Team {...props} className={classes.root} />}

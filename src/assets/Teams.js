@@ -1,13 +1,13 @@
 import mercedes from "../img/logos/Mercedes.png";
-import redbull from "../img/logos/Red Bull.png";
+import redbull from "../img/logos/Red-Bull.png";
 import mclaren from "../img/logos/McLaren.png";
 import ferrari from "../img/logos/Ferrari.png";
-import alpine from "../img/logos/Alpine F1 Team.png";
-import alphaTauri from "../img/logos/AlphaTauri.png";
-import aston from "../img/logos/Aston Martin.png";
-import alfa from "../img/logos/Alfa_Romeo.png";
+import alpine from "../img/logos/Alpine-F1-Team.png";
+import rbF1Team from "../img/logos/RB-F1-Team.png";
+import aston from "../img/logos/Aston-Martin.png";
+import sauber from "../img/logos/sauber.png";
 import williams from "../img/logos/Williams.png";
-import haas from "../img/logos/Haas F1 Team.png";
+import haas from "../img/logos/Haas-F1-Team.png";
 import latifi from "../img/latifi.jpg";
 
 export const Teams = [
@@ -78,13 +78,13 @@ export const Teams = [
     teamPrincipal: "Otmar Szafnauer",
   },
   {
-    name: "AlphaTauri",
-    displayName: 'Scuderia AlphaTauri',
-    id: "alphatauri",
-    url: alphaTauri,
-    driver1: "Pierre Gasly",
+    name: "RB F1 Team",
+    displayName: 'Visa Cash App RB Formula One Team',
+    id: "rb",
+    url: rbF1Team,
+    driver1: "Daniel Ricciardo",
     driver1Url:
-      "https://upload.wikimedia.org/wikipedia/commons/3/3e/Pierre_Gasly_2017_Malaysia.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/2/24/Daniel_Ricciardo_British_GP_2022_52382610448_cropped.jpg",
     driver2: "Yuki Tsunoda",
     driver2Url:
       "https://upload.wikimedia.org/wikipedia/commons/e/eb/2021_US_GP%2C_Tsunoda.jpg",
@@ -104,10 +104,10 @@ export const Teams = [
     teamPrincipal: "Mike Krack",
   },
   {
-    name: "Alfa Romeo",
-    displayName: 'Alfa Romeo F1 Team ORLEN',
-    id: "alfa",
-    url: alfa,
+    name: "Sauber",
+    displayName: 'Stake F1 Team Kick Sauber',
+    id: "sauber",
+    url: sauber,
     driver1: "Guanyu Zhou",
     driver1Url:
       "https://upload.wikimedia.org/wikipedia/commons/0/0f/Guanyu_Zhou_Goodwood_Festival_of_Speed_2019_%2848242675181%29_%28cropped%29.jpg",

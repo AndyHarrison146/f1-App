@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Card, CircularProgress, Grid, Typography } from "@material-ui/core";
 import { driverTeamInfo, textColor, useWindowSize } from "../utils/utils";
 import SideBar from "./sideBar";
@@ -6,7 +6,7 @@ import "../styles/re-usedStyles.css";
 import useLastRace from "../hooks/useLastRace";
 
 const LastRace = () => {
-  const { lastRace, error } = useLastRace();
+  const { lastRace } = useLastRace();
   const [screenSize, setScreenSize] = useWindowSize();
   const shownComponent = "lastRace";
 

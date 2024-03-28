@@ -44,10 +44,10 @@ const Header = () => {
       name: "Race",
       icon: faFlagCheckered,
     },
-    {
-      name: "Driver",
-      icon: faPortrait,
-    },
+    // {
+    //   name: "Driver",
+    //   icon: faPortrait,
+    // },
     {
       name: "Team",
       icon: faUsers,
@@ -144,7 +144,7 @@ const Header = () => {
               <Typography variant="h1">F1 Grid Check</Typography>
             </Grid>
             <Grid item xs={5} sm={4} md={4} lg={4} align="right">
-              {nextRound ? (
+              {/* {nextRound ? (
                 <div className="time-race">
                   <Typography variant="h6">
                     {`Next Race: Round ${nextRound.round} ${nextRound.raceName} `}
@@ -155,7 +155,7 @@ const Header = () => {
                 <div>
                   <Typography variant="h4">Loading...</Typography>
                 </div>
-              )}
+              )} */}
             </Grid>
           </Toolbar>
           <MUIDrawer open={navState} onClose={toggleDrawer(false)}>
