@@ -79,11 +79,9 @@ const LastRace = () => {
                     <div className="position-bottom">
                       <div className="team">
                         {screenSize < 600 ? (
-                          <div>
-                            <Typography component={"span"} variant="h5">
-                              {Constructor.name}
-                            </Typography>
-                          </div>
+                          <Typography component={"span"} variant="h5">
+                            {Constructor.name}
+                          </Typography>
                         ) : (
                           <img
                             src={teamImg}
