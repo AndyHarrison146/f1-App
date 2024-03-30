@@ -123,12 +123,13 @@
 
   .position-card {
     margin-top: 10px;
-    border-radius: 25px;
+    border-radius: 20px;
     width: 370px;
     height: 50px;
   }
 
   .position {
+    margin-top: 5px;
     width: 300px;
     margin-left: 10px;
   }
