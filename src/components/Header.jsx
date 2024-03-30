@@ -73,12 +73,12 @@ const Header = () => {
   };
 
   const getLastRound = useCallback(() => {
-    const _lastRound = lastRace.RaceTable.round;
+    const _lastRound = lastRace && lastRace.RaceTable.round;
     setLastRound(Number(_lastRound));
   }, [lastRace]);
   
   const getNextRound = useCallback(() => {
-    const _nextRound = schedule.RaceTable.Races[lastRound];
+    const _nextRound = lastRound && schedule && schedule.RaceTable.Races[lastRound];
     setNextRound(_nextRound);
   }, [schedule, lastRound]);
   
@@ -90,11 +90,11 @@ const Header = () => {
   // };
       
   useEffect(() => {
-    getLastRound();
-  }, [getLastRound]);
+    lastRace && getLastRound();
+  }, [getLastRound, lastRace]);
   
   useEffect(() => {
-    getNextRound();
+    lastRound && getNextRound();
   }, [lastRound, getNextRound]);
   
   useEffect(() => {
